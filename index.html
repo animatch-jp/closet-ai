@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CLOSET.AI</title>
+<meta name="description" content="手持ちの服を撮るだけで、天気と予定に合わせたコーデをAIが提案。1週間コーデやクローゼット診断も。">
+<meta name="theme-color" content="#06070b">
+<meta property="og:title" content="CLOSET.AI">
+<meta property="og:description" content="手持ちの服を撮るだけで、今日のコーデをAIが提案。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Inter:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap">
+<style>
+/* VOICE futuristic, sleek, made to be screen-recorded for social
+   IDEA an AI fitting mirror: a dark glass stage where today's look floats in 3D
+   PICTURE outfit cards hovering in perspective, tilting with the pointer, a laser scan while it thinks
+   COLOUR near-black ground, glass panels, one holographic gradient (cyan to lilac to pink to lime) for action and light
+   TYPE Unbounded for display + Inter / Zen Kaku Gothic New for text
+   LAYOUT laptop: stage 60% left, control glass right, closet rack below; phone: title, stage, controls, closet */
+:root{color-scheme:dark;--bg:#06070b;--ink:#f2f4ff;--mute:#9aa1bb;--line:rgba(255,255,255,.11);--glass:rgba(255,255,255,.045);--holo:linear-gradient(110deg,#7cf7ff 0%,#a99bff 35%,#ff7ad9 68%,#e4ff6b 100%)}
+*{box-sizing:border-box;min-width:0}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 Inter,"Zen Kaku Gothic New",system-ui,sans-serif;overflow-x:clip;position:relative}
+.aurora{position:fixed;inset:-20% -10% auto;height:120vh;pointer-events:none;z-index:0;filter:blur(70px);opacity:.55}
+.aurora i{position:absolute;border-radius:50%;animation:drift 18s ease-in-out infinite alternate}
+.aurora i:nth-child(1){width:46vw;height:46vw;left:-6vw;top:4vh;background:#1e5cff55}
+.aurora i:nth-child(2){width:38vw;height:38vw;right:-4vw;top:-6vh;background:#ff3fb455;animation-delay:-6s}
+.aurora i:nth-child(3){width:30vw;height:30vw;left:40vw;top:30vh;background:#27e8d044;animation-delay:-11s}
+@keyframes drift{to{transform:translate(6vw,4vh) scale(1.12)}}
+.grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:28px 28px;mask-image:linear-gradient(#000,transparent 80%)}
+.wrap{position:relative;z-index:1;max-width:1240px;margin:0 auto;padding:0 max(4vw,16px)}
+nav{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 0}
+.logo{font:700 18px Unbounded,sans-serif;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.logo b{width:26px;height:26px;border-radius:8px;background:var(--holo);box-shadow:0 0 24px #a99bff88}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--glass)}
+.lang button{border:0;background:none;color:var(--mute);font:600 13px Inter,sans-serif;min-height:38px;padding:0 14px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed=true]{background:#fff;color:#06070b}
+.intro{padding:18px 0 26px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:14px}
+h1{font:700 clamp(30px,5.2vw,52px)/1.05 Unbounded,"Zen Kaku Gothic New",sans-serif;letter-spacing:-.03em;margin:0;text-wrap:balance;max-width:16ch}
+h1 span{background:var(--holo);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{margin:0;color:var(--mute);max-width:42ch}
+.app{display:grid;gap:18px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:880px){.app{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr)}}
+.glass{background:var(--glass);border:1px solid var(--line);border-radius:22px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.stage{position:relative;overflow:hidden;min-height:520px;padding:clamp(18px,2.6vw,28px);display:flex;flex-direction:column;gap:14px;perspective:1100px}
+.stage::before,.stage::after{content:"";position:absolute;width:22px;height:22px;border:2px solid #ffffff55;pointer-events:none}
+.stage::before{top:12px;left:12px;border-right:0;border-bottom:0;border-radius:6px 0 0 0}
+.stage::after{bottom:12px;right:12px;border-left:0;border-top:0;border-radius:0 0 6px 0}
+.floor{position:absolute;left:-10%;right:-10%;bottom:-30%;height:60%;background:radial-gradient(ellipse at 50% 0%,#a99bff33,transparent 60%),repeating-linear-gradient(90deg,#ffffff10 0 1px,transparent 1px 60px),repeating-linear-gradient(0deg,#ffffff10 0 1px,transparent 1px 60px);transform:rotateX(68deg);transform-origin:50% 0;pointer-events:none;mask-image:linear-gradient(#000,transparent)}
+#look{display:flex;flex-direction:column;gap:14px;height:100%;position:relative}
+.meta{display:flex;flex-wrap:wrap;gap:8px;position:relative}
+.pill{font-size:13px;border:1px solid var(--line);border-radius:999px;padding:3px 11px;color:var(--mute);background:#ffffff08;white-space:nowrap}
+.pill.ai{color:#06070b;background:var(--holo);border:0;font-weight:600}
+.ltitle{font:700 clamp(26px,3.6vw,38px)/1.08 Unbounded,"Zen Kaku Gothic New",sans-serif;letter-spacing:-.02em;margin:0;position:relative;text-wrap:balance}
+.why{margin:0;color:#d5d9ee;max-width:58ch;position:relative}
+.rig{flex:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(130px,40%),1fr));gap:16px;align-content:center;padding:14px 4px;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .25s ease-out}
+.card{position:relative;border-radius:16px;padding:8px 8px 10px;background:linear-gradient(160deg,#2b2f45f2,#12141ff2);border:1px solid #ffffff26;box-shadow:0 24px 40px -18px #000c,inset 0 1px 0 #ffffff30;transform:translateZ(var(--z)) rotate(var(--r))}
+.card .ph,.tile .ph{aspect-ratio:1;border-radius:11px;overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,#2a2e44,#11131d);position:relative}
+.card .ph img,.tile .ph img{width:100%;height:100%;object-fit:cover}
+.card .ph svg,.tile .ph svg{width:82%;height:82%;filter:drop-shadow(0 10px 12px #0009)}
+.card p{margin:7px 2px 0;font-size:13px;line-height:1.35;color:#e8ebff}
+.card small{display:block;font-size:13px;color:var(--mute)}
+.drop .card{animation:rise .7s cubic-bezier(.2,.9,.25,1.15) both;animation-delay:calc(var(--i)*90ms)}
+@keyframes rise{from{opacity:0;transform:translateZ(-160px) translateY(40px) rotate(0)}}
+.notes{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));position:relative}
+.note{border:1px solid var(--line);background:#0b0d16cc;border-radius:14px;padding:11px 14px;font-size:14px}
+.note b{display:block;font:600 13px Inter,"Zen Kaku Gothic New",sans-serif;background:var(--holo);-webkit-background-clip:text;background-clip:text;color:transparent}
+.scan{position:absolute;inset:0;pointer-events:none;opacity:0;z-index:2}
+.busy .scan{opacity:1}
+.scan::before{content:"";position:absolute;left:0;right:0;height:120px;top:-120px;background:linear-gradient(#7cf7ff00,#7cf7ff30 80%,#7cf7ff);border-bottom:2px solid #7cf7ff;box-shadow:0 6px 30px #7cf7ff;animation:sweep 1.1s linear infinite}
+@keyframes sweep{to{top:100%}}
+.busy .card{filter:saturate(.3) brightness(.7);transition:filter .3s}
+.panel{padding:22px;display:flex;flex-direction:column;gap:20px;align-self:start}
+.lbl{font:600 14px Inter,"Zen Kaku Gothic New",sans-serif;margin:0 0 9px;color:#dfe3f7;display:block}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:#ffffff07;color:var(--ink);border-radius:999px;min-height:44px;padding:0 16px;font:15px Inter,"Zen Kaku Gothic New",sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
+.chip:hover{border-color:#ffffff44}
+.chip[aria-pressed=true]{background:#fff;color:#06070b;border-color:#fff}
+.temp{display:flex;align-items:center;gap:14px}
+.temp output{font:700 34px Unbounded,sans-serif;white-space:nowrap;min-width:3.6em;letter-spacing:-.03em}
+input[type=range]{flex:1;height:44px;accent-color:#a99bff}
+input[type=text],select{width:100%;font:16px Inter,"Zen Kaku Gothic New",sans-serif;padding:11px 14px;border:1px solid var(--line);border-radius:12px;background:#0b0d16;color:var(--ink);min-height:46px}
+input[type=color]{width:56px;height:46px;border:1px solid var(--line);border-radius:12px;background:#0b0d16;padding:4px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 20px;border-radius:14px;border:1px solid var(--line);background:#ffffff0a;color:var(--ink);font:600 15px Inter,"Zen Kaku Gothic New",sans-serif;cursor:pointer;transition:transform .15s,background .2s}
+.btn:hover{background:#ffffff14}
+.btn:active{transform:scale(.98)}
+.btn.go{border:0;color:#06070b;background:var(--holo);background-size:200% 100%;font-size:16px;box-shadow:0 10px 30px -10px #a99bffaa;animation:shine 6s linear infinite}
+@keyframes shine{to{background-position:200% 0}}
+.btn:disabled{opacity:.6;cursor:wait}
+.btn:focus-visible,.chip:focus-visible,.lang button:focus-visible,.x:focus-visible,.addtile:focus-visible,.addtile:focus-within{outline:2px solid #7cf7ff;outline-offset:3px}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+.row .go{flex:1 1 180px}
+.status{min-height:1.6em;font-size:14px;color:var(--mute);margin:0}
+.status button{border:0;background:none;color:#7cf7ff;font:600 14px inherit;cursor:pointer;text-decoration:underline;padding:0 4px}
+.bar{height:6px;border-radius:9px;background:#ffffff14;overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;width:0;background:var(--holo);transition:width .3s}
+.bar[hidden]{display:none}
+section.closet{padding:44px 0 30px}
+.ch{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px;margin-bottom:16px}
+h2{font:700 26px/1.1 Unbounded,"Zen Kaku Gothic New",sans-serif;letter-spacing:-.02em;margin:0}
+h2 small{color:var(--mute);font:500 16px Inter,sans-serif;letter-spacing:0;margin-left:8px}
+.rack{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px;margin-top:16px}
+.tile{position:relative;border-radius:16px;padding:8px;background:var(--glass);border:1px solid var(--line);transition:transform .2s,border-color .2s}
+.tile:hover{transform:translateY(-3px);border-color:#ffffff33}
+.tile .nm{font-size:14px;line-height:1.35;margin:7px 2px 0}
+.tile .ct{font-size:13px;color:var(--mute);margin:0 2px;display:flex;align-items:center;gap:6px}
+.tile .ct i{width:10px;height:10px;border-radius:50%;border:1px solid #ffffff44;flex:none}
+.tile.busy .ph::after{content:"";position:absolute;left:0;right:0;height:3px;background:#7cf7ff;box-shadow:0 0 18px 4px #7cf7ff;animation:sweep2 1.2s ease-in-out infinite alternate}
+@keyframes sweep2{from{top:4%}to{top:94%}}
+.addtile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:190px;border-radius:16px;border:1.5px dashed #ffffff33;background:#ffffff05;cursor:pointer;text-align:center;padding:14px;color:#dfe3f7;font:600 15px Inter,"Zen Kaku Gothic New",sans-serif;transition:border-color .2s,background .2s}
+.addtile:hover{border-color:#a99bff;background:#a99bff10}
+.addtile svg{width:40px;height:40px}
+.addtile small{font-weight:400;color:var(--mute);font-size:13px}
+.x{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;border:1px solid #ffffff33;background:#06070bcc;color:#fff;font-size:17px;cursor:pointer;opacity:.85}
+.add{padding:16px;margin-top:14px;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));align-items:end}
+.add[hidden]{display:none}
+.add .pv{width:64px;height:64px;border-radius:10px;object-fit:cover}
+.how{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));padding:10px 0 20px}
+.how div{padding:18px}
+.how b{display:block;font:700 15px Unbounded,"Zen Kaku Gothic New",sans-serif;margin-bottom:6px}
+.how p{margin:0;color:var(--mute);font-size:14px}
+footer{position:relative;z-index:1;border-top:1px solid var(--line);margin-top:20px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;padding-top:18px;padding-bottom:28px;font-size:13px;color:var(--mute)}
+footer button{border:0;background:none;color:var(--ink);text-decoration:underline;font:13px inherit;cursor:pointer;padding:0;min-height:32px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media(max-width:600px){.stage{min-height:460px}.rig{gap:12px}.temp output{font-size:28px}}
+@media(prefers-reduced-motion:reduce){.aurora i,.btn.go,.scan::before,.tile.busy .ph::after{animation:none}.drop .card{animation:none}.rig{transition:none}}
+/* ---- ナビ ---- */
+nav.top{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px max(4vw,16px);background:linear-gradient(#06070bcc,#06070b00)}
+nav.top .links{display:flex;gap:4px}
+nav.top .links a{color:#dfe3f7;text-decoration:none;font-size:14px;padding:8px 12px;border-radius:999px;min-height:40px;display:inline-flex;align-items:center}
+nav.top .links a:hover{background:#ffffff12}
+@media(max-width:600px){nav.top .links{display:none}}
+/* ---- 3Dの入口 ---- */
+#hero{position:relative;height:380vh;z-index:1}
+#hero .pin{position:sticky;top:0;height:100svh;overflow:hidden}
+#hero .pin::before{content:"";position:absolute;left:0;right:0;top:0;height:42%;background:linear-gradient(#05060ae6,#05060a99 55%,#05060a00);z-index:2;pointer-events:none}
+#hcv{position:absolute;inset:0;width:100%;height:100%;display:block}
+.no3d #hcv{display:none}
+.no3d #hero .pin{background:radial-gradient(ellipse at 50% 70%,#2a2050,#06070b 70%)}
+.cap{position:absolute;left:50%;top:max(84px,11svh);transform:translate(-50%,14px);width:min(92vw,820px);text-align:center;opacity:0;z-index:3;transition:none}
+.cap h2,.cap p{margin:0;font:700 clamp(28px,5.4vw,60px)/1.12 Unbounded,"Zen Kaku Gothic New",sans-serif;letter-spacing:-.025em;text-wrap:balance;color:#fff;text-shadow:0 4px 30px #000c}
+.cap span{background:var(--holo);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cap .btn{margin-top:26px;min-width:200px}
+.cap:first-of-type{opacity:1}
+.hint{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:6px;color:#c9cee6;font-size:13px}
+.hint i{width:22px;height:36px;border:2px solid #ffffff66;border-radius:12px;position:relative}
+.hint i::after{content:"";position:absolute;left:50%;top:7px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:#fff;animation:wheel 1.6s ease-in-out infinite}
+@keyframes wheel{50%{transform:translateY(9px);opacity:.3}}
+#hlabels{position:absolute;inset:0;pointer-events:none;z-index:2}
+.hlabel{position:absolute;left:0;top:0;font:600 12px Inter,"Zen Kaku Gothic New",sans-serif;letter-spacing:.02em;color:#06070b;background:var(--holo);padding:4px 9px;border-radius:999px;white-space:nowrap;opacity:0;margin:-34px 0 0 -40px;transition:opacity .25s;box-shadow:0 0 20px #7cf7ff88}
+.hlabel.on{opacity:1}
+/* ---- スタジオ ---- */
+#studio{padding-top:40px;scroll-margin-top:60px}
+.tabs{display:flex;gap:6px;padding:5px;border-radius:999px;border:1px solid var(--line);background:var(--glass);width:max-content;max-width:100%;margin:0 0 14px;overflow-x:auto}
+.tabs button{border:0;background:none;color:var(--mute);font:600 15px Inter,"Zen Kaku Gothic New",sans-serif;min-height:42px;padding:0 18px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.tabs button[aria-selected=true]{background:#fff;color:#06070b}
+.statusbar{min-height:24px;margin-bottom:10px}
+.wxrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.cityform{display:flex;gap:8px;flex:1 1 220px}
+.cityform input{flex:1}
+.btn.sm{min-height:46px;padding:0 14px;font-size:14px}
+.btn svg{width:18px;height:18px}
+.wxnow{display:flex;align-items:center;gap:8px;font-size:14px;color:#dfe3f7;flex-wrap:wrap;margin-top:8px}
+.wxnow[hidden]{display:none}
+.wxnow b{font-weight:600}
+.wxnow span{color:var(--mute)}
+.wxi{width:20px;height:20px;flex:none}
+.pill.wxp{display:inline-flex;align-items:center;gap:5px}
+.pill.wxp .wxi{width:15px;height:15px}
+.shops{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.shops a{font-size:13px;color:#06070b;background:#e8ebff;border-radius:999px;padding:6px 12px;text-decoration:none;font-weight:600}
+.shops a:hover{background:#fff}
+.sharerow{margin-top:6px}
+.sharerow .btn{min-height:44px;font-size:14px;flex:0 1 auto}
+#share{position:relative}
+#preview{display:block;max-width:220px;border-radius:14px;margin-top:10px;border:1px solid var(--line)}
+#preview[hidden]{display:none}
+/* ---- 1週間 ---- */
+.wkhead{padding:20px;display:grid;gap:16px}
+.wkhead h2,.dxhead h2{font:700 clamp(24px,3vw,32px)/1.1 Unbounded,"Zen Kaku Gothic New",sans-serif;letter-spacing:-.02em;margin:0}
+.wkhead p,.dxhead p{margin:0;color:var(--mute)}
+.wkopts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));align-items:end}
+.weekgrid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));margin-top:14px}
+.day{display:flex;flex-direction:column;gap:6px;text-align:left;padding:12px;color:var(--ink);font:inherit;cursor:pointer;transition:transform .2s,border-color .2s;border-radius:18px}
+.day:hover{transform:translateY(-3px);border-color:#ffffff40}
+.drop .day{animation:rise2 .6s cubic-bezier(.2,.9,.25,1.1) both;animation-delay:calc(var(--i)*70ms)}
+@keyframes rise2{from{opacity:0;transform:translateY(24px)}}
+.dh{display:flex;justify-content:space-between;align-items:center}
+.dh b{font:700 15px Unbounded,"Zen Kaku Gothic New",sans-serif;white-space:nowrap}
+.dt{font-size:13px;color:var(--mute);white-space:nowrap}
+.dthumbs{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.dthumbs .ph{aspect-ratio:1;border-radius:9px;overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,#2a2e44,#11131d)}
+.dthumbs .ph img{width:100%;height:100%;object-fit:cover}
+.dthumbs .ph svg{width:84%;height:84%}
+.dn{font-size:14px;font-weight:600;line-height:1.35}
+.day .pill{align-self:flex-start}
+/* ---- 診断 ---- */
+.dxhead{padding:20px;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center}
+.dxcard{margin-top:14px;padding:clamp(18px,3vw,30px);display:flex;flex-direction:column;gap:16px;position:relative;overflow:hidden}
+.dxcard::before{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,#a99bff40,transparent 65%);pointer-events:none}
+.dxcard>.pill{align-self:flex-start}
+.dxcard.pop{animation:rise2 .6s cubic-bezier(.2,.9,.25,1.1) both}
+.dxname{font:700 clamp(34px,6vw,64px)/1.05 Unbounded,"Zen Kaku Gothic New",sans-serif;letter-spacing:-.03em;margin:0;background:var(--holo);-webkit-background-clip:text;background-clip:text;color:transparent;text-wrap:balance}
+.dxstats{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.dxstats>div{border:1px solid var(--line);border-radius:16px;padding:14px;background:#0b0d16aa;display:flex;flex-direction:column;gap:8px}
+.dxstats small,.dxcard small.lbl{color:var(--mute);font-size:13px}
+.big{font:700 clamp(40px,6vw,60px)/1 Unbounded,sans-serif;letter-spacing:-.03em}
+.big em{font-style:normal;font-size:18px;margin-left:6px;color:var(--mute)}
+.mini{display:flex;align-items:center;gap:10px;font-size:14px}
+.mini .ph{width:64px;height:64px;flex:none;border-radius:12px;overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,#2a2e44,#11131d)}
+.mini .ph img{width:100%;height:100%;object-fit:cover}
+.mini .ph svg{width:84%;height:84%}
+.plus{font:700 18px Unbounded,sans-serif;background:var(--holo);-webkit-background-clip:text;background-clip:text;color:transparent}
+.fambar{display:flex;gap:4px;height:16px;margin-top:8px}
+.fambar i{border-radius:9px;min-width:8px}
+.famlab{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;font-size:13px;color:var(--mute)}
+.famlab i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+.dxcard .note{margin:0}
+
+/* ---- 写真の入口 ---- */
+#hero{height:440vh}
+.amb{position:absolute;inset:-12%;background:#101320 center/cover no-repeat;filter:blur(46px) brightness(.32) saturate(1.3);transform:scale(1.1)}
+.frame{position:absolute;left:50%;top:60%;height:min(64svh,150vw);aspect-ratio:2/3;transform:translate(-50%,-50%);border-radius:24px;overflow:hidden;box-shadow:0 40px 80px -20px #000,0 0 0 1px #ffffff22;background:linear-gradient(160deg,#2a2e44,#11131d);transform-origin:50% 50%;will-change:transform;z-index:1}
+.frame img{width:100%;height:100%;object-fit:cover;display:block}
+.hgrid{position:absolute;inset:0;background-image:linear-gradient(#7cf7ff14 1px,transparent 1px),linear-gradient(90deg,#7cf7ff14 1px,transparent 1px);background-size:10% 6.667%;mix-blend-mode:screen}
+.hscan{position:absolute;left:0;right:0;height:3px;background:#bffcff;box-shadow:0 0 24px 6px #7cf7ffaa;opacity:0;z-index:2}
+.hscan::before{content:"";position:absolute;left:0;right:0;bottom:3px;height:90px;background:linear-gradient(#7cf7ff00,#7cf7ff33)}
+.hbox{position:absolute;border:1.5px solid #7cf7ff;border-radius:12px;box-shadow:0 0 18px #7cf7ff66,inset 0 0 18px #7cf7ff22;opacity:0;transform:scale(.94);transition:opacity .35s,transform .35s;z-index:3}
+.hbox.on{opacity:1;transform:none}
+.hbox b{position:absolute;left:-2px;top:-30px;white-space:nowrap;font:600 12px Inter,"Zen Kaku Gothic New",sans-serif;color:#06070b;background:var(--holo);padding:4px 9px;border-radius:999px}
+.hbox:nth-child(5) b{left:calc(100% + 8px);top:35%}
+.hbox:nth-child(7) b{top:auto;bottom:-30px}
+.hprods{position:absolute;left:54%;top:60%;transform:translateY(-50%);width:min(560px,40vw);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;z-index:2}
+.hprod{position:relative;aspect-ratio:1;border-radius:16px;overflow:hidden;background:#eceae6;opacity:0;box-shadow:0 18px 40px -16px #000;transition:box-shadow .3s}
+.hprod img{width:100%;height:100%;object-fit:cover}
+.hprod i{position:absolute;right:6px;top:6px;width:24px;height:24px;border-radius:50%;background:var(--holo);opacity:0;transition:opacity .3s}
+.hprod i::after{content:"";position:absolute;left:8px;top:5px;width:6px;height:10px;border:solid #06070b;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+.hprod.hit{box-shadow:0 0 0 2px #7cf7ff,0 0 30px #7cf7ff88}
+.hprod.hit i{opacity:1}
+.hmeter{position:absolute;left:54%;top:calc(60% + min(160px,13vw));display:flex;align-items:baseline;gap:14px;opacity:0;z-index:2}
+.hmeter small{color:#c9cee6;font-size:15px}
+.hmeter b{font:700 clamp(44px,5vw,72px)/1 Unbounded,sans-serif;letter-spacing:-.04em;background:var(--holo);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hwx{position:absolute;left:50%;bottom:5svh;transform:translateX(-50%);display:flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:#ffffff14;border:1px solid #ffffff2a;backdrop-filter:blur(10px);color:#fff;font-size:14px;opacity:0;z-index:4;white-space:nowrap}
+.hwx svg{width:18px;height:18px;color:#ffd76a}
+.cap{top:max(76px,8svh)}
+.cap h2,.cap p{font-size:clamp(26px,4.4vw,50px)}
+@media(max-width:880px){.frame{top:54%;height:58svh}.hprods{left:5vw;right:5vw;width:auto;top:auto;bottom:9svh;transform:none;gap:8px}.hmeter{left:auto;right:6vw;top:31svh;flex-direction:column;align-items:flex-end;gap:2px}.hmeter b{font-size:44px}.hwx{bottom:2.5svh}}
+#studio,.rxwork,.stage,.dxcard{scroll-margin-top:84px}
+/* ---- 憧れコーデ再現 ---- */
+.rxhead{padding:20px;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center}
+.rxhead h2{font:700 clamp(24px,3vw,32px)/1.1 Unbounded,"Zen Kaku Gothic New",sans-serif;letter-spacing:-.02em;margin:0}
+.rxhead p{margin:4px 0 0;color:var(--mute);max-width:52ch}
+.looks{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:14px}
+.lookcard{position:relative;aspect-ratio:2/3;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(160deg,#2a2e44,#11131d);cursor:pointer;padding:0;color:#fff;text-align:left;font:inherit}
+.lookcard img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.lookcard:hover img{transform:scale(1.05)}
+.lookcard span{position:absolute;left:0;right:0;bottom:0;padding:30px 12px 12px;background:linear-gradient(#0000,#000c);font-size:14px;font-weight:600;line-height:1.35}
+.lookcard[aria-pressed=true]{outline:2px solid #7cf7ff;outline-offset:2px}
+.rxwork{margin-top:14px;padding:clamp(14px,2.4vw,24px);display:grid;gap:20px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:820px){.rxwork{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}}
+.rxphoto{position:relative;align-self:start}
+.rxphoto .pic{position:relative;border-radius:18px;overflow:hidden;background:#11131d;cursor:crosshair}
+.rxphoto .pic img{width:100%;display:block}
+.dot{position:absolute;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 3px #7cf7ff,0 0 18px #7cf7ff;pointer-events:none}
+.dot::after{content:attr(data-n);position:absolute;inset:0;display:grid;place-items:center;font:700 12px Inter,sans-serif;color:#fff;text-shadow:0 1px 3px #000}
+.dot{animation:pulse2 1.8s ease-in-out infinite}
+@keyframes pulse2{50%{box-shadow:0 0 0 7px #7cf7ff55,0 0 24px #7cf7ff}}
+.taplist{display:grid;gap:8px;margin-top:12px}
+.taprow{display:flex;gap:8px;align-items:center}
+.taprow i{width:22px;height:22px;border-radius:50%;border:1px solid #ffffff55;flex:none}
+.taprow b{width:22px;text-align:center;font:700 13px Inter,sans-serif;flex:none}
+.taprow select{flex:1;min-height:40px;padding:6px 10px}
+.taprow button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:#ffffff0a;color:#fff;cursor:pointer;flex:none}
+.rxscore{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.rxscore b{font:700 clamp(56px,8vw,88px)/1 Unbounded,sans-serif;letter-spacing:-.04em;background:var(--holo);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rxscore small{color:var(--mute);font-size:15px}
+.rxtitle{font:700 clamp(20px,2.4vw,26px)/1.2 Unbounded,"Zen Kaku Gothic New",sans-serif;margin:0}
+.mrows{display:grid;gap:10px;margin:14px 0}
+.mrow{display:grid;grid-template-columns:44px 22px minmax(0,1fr) auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:8px 10px;background:#0b0d16aa}
+.mrow .sw{width:44px;height:44px;border-radius:10px;border:1px solid #ffffff33}
+.mrow .ar{color:var(--mute);text-align:center}
+.mrow .mi{display:flex;align-items:center;gap:10px;font-size:14px;min-width:0}
+.mrow .mi .ph{width:52px;height:52px;flex:none;border-radius:10px;overflow:hidden;display:grid;place-items:center;background:#eceae6}
+.mrow .mi .ph img{width:100%;height:100%;object-fit:cover}
+.mrow .mi .ph svg{width:84%;height:84%}
+.mrow .pc{font:700 15px Unbounded,sans-serif;white-space:nowrap}
+.mrow .pc.low{color:#ff9aa8}
+.mrow .shops{grid-column:1/-1;margin-top:0}
+/* ---- 写真のタイル ---- */
+.card .ph.photo,.tile .ph.photo,.mini .ph.photo,.dthumbs .ph.photo{background:#eceae6}
+.credits{font-size:12px;color:var(--mute);line-height:1.7}
+.credits a{color:#c9cee6}
+</style>
+</head>
+<body>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="grid-bg" aria-hidden="true"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="hl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".45"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/></linearGradient><linearGradient id="hg" x1="0" x2="1"><stop offset="0" stop-color="#7cf7ff"/><stop offset=".4" stop-color="#a99bff"/><stop offset=".7" stop-color="#ff7ad9"/><stop offset="1" stop-color="#e4ff6b"/></linearGradient></defs></svg>
+
+<nav class="top">
+  <div class="logo"><b></b>CLOSET.AI</div>
+  <div class="links"><a href="#studio" data-go="today" data-t="nav1">今日</a><a href="#studio" data-go="week" data-t="nav2">1週間</a><a href="#studio" data-go="remix" data-t="nav4">再現</a><a href="#studio" data-go="dx" data-t="nav3">診断</a></div>
+  <div class="lang" role="group" aria-label="Language"><button id="l-ja" aria-pressed="true">日本語</button><button id="l-en" aria-pressed="false">EN</button></div>
+</nav>
+
+<section id="hero" aria-label="CLOSET.AI">
+  <div class="pin">
+    <div class="amb" aria-hidden="true"></div>
+    <div class="frame" id="hframe" aria-hidden="true"><img alt="" decoding="async"><div class="hgrid"></div><div class="hscan" id="hscan"></div>
+      <div class="hbox"><b></b></div><div class="hbox"><b></b></div><div class="hbox"><b></b></div><div class="hbox"><b></b></div>
+    </div>
+    <div class="hprods" aria-hidden="true"></div>
+    <div class="hmeter"><small data-t="hRe">手持ちの服で再現</small><b><span id="hmeter">0</span>%</b></div>
+    <div class="hwx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg><span data-t="hWx">晴れ 16°C ・ 通勤</span></div>
+    <div class="cap" data-a="-1" data-b="0.18"><h2 data-t="cap1" data-html></h2></div>
+    <div class="cap" data-a="0.22" data-b="0.36"><p data-t="cap2" data-html></p></div>
+    <div class="cap" data-a="0.4" data-b="0.54"><p data-t="cap3" data-html></p></div>
+    <div class="cap" data-a="0.6" data-b="0.8"><p data-t="cap3b" data-html></p></div>
+    <div class="cap" data-a="0.84" data-b="2"><p data-t="cap4" data-html></p><a class="btn go" href="#studio" data-go="today" data-t="start">はじめる</a></div>
+    <div class="hint"><i></i><span data-t="hint">スクロール</span></div>
+  </div>
+</section>
+
+<main class="wrap" id="studio">
+  <div class="tabs" role="tablist">
+    <button role="tab" data-tab="today" aria-selected="true" data-t="nav1">今日</button>
+    <button role="tab" data-tab="week" aria-selected="false" data-t="nav2">1週間</button>
+    <button role="tab" data-tab="remix" aria-selected="false" data-t="nav4">再現</button>
+    <button role="tab" data-tab="dx" aria-selected="false" data-t="nav3">診断</button>
+  </div>
+  <div class="statusbar"><p class="status" id="st" role="status"></p><div class="bar" id="bar" hidden><i></i></div></div>
+
+  <div id="tab-today" class="app">
+    <div class="stage glass" id="stage" aria-live="polite">
+      <div class="floor" aria-hidden="true"></div>
+      <div class="scan" aria-hidden="true"></div>
+      <div id="look"></div>
+      <div class="row sharerow" id="share"><button class="btn go" type="button" data-share="look" data-k="img" data-t="saveImg">画像で保存</button><button class="btn" type="button" data-share="look" data-k="x" data-t="shareX">Xでシェア</button><button class="btn" type="button" data-share="look" data-k="th" data-t="shareTh">Threads</button><button class="btn" type="button" data-share="look" data-k="line" data-t="shareLine">LINE</button><img id="preview" alt="" hidden></div>
+    </div>
+    <form class="panel glass" id="ctl">
+      <div>
+        <div class="wxrow"><button class="btn sm herebtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="11" r="3"/><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/></svg><span data-t="here">現在地の天気</span></button>
+          <div class="cityform"><input type="text" class="cityin" data-ph="cityph" placeholder="都市名" aria-label="City" enterkeyhint="search"><button class="btn sm citybtn" type="button" data-t="find">天気を読む</button></div></div>
+        <div class="wxnow" hidden></div>
+      </div>
+      <div><span class="lbl" data-t="occ">どこに着ていく？</span><div class="chips" id="occ"></div></div>
+      <div><label class="lbl" for="temp" data-t="temp">気温</label><div class="temp"><output id="tv" for="temp">16°C</output><input type="range" id="temp" min="-5" max="35" step="1" value="16"></div></div>
+      <div><label class="lbl" for="mood" data-t="mood">気分・リクエスト（任意）</label><input type="text" id="mood" data-ph="moodph" placeholder="例：明るめの色、たくさん歩く日"></div>
+      <div class="row"><button class="btn go" id="gen" type="submit" data-t="gen">コーデを生成</button><button class="btn" id="again" type="button" data-t="again">別の案</button></div>
+    </form>
+  </div>
+
+  <div id="tab-week" hidden>
+    <div class="wkhead glass">
+      <div><h2 data-t="wkTitle">1週間コーデ</h2><p data-t="wkSub">天気予報に合わせて、7日分を同じ服が続かないように組みます。</p></div>
+      <div class="wxrow"><button class="btn sm herebtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="11" r="3"/><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/></svg><span data-t="here">現在地の天気</span></button>
+        <div class="cityform"><input type="text" class="cityin" data-ph="cityph" placeholder="都市名" aria-label="City" enterkeyhint="search"><button class="btn sm citybtn" type="button" data-t="find">天気を読む</button></div></div>
+      <div class="wxnow" hidden></div>
+      <div class="wkopts"><div><label class="lbl" for="wkd" data-t="wkDay">平日の予定</label><select id="wkd"></select></div><div><label class="lbl" for="wke" data-t="wkEnd">休日の予定</label><select id="wke"></select></div><button class="btn go" type="button" id="wkgo" data-t="wkGo">1週間ぶん作る</button></div>
+      <p class="status" id="wkst"></p>
+    </div>
+    <div class="weekgrid" id="weekgrid"></div>
+  </div>
+
+  <div id="tab-remix" hidden>
+    <div class="rxhead glass"><div><h2 data-t="rxTitle">憧れコーデ再現</h2><p data-t="rxSub"></p></div>
+      <div class="row"><label class="btn go" for="rfile" data-t="rxUp">写真から再現</label><label class="btn" for="rcam" data-t="rxCam">カメラで撮る</label></div>
+      <input class="vh" type="file" id="rfile" accept="image/*"><input class="vh" type="file" id="rcam" accept="image/*" capture="environment"></div>
+    <div class="looks" id="looks"></div>
+    <div class="rxwork glass" id="rxwork" hidden><div class="rxphoto" id="rxphoto"></div><div class="rxres" id="rxres"></div></div>
+  </div>
+
+  <div id="tab-dx" hidden>
+    <div class="dxhead glass"><div><h2 data-t="dxTitle">クローゼット診断</h2><p data-t="dxSub">あなたの服から、スタイルのタイプと、着回しの力を読み取ります。</p></div><button class="btn go" type="button" id="dxgo" data-t="dxGo">診断する</button></div>
+    <div id="dxout" class="dxcard glass"></div>
+  </div>
+
+  <section class="closet">
+    <div class="ch"><h2><span data-t="closet">クローゼット</span><small id="cnt"></small></h2><div class="chips" id="flt"></div></div>
+    <form class="add glass" id="addf" hidden>
+      <div><label class="lbl" for="an" data-t="name">名前</label><input type="text" id="an" data-ph="nameph" placeholder="例：グレーのパーカー" required></div>
+      <div><label class="lbl" for="ak" data-t="kind">種類</label><select id="ak"></select></div>
+      <div style="display:flex;gap:12px;align-items:end"><div><label class="lbl" for="acol" data-t="color">色</label><input type="color" id="acol" value="#8a8f9e"></div><img class="pv" id="apv" alt="" hidden></div>
+      <div class="row"><button class="btn go" type="submit" data-t="save">追加する</button><button class="btn" type="button" id="acancel" data-t="cancel">やめる</button></div>
+    </form>
+    <div class="rack" id="rack"></div>
+    <input class="vh" type="file" id="file" accept="image/*" multiple><input class="vh" type="file" id="fcam" accept="image/*" capture="environment">
+  </section>
+
+  <section class="how">
+    <div class="glass"><b data-t="h_1">撮る</b><p data-t="p_1"></p></div>
+    <div class="glass"><b data-t="h_2">選ぶ</b><p data-t="p_2"></p></div>
+    <div class="glass"><b data-t="h_3">外に出ない</b><p data-t="p_3"></p></div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span><span data-t="foot"></span><br><span data-t="credit"></span><br><span class="credits" id="credits"></span></span><span><button id="clr" type="button" data-t="clearSample">サンプルを消す</button></span></div></footer>
+
+<script src="photos.js"></script>
+<script src="app.js"></script>
+<script src="hero.js"></script>
+</body>
+</html>
