@@ -735,13 +735,13 @@ async function ask(q) {
   chatBusy = true; $("chsend").disabled = true; $("chin").value = "";
   chatPush({ role: "me", text: q });
   const intent = intentOf(q), rule = ruleAnswer(q, intent);
-  const useLLM = llmState === "ready" && chatW;
+  const fashion = intent !== "other" && intent !== "hi" && intent !== "thx";
+  const useLLM = llmState === "ready" && chatW && !fashion;
   if (!useLLM) {
     renderChat(); await new Promise(r => setTimeout(r, still ? 30 : 450));
     chatPush({ role: "ai", ...rule }); renderChat();
     chatBusy = false; $("chsend").disabled = false; return;
   }
-  const fashion = intent !== "other" && intent !== "hi" && intent !== "thx";
   const msg = { role: "ai", llm: true, text: "", look: fashion ? rule.look : null, acts: fashion ? rule.acts : [], buyQ: fashion ? rule.buyQ : undefined, add: fashion ? rule.add : undefined };
   st.chat = (st.chat || []).concat(msg).slice(-30); renderChat();
   const hist = st.chat.slice(-5, -1).filter(m => m.text).map(m => ({ role: m.role === "me" ? "user" : "assistant", content: m.text }));
