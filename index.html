@@ -80,7 +80,7 @@ h1 span{background:var(--holo);-webkit-background-clip:text;background-clip:text
 .temp{display:flex;align-items:center;gap:14px}
 .temp output{font:700 34px Unbounded,sans-serif;white-space:nowrap;min-width:3.6em;letter-spacing:-.03em}
 input[type=range]{flex:1;height:44px;accent-color:#a99bff}
-input[type=text],select{width:100%;font:16px Inter,"Zen Kaku Gothic New",sans-serif;padding:11px 14px;border:1px solid var(--line);border-radius:12px;background:#0b0d16;color:var(--ink);min-height:46px}
+input[type=text],input[type=date],select{width:100%;font:16px Inter,"Zen Kaku Gothic New",sans-serif;padding:11px 14px;border:1px solid var(--line);border-radius:12px;background:#0b0d16;color:var(--ink);min-height:46px}
 input[type=color]{width:56px;height:46px;border:1px solid var(--line);border-radius:12px;background:#0b0d16;padding:4px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 20px;border-radius:14px;border:1px solid var(--line);background:#ffffff0a;color:var(--ink);font:600 15px Inter,"Zen Kaku Gothic New",sans-serif;cursor:pointer;transition:transform .15s,background .2s}
 .btn:hover{background:#ffffff14}
@@ -339,6 +339,78 @@ nav.top .links a:hover{background:#ffffff12}
 .rrow i{height:6px;border-radius:9px;background:#ffffff12;overflow:hidden}
 .rrow i b{display:block;height:100%;background:var(--holo);border-radius:9px}
 .rrow em{font-style:normal;text-align:right;color:var(--ink)}
+.byin,.pack,.logcard,.wish{padding:20px;display:grid;gap:14px}
+.byin h2,.pack h2,.logcard h2{font:700 clamp(22px,3vw,30px)/1.15 Unbounded,"Zen Kaku Gothic New",sans-serif;letter-spacing:-.02em;margin:0}
+.byin p,.pack>div>p{margin:6px 0 0;color:var(--mute);max-width:62ch}
+.bymanual{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.bymanual select{flex:1;min-width:150px}
+.bymanual input[type=color]{width:52px;height:46px;padding:4px;border-radius:12px}
+.byout{margin-top:14px;padding:20px;display:grid;gap:16px}
+.byout.pop{animation:rise2 .5s ease both}
+.byhead{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center}
+.byph{width:110px;height:110px;border-radius:20px;overflow:hidden;position:relative;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,#2a2e44,#11131d)}
+.byph.photo{background:#eceae6}.byph img{width:100%;height:100%;object-fit:cover}.byph svg{width:80%;height:80%}
+.byph .scanl{position:absolute;left:0;right:0;height:3px;background:var(--holo);box-shadow:0 0 18px #a99bff;animation:scanv 1.4s ease-in-out infinite alternate}
+@keyframes scanv{from{top:6%}to{top:92%}}
+.bymeta h3{margin:6px 0 2px;font-size:20px}.byfix{margin:0;color:var(--mute);font-size:12px}
+.byscore{text-align:center;display:grid;gap:2px;padding:10px 16px;border-radius:18px;border:1px solid color-mix(in srgb,var(--vc) 50%,transparent);background:color-mix(in srgb,var(--vc) 10%,transparent)}
+.byscore small{color:var(--mute);font-size:12px}.byscore b{font:700 46px/1 Unbounded,sans-serif;color:var(--vc)}.byscore em{font-style:normal;font-weight:700;font-size:13px;color:var(--vc)}
+.bystats,.lstats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.lstats{grid-template-columns:1fr 2fr}
+.bystats>div,.lstats>div{border:1px solid var(--line);border-radius:16px;padding:12px;display:grid;gap:4px;background:#ffffff06}
+.bystats small,.lstats small{color:var(--mute);font-size:12px}
+.bystats b,.lstats b{font:700 28px/1 Unbounded,sans-serif}.bystats em,.lstats em{font-style:normal;font-size:13px;margin-left:3px;color:var(--mute)}
+.bystats .warn{border-color:#ff8a8a66;background:#ff8a8a12}.bystats .warn b{color:#ff9a9a}
+.usebar{height:6px;border-radius:9px;background:#ffffff12;overflow:hidden;display:block}.usebar i{display:block;height:100%;background:var(--holo)}
+.bysec{display:grid;gap:8px}
+.bylook{border:1px solid var(--line);border-radius:16px;padding:10px;display:grid;gap:6px}
+.bylh{display:flex;gap:6px;flex-wrap:wrap}
+.chlook .it.cand .ph{outline:2px solid #a99bff;outline-offset:-2px;box-shadow:0 0 18px #a99bff66}
+.chlook .it.cand span{color:#cfc6ff;font-weight:700}
+.chlook button.it{background:none;border:0;padding:0;color:inherit;font:inherit;cursor:pointer}
+.chlook .it b{color:var(--ink)}
+.why.sm{font-size:13px;margin:0}
+.wish{margin-top:14px}.wish h3{margin:0;display:flex;gap:8px;align-items:baseline}.wish h3 small{color:var(--mute);font-size:13px}
+.wishl{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px}
+.wi{position:relative;flex:0 0 120px}
+.wopen{display:grid;gap:4px;background:none;border:0;padding:0;color:inherit;font:inherit;text-align:left;cursor:pointer;width:100%}
+.wopen .ph{width:120px;height:120px;border-radius:16px;overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,#2a2e44,#11131d)}
+.wopen .ph.photo{background:#eceae6}.wopen .ph img{width:100%;height:100%;object-fit:cover}.wopen .ph svg{width:80%;height:80%}
+.wn{font-size:12px}.ws{font-size:12px;font-weight:700;color:var(--vc)}
+.wi .x{position:absolute;top:4px;right:4px}
+.btn.worn.on{border-color:#7dffb066;color:#7dffb0}
+.note.warn{border-color:#ffd36b55;background:#ffd36b10}.note.warn b{color:#ffd36b}
+.logcard{margin-top:14px}
+.lstrip{display:grid;grid-template-columns:repeat(14,1fr);gap:4px}
+.lday{display:grid;gap:3px;text-align:center;font-size:10px;color:var(--mute)}
+.lday .ph{aspect-ratio:1;border-radius:8px;overflow:hidden;background:#ffffff08;display:grid;place-items:center}
+.lday.on .ph{background:radial-gradient(circle at 50% 35%,#343a58,#151826)}.lday.on .ph.photo{background:#eceae6}.lday .ph img{width:100%;height:100%;object-fit:cover}.lday .ph svg{width:80%;height:80%}
+.lday.today small{color:var(--ink);font-weight:700}
+.pack{margin-top:14px}
+.pkform{display:grid;grid-template-columns:2fr 1.4fr 1.2fr 1.2fr auto;gap:10px;align-items:end}
+input[type=date]{color-scheme:dark;-webkit-appearance:none;appearance:none}
+.pkform>div{display:grid;gap:6px;min-width:0}
+.pkform input,.pkform select{width:100%}
+#pkout.pop{animation:rise2 .5s ease both}
+#pkout{display:grid;gap:14px}
+.pkhead{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.pkhead h3{margin:6px 0 4px;font-size:20px}
+.pkprog{text-align:right;font-size:14px;color:var(--mute);flex:none}.pkprog b{font:700 34px/1 Unbounded,sans-serif;color:var(--ink)}.pkprog small{display:block}
+.pkdays{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+.pkd{flex:0 0 150px;border:1px solid var(--line);border-radius:16px;padding:10px;display:grid;gap:6px;background:#ffffff06}
+.pkd .dh{display:flex;justify-content:space-between;align-items:center;font-size:13px}.pkd .dh svg{width:22px;height:22px}
+.pkd .dt{font-size:12px;color:var(--mute)}
+.pkd .dthumbs{display:flex;flex-wrap:wrap;gap:4px}
+.pkd .dthumbs .ph{width:40px;height:40px;border-radius:9px;overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,#343a58,#151826)}
+.pkd .dthumbs .ph.photo{background:#eceae6}.pkd .dthumbs img{width:100%;height:100%;object-fit:cover}.pkd .dthumbs svg{width:84%;height:84%}
+.pklists{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pklists>div{display:grid;gap:6px;align-content:start}
+.pki{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line);border-radius:12px;font-size:14px;cursor:pointer}
+.pki input{width:20px;height:20px;accent-color:#a99bff;flex:none}
+.pki .ph{width:38px;height:38px;border-radius:8px;overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,#343a58,#151826);flex:none}
+.pki .ph.photo{background:#eceae6}.pki .ph img{width:100%;height:100%;object-fit:cover}.pki .ph svg{width:84%;height:84%}
+.pki:has(input:checked){opacity:.55}.pki:has(input:checked) span:last-child{text-decoration:line-through}
+@media(max-width:760px){.pkform{grid-template-columns:1fr 1fr;align-items:start}.pkform>div:first-child,.pkform .btn{grid-column:1/-1}.pklists{grid-template-columns:1fr}.byhead{grid-template-columns:auto 1fr}.byscore{grid-column:1/-1;display:flex;justify-content:center;align-items:baseline;gap:10px}.bystats{gap:6px}.bystats>div{padding:10px}.bystats b{font-size:22px}.lstrip{grid-template-columns:repeat(7,1fr)}}
 </style>
 </head>
 <body>
@@ -348,7 +420,7 @@ nav.top .links a:hover{background:#ffffff12}
 
 <nav class="top">
   <div class="logo"><b></b>CLOSET.AI</div>
-  <div class="links"><a href="#studio" data-go="today" data-t="nav1">今日</a><a href="#studio" data-go="chat" data-t="nav5">相談</a><a href="#studio" data-go="week" data-t="nav2">1週間</a><a href="#studio" data-go="remix" data-t="nav4">再現</a><a href="#studio" data-go="dx" data-t="nav3">診断</a></div>
+  <div class="links"><a href="#studio" data-go="today" data-t="nav1">今日</a><a href="#studio" data-go="chat" data-t="nav5">相談</a><a href="#studio" data-go="buy" data-t="nav6">買う前</a><a href="#studio" data-go="week" data-t="nav2">1週間</a><a href="#studio" data-go="remix" data-t="nav4">再現</a><a href="#studio" data-go="dx" data-t="nav3">診断</a></div>
   <div class="lang" role="group" aria-label="Language"><button id="l-ja" aria-pressed="true">日本語</button><button id="l-en" aria-pressed="false">EN</button></div>
 </nav>
 
@@ -374,6 +446,7 @@ nav.top .links a:hover{background:#ffffff12}
   <div class="tabs" role="tablist">
     <button role="tab" data-tab="today" aria-selected="true" data-t="nav1">今日</button>
     <button role="tab" data-tab="chat" aria-selected="false" data-t="nav5">相談</button>
+    <button role="tab" data-tab="buy" aria-selected="false" data-t="nav6">買う前</button>
     <button role="tab" data-tab="week" aria-selected="false" data-t="nav2">1週間</button>
     <button role="tab" data-tab="remix" aria-selected="false" data-t="nav4">再現</button>
     <button role="tab" data-tab="dx" aria-selected="false" data-t="nav3">診断</button>
@@ -385,7 +458,7 @@ nav.top .links a:hover{background:#ffffff12}
       <div class="floor" aria-hidden="true"></div>
       <div class="scan" aria-hidden="true"></div>
       <div id="look"></div>
-      <div class="row sharerow" id="share"><button class="btn go" type="button" data-share="look" data-k="img" data-t="saveImg">画像で保存</button><button class="btn" type="button" data-share="look" data-k="x" data-t="shareX">Xでシェア</button><button class="btn" type="button" data-share="look" data-k="th" data-t="shareTh">Threads</button><button class="btn" type="button" data-share="look" data-k="line" data-t="shareLine">LINE</button><img id="preview" alt="" hidden></div>
+      <div class="row sharerow" id="share"><button class="btn worn" type="button" id="worn" data-t="worn" hidden>今日これを着た</button><button class="btn go" type="button" data-share="look" data-k="img" data-t="saveImg">画像で保存</button><button class="btn" type="button" data-share="look" data-k="x" data-t="shareX">Xでシェア</button><button class="btn" type="button" data-share="look" data-k="th" data-t="shareTh">Threads</button><button class="btn" type="button" data-share="look" data-k="line" data-t="shareLine">LINE</button><img id="preview" alt="" hidden></div>
     </div>
     <form class="panel glass" id="ctl">
       <div>
@@ -410,6 +483,18 @@ nav.top .links a:hover{background:#ffffff12}
     </div>
   </div>
 
+  <div id="tab-buy" hidden>
+    <div class="byin glass">
+      <div><h2 data-t="byTitle">買う前チェック</h2><p data-t="bySub"></p></div>
+      <div class="row"><label class="btn go" for="bycam" data-t="byCam">カメラで撮る</label><label class="btn" for="byfile" data-t="byUp">写真から</label></div>
+      <input class="vh" type="file" id="bycam" accept="image/*" capture="environment"><input class="vh" type="file" id="byfile" accept="image/*">
+      <p class="lbl" data-t="byOr">写真がないときは、種類と色を選んで調べられます。</p>
+      <div class="bymanual"><select id="bykind" aria-label="Type"></select><input type="color" id="bycol" value="#2b3a66" aria-label="Color"><button class="btn" type="button" id="bygo" data-t="byGoBtn">調べる</button></div>
+    </div>
+    <div class="byout glass" id="byout" hidden></div>
+    <div class="wish glass" id="wish" hidden></div>
+  </div>
+
   <div id="tab-week" hidden>
     <div class="wkhead glass">
       <div><h2 data-t="wkTitle">1週間コーデ</h2><p data-t="wkSub">天気予報に合わせて、7日分を同じ服が続かないように組みます。</p></div>
@@ -420,6 +505,12 @@ nav.top .links a:hover{background:#ffffff12}
       <p class="status" id="wkst"></p>
     </div>
     <div class="weekgrid" id="weekgrid"></div>
+    <div class="pack glass">
+      <div><h2 data-t="pkTitle">旅行の荷物リスト</h2><p data-t="pkSub"></p></div>
+      <div class="pkform"><div><label class="lbl" for="pkcity" data-t="pkCity">行き先</label><input type="text" id="pkcity" data-ph="cityph" placeholder="都市名" enterkeyhint="done"></div><div><label class="lbl" for="pkdate" data-t="pkDate">出発日</label><input type="date" id="pkdate"></div><div><label class="lbl" for="pkdays" data-t="pkDays">日数</label><select id="pkdays"></select></div><div><label class="lbl" for="pkocc" data-t="pkOcc">旅の目的</label><select id="pkocc"></select></div><button class="btn go" type="button" id="pkgo" data-t="pkGo">荷物リストを作る</button></div>
+      <p class="status" id="pkst"></p>
+      <div id="pkout"></div>
+    </div>
   </div>
 
   <div id="tab-remix" hidden>
@@ -433,6 +524,7 @@ nav.top .links a:hover{background:#ffffff12}
   <div id="tab-dx" hidden>
     <div class="dxhead glass"><div><h2 data-t="dxTitle">クローゼット診断</h2><p data-t="dxSub">あなたの服から、スタイルのタイプと、着回しの力を読み取ります。</p></div><button class="btn go" type="button" id="dxgo" data-t="dxGo">診断する</button></div>
     <div id="dxout" class="dxcard glass"></div>
+    <div id="logout" class="logcard glass"></div>
   </div>
 
   <section class="closet">

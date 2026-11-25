@@ -6,12 +6,19 @@ const T = {
 ja: {
   cap1: "あなたのクローゼットが、<br><span>AIになる。</span>", cap2: "写真1枚で、<br>服を読み取る。", cap3: "色・種類・きちんと感まで、<br>一瞬でスキャン。", cap3b: "あこがれのコーデも、<br><span>手持ちの服で再現。</span>", hRe: "手持ちの服で再現", hWx: "晴れ 16°C ・ 通勤", nav4: "再現", photos: "写真", rxTitle: "憧れコーデ再現", rxSub: "SNSや雑誌で見たコーデを、あなたの手持ちの服で再現します。見本を選ぶか、写真をアップしてください。", rxUp: "写真から再現", rxCam: "カメラで撮る", rxTap: "写真の服のところをタップしてください（上着・トップス・ボトムス・靴など）。種類は下で直せます。", rxScore: "再現度", rxNone: "合う服がまだありません", rxLow: "似た服をさがす", rxLook: "見本", rxWear: "今日これを着る", rxMine: "あなたの写真のコーデ", camTile: "カメラで撮る", camHint: "その場で撮って登録", err: "うまくいきませんでした。もう一度お試しください。", cap4: "今日の天気に合わせて、<br><span>コーデ完成。</span>", start: "はじめる", hint: "スクロール",
   nav1: "今日", nav2: "1週間", nav3: "診断",
+  nav6: "買う前", byTitle: "買う前チェック", bySub: "お店で迷った服を撮ると、手持ちの服と合うか、似た服をもう持っていないかをAIが調べます。", byCam: "カメラで撮る", byUp: "写真から", byOr: "写真がないときは、種類と色を選んで調べられます。", byGoBtn: "調べる",
+  byReading: "読み取り中", byChecked: "チェック結果", byFixHint: "種類や色がちがうときは、上で直して「調べる」を押してください。", byScore: "買い度", byGo: "買ってよし", byThink: "よく考えて", byWait: "待った", byDup: "似た服あり",
+  byMore: "増えるコーデ", byPartners: "合わせられる服", bySimilar: "似ている服", byPcs: "点", bySimHave: "もう持っている似た服", byLooks: "これを使ったコーデ", byGoesWith: "合わせやすい手持ちの服", byThis: "この服",
+  byWish: "ほしいものリストへ", byBought: "買った！クローゼットへ", byWishT: "ほしいものリスト", byWished: "ほしいものリストに入れました", byAdded: "クローゼットに入れました", byNot: "服が写っていないようです。種類を選んでください。", byFix: "読み取れなかったので、種類を選んでください。",
+  worn: "今日これを着た", wornOn: "今日の服として記録ずみ", wornDone: "今日の服を記録しました", repeatT: "同じ服装に注意",
+  logT: "着た記録", logEmpty: "コーデを着た日に「今日これを着た」を押すと、よく着る服と、しばらく着ていない服が分かります。", logDays: "記録した日", logUse: "クローゼットの活用度", logTop: "よく着る服", logSleep: "眠っている服", logSleepP: "3週間以上着ていない服です。押すと、その服を使ったコーデをAIスタイリストが考えます。",
+  pkTitle: "旅行の荷物リスト", pkSub: "行き先の天気予報に合わせて、少ない服で毎日のコーデを組み、持ち物リストにします。", pkCity: "行き先", pkDate: "出発日", pkDays: "日数", pkOcc: "旅の目的", pkGo: "荷物リストを作る", pkNeed: "行き先を入れてください", pkFar: "天気予報は16日先までなので、近くなったらもう一度作ってください", pkPast: "出発日が過ぎています", pkSub2: "同じボトムスや靴を何度も使って、荷物を少なくしました。", pkReady: "準備OK", pkClothes: "服", pkOther: "そのほか",
   rTotal: "相性", rPts: "点", rColor: "色", rScene: "場面", rTemp: "気温",
   chFollow: ["もっと明るく", "もっときれいめに", "もっとカジュアルに", "ジャケットなしで", "もっと暖かく", "別の案"],
   nav5: "相談", chTitle: "AIスタイリストに相談", chSub: "「明日のデート何着る？」のように話しかけると、手持ちの服から選んで答えます。", chPh: "メッセージを入力", chSend: "送る", chStop: "止める", chClear: "会話を消す",
   chName: "AIスタイリスト", chLLMName: "AIスタイリスト（なんでもAI）", chOpen: "大きく見る", chDx: "診断を見る",
   chHello: "こんにちは！あなたのクローゼット専属のAIスタイリストです。行き先や天気、気分を教えてくれれば、手持ちの服からコーデを選びます。",
-  chSugg: ["明日のデート、何着る？", "ライブに行く服は？", "雨の日の通勤コーデ", "白いスニーカーに合うコーデは？", "ネイビーに合う色は？", "背を高く見せたい", "清潔感を出すには？", "いちばん活躍する服は？", "私の服のタイプは？", "クローゼットに何がある？"],
+  chSugg: ["明日のデート、何着る？", "ライブに行く服は？", "雨の日の通勤コーデ", "白いスニーカーに合うコーデは？", "ネイビーに合う色は？", "背を高く見せたい", "清潔感を出すには？", "いちばん活躍する服は？", "この服、買うべき？", "旅行の荷造りを手伝って", "私の服のタイプは？", "クローゼットに何がある？"],
   chLLMTitle: "なんでも話せるAI", chLLMNote: "服以外のことも自由に話せるAIを、この端末の中に読みこめます（約300MB・はじめの1回だけ。Wi-Fiがおすすめ）。", chLoad: "読みこむ", chOff: "オフにする", chLoading: "AIを読みこみ中…", chReady: "オン：服以外のことも話せます。答えはこの端末の中で作られ、どこにも送られません。小さなAIなので、ときどきまちがえます。", chFail: "この端末では読みこめませんでした。服の相談はこのまま使えます。",
   occ: "どこに着ていく？", temp: "気温", mood: "気分・リクエスト（任意）", moodph: "例：明るめの色、たくさん歩く日", gen: "コーデを生成", again: "別の案",
   here: "現在地の天気", cityph: "都市名（例：大阪、Paris）", find: "天気を読む", wxFail: "天気を読みこめませんでした。気温は手で選んでください。", geoFail: "現在地を使えませんでした。都市名で探してください。", noCity: "その都市が見つかりませんでした。",
@@ -34,12 +41,19 @@ ja: {
 en: {
   cap1: "Your closet, <br><span>now with AI.</span>", cap2: "One photo. <br>Every piece, read.", cap3: "Color, type and dressiness, <br>scanned in a blink.", cap3b: "Love a look? <br><span>Rebuild it from your closet.</span>", hRe: "Rebuilt from your closet", hWx: "Sunny 16°C · Commute", nav4: "Recreate", photos: "Photos", rxTitle: "Recreate a look", rxSub: "Saw an outfit you love? Rebuild it from what you already own. Pick an example or upload a photo.", rxUp: "Recreate from photo", rxCam: "Take a photo", rxTap: "Tap each piece in the photo (jacket, top, bottoms, shoes). You can fix the type below.", rxScore: "Match", rxNone: "Nothing similar yet", rxLow: "Find similar", rxLook: "Look", rxWear: "Wear this today", rxMine: "Outfit from your photo", camTile: "Take a photo", camHint: "Snap and add it now", err: "Something went wrong. Please try again.", cap4: "Matched to today's weather. <br><span>Outfit done.</span>", start: "Get started", hint: "Scroll",
   nav1: "Today", nav2: "Week", nav3: "Style type",
+  nav6: "Before you buy", byTitle: "Before-you-buy check", bySub: "Snap something you're eyeing in a store. AI checks whether it works with your closet and whether you already own something similar.", byCam: "Take a photo", byUp: "From photos", byOr: "No photo? Pick a type and color instead.", byGoBtn: "Check",
+  byReading: "Reading", byChecked: "Result", byFixHint: "Wrong type or color? Fix it above and tap Check.", byScore: "Buy score", byGo: "Go for it", byThink: "Think it over", byWait: "Hold off", byDup: "You have one",
+  byMore: "New outfits", byPartners: "Pairs with", bySimilar: "Similar owned", byPcs: "", bySimHave: "Similar pieces you own", byLooks: "Outfits with it", byGoesWith: "Easy matches in your closet", byThis: "This item",
+  byWish: "Add to wishlist", byBought: "Bought it! Add to closet", byWishT: "Wishlist", byWished: "Added to your wishlist", byAdded: "Added to your closet", byNot: "That doesn't look like clothing. Pick a type.", byFix: "Couldn't read it. Pick a type.",
+  worn: "Wore this today", wornOn: "Logged as today's outfit", wornDone: "Logged today's outfit", repeatT: "Repeat alert",
+  logT: "Wear log", logEmpty: "Tap \"Wore this today\" on days you wear a look. You'll see your most-worn pieces and the ones gathering dust.", logDays: "Days logged", logUse: "Closet in use", logTop: "Most worn", logSleep: "Sleeping pieces", logSleepP: "Not worn for 3+ weeks. Tap one and the AI stylist builds a look around it.",
+  pkTitle: "Trip packing list", pkSub: "Uses your destination's forecast to plan each day with as few clothes as possible, then turns it into a checklist.", pkCity: "Destination", pkDate: "Leaving", pkDays: "Days", pkOcc: "Trip type", pkGo: "Make my list", pkNeed: "Enter a destination", pkFar: "Forecasts only go 16 days ahead. Try again closer to the trip.", pkPast: "That date has passed", pkSub2: "Bottoms and shoes repeat so your bag stays light.", pkReady: "packed", pkClothes: "Clothes", pkOther: "Everything else",
   rTotal: "Match", rPts: "/100", rColor: "Color", rScene: "Occasion", rTemp: "Weather",
   chFollow: ["Brighter", "Make it smarter", "More casual", "Without the jacket", "Warmer", "Another idea"],
   nav5: "Ask", chTitle: "Ask your AI stylist", chSub: "Ask things like \"what should I wear on my date tomorrow?\" and it picks from your own clothes.", chPh: "Type a message", chSend: "Send", chStop: "Stop", chClear: "Clear chat",
   chName: "AI stylist", chLLMName: "AI stylist (chat-anything AI)", chOpen: "View larger", chDx: "See my type",
   chHello: "Hi! I'm your closet's own AI stylist. Tell me where you're going, the weather or your mood, and I'll build a look from what you own.",
-  chSugg: ["What should I wear on my date tomorrow?", "Outfit for a concert?", "Rainy commute outfit", "What goes with my white sneakers?", "What color goes with navy?", "How do I look taller?", "How do I look neater?", "My most useful piece?", "What's my style type?", "What do I have?"],
+  chSugg: ["What should I wear on my date tomorrow?", "Outfit for a concert?", "Rainy commute outfit", "What goes with my white sneakers?", "What color goes with navy?", "How do I look taller?", "How do I look neater?", "My most useful piece?", "Should I buy this?", "Help me pack for a trip", "What's my style type?", "What do I have?"],
   chLLMTitle: "Chat-anything AI", chLLMNote: "Load a small AI onto this device so you can talk about anything, not just clothes (about 300 MB, first time only; Wi-Fi recommended).", chLoad: "Load", chOff: "Turn off", chLoading: "Loading the AI…", chReady: "On: you can talk about anything. Replies are made on this device and never sent anywhere. It's a small AI, so it sometimes gets things wrong.", chFail: "This device couldn't load it. Clothing questions still work.",
   occ: "Where are you going?", temp: "Temperature", mood: "Mood or request (optional)", moodph: "e.g. bright colors, lots of walking", gen: "Generate look", again: "Another idea",
   here: "Weather here", cityph: "City (e.g. Osaka, Paris)", find: "Get weather", wxFail: "Couldn't load the weather. Set the temperature by hand.", geoFail: "Couldn't use your location. Search a city instead.", noCity: "City not found.",
@@ -109,7 +123,7 @@ function art(i) {
 window.__fb = el => { const it = byId(el.dataset.id) || (window.__tmpItems || []).find(x => x.id === el.dataset.id); const ph = el.parentElement; if (it && ph) { ph.classList.remove("photo"); el.outerHTML = svgArt(it); } };
 const phc = i => i.img ? " photo" : "";
 function svgArt(i) {
-  const c = col(i.color), g = "g" + String(i.id).replace(/\W/g, ""), cat = i.cat, d = SH[cat] || SH.top, ln = "rgba(0,0,0,.25)", lo = shade(c, -0.4), k = i.kind;
+  const c = col(i.color), g = "g" + String(i.id).replace(/\W/g, ""), cat = i.cat, d = i.kind === "skirt" ? "M33 14H67L80 86Q50 93 20 86Z" : i.kind === "shorts" ? "M27 14H73L77 60H54L50 36L46 60H23Z" : SH[cat] || SH.top, ln = "rgba(0,0,0,.25)", lo = shade(c, -0.4), k = i.kind;
   let ex = "";
   if (cat === "top") {
     if (i.id === "s2") ex = `<clipPath id="${g}c"><path d="${d}"/></clipPath><g clip-path="url(#${g}c)" stroke="#f2f2f2" stroke-width="3.4">${[30, 40, 50, 60, 70, 80].map(y => `<path d="M10 ${y}H90"/>`).join("")}</g>`;
@@ -119,7 +133,7 @@ function svgArt(i) {
     ex = `<path d="M42 10L46 42L50 32L54 42L58 10" fill="${lo}" opacity=".5"/><path d="M50 32V91" stroke="${ln}" stroke-width="1.4"/><circle cx="53" cy="52" r="1.6" fill="${ln}"/><circle cx="53" cy="64" r="1.6" fill="${ln}"/>`;
     if (k === "coat") ex += `<rect x="26" y="56" width="48" height="5" fill="${lo}"/><rect x="47" y="55" width="7" height="7" fill="none" stroke="#2a1d10" stroke-width="1.2"/>`;
   } else if (cat === "bottom") {
-    ex = `<path d="M30 15H70" stroke="${lo}" stroke-width="3"/><path d="M39 44L35 88M61 44L65 88" stroke="${ln}" stroke-width="1"/>`;
+    ex = k === "skirt" ? `<path d="M33 16H67" stroke="${lo}" stroke-width="3"/><path d="M42 20L36 86M58 20L64 86M50 20V88" stroke="${ln}" stroke-width="1"/>` : k === "shorts" ? `<path d="M27 16H73" stroke="${lo}" stroke-width="3"/>` : `<path d="M30 15H70" stroke="${lo}" stroke-width="3"/><path d="M39 44L35 88M61 44L65 88" stroke="${ln}" stroke-width="1"/>`;
     if (k === "jeans") ex += `<path d="M33 18Q38 30 46 22M67 18Q62 30 54 22" fill="none" stroke="#d9984a" stroke-width="1.2" stroke-dasharray="2 1.6"/>`;
   } else if (cat === "onepiece") {
     ex = `<path d="M44 9L50 18L56 9" fill="none" stroke="${ln}" stroke-width="1.6"/><path d="M36 33H64" stroke="${lo}" stroke-width="3.5"/><path d="M50 18V33" stroke="${ln}"/>`;
@@ -181,10 +195,10 @@ function makeCtx(o) {
   return { m, tp: o.tp, rain: !!o.rain, occ: o.occ, target: OCC_F[o.occ] + (m.smart ? 0.8 : 0) - (m.casual ? 0.8 : 0), need: needWarm(o.tp) + (m.warm ? 1.5 : 0), jitter: o.again ? 1.8 : 0.25, recent: o.recent || null };
 }
 function buildLook(o) {
-  const items = st.items.filter(i => !i.busy), ctx = makeCtx(o);
+  const items = st.items.filter(i => !i.busy).concat(o.extra || []), ctx = makeCtx(o);
   const prev = o.again && o.prevIds ? o.prevIds.slice().sort().join() : "";
   const res = [];
-  for (const c of combos(items)) { if (prev && c.map(i => i.id).sort().join() === prev) continue; if (o.must && !c.some(i => i.id === o.must)) continue; if (o.exclude && o.exclude.length && c.some(i => o.exclude.includes(i.id))) continue; res.push([scoreCombo(c, ctx), c]); }
+  for (const c of combos(items)) { if (prev && c.map(i => i.id).sort().join() === prev) continue; if (o.must && !c.some(i => i.id === o.must)) continue; if (o.exclude && o.exclude.length && c.some(i => o.exclude.includes(i.id))) continue; let sc = scoreCombo(c, ctx); if (o.bias) for (const i of c) sc += o.bias[i.id] || 0; res.push([sc, c]); }
   res.sort((a, b) => b[0] - a[0]);
   const pick = o.again ? res[Math.floor(Math.random() * Math.min(3, res.length))] : res[0];
   return pick ? { c: pick[1], ctx } : null;
@@ -282,8 +296,10 @@ function renderLook(anim) {
   $("look").innerHTML = `<div class="meta"><span class="pill ${L.sample ? "" : "ai"}">${L.sample ? t("sampleTag") : t("aiTag")}</span>${L.date ? `<span class="pill">${esc(fmtDay(L.date))}</span>` : ""}<span class="pill">${esc(t("occs")[L.occ ?? st.occ])}</span><span class="pill">${esc(L.tp)}°C</span>${wx}<span class="pill">${its.length} ${t("items")}</span></div>
   <h2 class="ltitle">${esc(show.title)}</h2><p class="why">${esc(show.why)}</p>
   <div class="rig" id="rig">${its.map((i, n) => `<div class="card" style="--r:${rot[n % 6]}deg;--z:${z[n % 6]}px;--i:${n}"><div class="ph${phc(i)}">${art(i)}</div><p>${esc(nm(i))}</p><small>${t(i.cat)}</small></div>`).join("")}</div>
-  <div class="notes">${show.tip ? `<div class="note"><b>${t("tip")}</b>${esc(show.tip)}</div>` : ""}${show.buy ? `<div class="note"><b>${t("buy")}</b>${esc(show.buy)}${shops}</div>` : ""}</div>`;
+  <div class="notes">${!L.sample && repeatNote(L.ids) ? `<div class="note warn"><b>${t("repeatT")}</b>${esc(repeatNote(L.ids))}</div>` : ""}${show.tip ? `<div class="note"><b>${t("tip")}</b>${esc(show.tip)}</div>` : ""}${show.buy ? `<div class="note"><b>${t("buy")}</b>${esc(show.buy)}${shops}</div>` : ""}</div>`;
   $("share").hidden = false;
+  const wd = (st.log || []).find(x => x.d === dayStr());
+  $("worn").hidden = !!L.sample; $("worn").classList.toggle("on", !!(wd && setKey(wd.ids) === setKey(L.ids))); $("worn").textContent = $("worn").classList.contains("on") ? t("wornOn") : t("worn");
 }
 const fmtDay = iso => { const d = new Date(iso + "T12:00:00"); return ja() ? `${d.getMonth() + 1}/${d.getDate()}（${t("dows")[d.getDay()]}）` : `${t("dows")[d.getDay()]} ${d.getMonth() + 1}/${d.getDate()}`; };
 function gen(again) {
@@ -292,7 +308,7 @@ function gen(again) {
   $("gen").disabled = $("again").disabled = true; status(t("thinking")); $("stage").classList.add("busy");
   setTimeout(() => {
     const tp = +$("temp").value, wx = wxToday && Math.abs(dayTemp(wxToday.max, wxToday.min) - tp) <= 1 ? wxToday : null;
-    const r = buildLook({ occ: st.occ, tp, rain: isRain(wx), mood: $("mood").value, again, prevIds: st.look?.ids });
+    const r = buildLook({ occ: st.occ, tp, rain: isRain(wx), mood: $("mood").value, again, prevIds: st.look?.ids, recent: recentFromLog() });
     $("stage").classList.remove("busy"); $("gen").disabled = $("again").disabled = false;
     if (!r) { status(t("need")); return; }
     st.look = { ids: r.c.map(i => i.id), occ: st.occ, tp, wx: wx ? { code: wx.code } : null, rain: !!r.ctx.rain, ...explain(r.c, r.ctx) };
@@ -348,9 +364,7 @@ function diagnose() {
   const fav = allI.reduce((x, i) => x + kindOf(i).f, 0) / allI.length;
   const sc = { minimal: sh("m") * 1.1, trad: sh("n") + sh("e") * 0.4 + (fav >= 2.2 ? 0.15 : 0), natural: sh("e") * 1.05, color: sh("c") * 1.6, relax: fav < 1.6 ? 0.5 + (1.6 - fav) : 0, classic: fav > 2.6 ? 0.45 + (fav - 2.6) : 0 };
   const type = Object.keys(sc).sort((a, b) => sc[b] - sc[a])[0];
-  const good = list => { const cs = combos(list.filter(i => !i.busy)); let ok = 0; const use = {};
-    for (const c of cs) { const A = c.map(info), accs = A.filter(a => !a.c.n); if (accs.length > 1) { let bad = false; for (let x = 0; x < accs.length; x++) for (let y = x + 1; y < accs.length; y++) { const d = Math.abs(accs[x].h.h - accs[y].h.h); if (Math.min(d, 360 - d) > 40) bad = true; } if (bad) continue; } const fs = A.map(a => a.k.f); if (Math.max(...fs) - Math.min(...fs) > 3) continue; ok++; c.forEach(i => { if (i.cat !== "acc") use[i.id] = (use[i.id] || 0) + 1; }); }
-    return { ok, use }; };
+  const good = goodOf;
   const base = good(allI);
   const star = Object.keys(base.use).sort((a, b) => base.use[b] - base.use[a])[0];
   const CAND = [["tshirt", "#f2f2f0", "白のTシャツ", "White T-shirt", "白 Tシャツ"], ["trousers", "#18181a", "黒のスラックス", "Black trousers", "黒 スラックス"], ["cardigan", "#1f2a4a", "ネイビーのカーディガン", "Navy cardigan", "ネイビー カーディガン"], ["sneakers", "#f2f2f0", "白のスニーカー", "White sneakers", "白 スニーカー"], ["jeans", "#34477c", "デニム", "Jeans", "デニム"], ["sweater", "#8c8c8e", "グレーのニット", "Grey sweater", "グレー ニット"], ["skirt", "#d2bc94", "ベージュのスカート", "Beige skirt", "ベージュ スカート"]];
@@ -432,6 +446,21 @@ async function makeCard(kind) {
     x.fillStyle = "#9aa1bb"; x.font = B(36); x.fillText(t("rxScore"), 80, py + PHh + 90);
     x.fillStyle = holo; x.font = F(700, 190); x.fillText(r.score + "%", 72, py + PHh + 290);
     x.fillStyle = "#fff"; x.font = F(700, 50); wrap(x, rx.title, 80, py + PHh + 390, W - 160, 62);
+  } else if (kind === "buy") {
+    if (!buyC || !buyR) throw new Error("none"); const r = buyR, v = VERD[r.verdict];
+    x.fillStyle = "#9aa1bb"; x.font = B(40); x.fillText(ja() ? "買う前に、AIに聞いてみた" : "Asked AI before buying", 80, 270);
+    const S = 420; x.save(); rr(x, 80, 320, S, S, 32); x.clip(); x.fillStyle = "#eceae6"; x.fillRect(80, 320, S, S);
+    try { const im = await loadImg(buyC.img || svgSrc(buyC)); if (buyC.img) { const sc = Math.max(S / im.width, S / im.height); x.drawImage(im, 80 + (S - im.width * sc) / 2, 320 + (S - im.height * sc) / 2, im.width * sc, im.height * sc); } else x.drawImage(im, 80 + S * 0.1, 320 + S * 0.1, S * 0.8, S * 0.8); } catch (e) {}
+    x.restore();
+    x.fillStyle = "#9aa1bb"; x.font = B(36); x.fillText(t("byScore"), 560, 380);
+    x.fillStyle = holo; x.font = F(700, 200); x.fillText(String(r.score), 552, 580);
+    x.fillStyle = v[0]; rr(x, 560, 630, 400, 92, 46); x.fill(); x.fillStyle = "#06070b"; x.font = F(700, 46); x.textAlign = "center"; x.fillText(t(v[1]), 760, 692); x.textAlign = "left";
+    x.fillStyle = "#fff"; x.font = F(700, 64); let y = wrap(x, r.name, 80, 850, W - 160, 76);
+    const stat = (lab, val, X) => { x.fillStyle = "#9aa1bb"; x.font = B(32); x.fillText(lab, X, y + 70); x.fillStyle = "#fff"; x.font = F(700, 84); x.fillText(val, X, y + 170); };
+    stat(t("byMore"), "+" + r.more, 80); stat(t("byPartners"), String(r.partners.length), 420); stat(t("bySimilar"), String(r.similar.length), 760);
+    y += 240; x.fillStyle = "#d5d9ee"; x.font = B(36); y = wrap(x, r.why, 80, y + 20, W - 160, 54);
+    const L = r.looks[0]; if (L) { const its = L.c.slice().sort((p, q) => ORDER[p.cat] - ORDER[q.cat]).slice(0, 5), s2 = 168; let xx = 80; y += 50;
+      for (const i of its) { x.save(); rr(x, xx, y, s2, s2, 22); x.clip(); x.fillStyle = i === buyC ? "#2a2440" : "#eceae6"; x.fillRect(xx, y, s2, s2); try { const im = i === buyC ? await loadImg(buyC.img || svgSrc(buyC)) : await loadItem(i); if (/^data:image\/svg/.test(im.src)) x.drawImage(im, xx + s2 * 0.1, y + s2 * 0.1, s2 * 0.8, s2 * 0.8); else { const sc = Math.max(s2 / im.width, s2 / im.height); x.drawImage(im, xx + (s2 - im.width * sc) / 2, y + (s2 - im.height * sc) / 2, im.width * sc, im.height * sc); } } catch (e) {} x.restore(); if (i === buyC) { x.strokeStyle = holo; x.lineWidth = 6; rr(x, xx, y, s2, s2, 22); x.stroke(); } xx += s2 + 14; } }
   } else {
     const r = diagnose(); if (!r) throw new Error("none"); const ty = TYPES[r.type];
     x.fillStyle = "#9aa1bb"; x.font = B(40); x.fillText(ja() ? "わたしのクローゼット診断" : "My closet type", 80, 300);
@@ -454,6 +483,7 @@ async function share(what, how) {
   let text;
   if (what === "look") { const L = st.look, show = L && !L.sample ? L : sampleTx[st.lang]; text = J ? `今日のコーデは「${show?.title}」。手持ちの服からAIが組んでくれた #CLOSETAI` : `Today's look: "${show?.title}", built by AI from my own closet #CLOSETAI`; }
   else if (what === "remix") { const r = rx?.result; text = J ? `憧れコーデ「${rx?.title}」を手持ちの服で再現したら、再現度${r?.score}%でした #CLOSETAI` : `Rebuilt "${rx?.title}" from my own closet: ${r?.score}% match #CLOSETAI`; }
+  else if (what === "buy") { text = J ? `買う前にAIに聞いてみたら「${buyR ? t(VERD[buyR.verdict][1]) : ""}」（買い度${buyR?.score}）。手持ちの服とのコーデが${buyR?.more}通り増えるらしい #CLOSETAI` : `Asked AI before buying: "${buyR ? t(VERD[buyR.verdict][1]) : ""}" (buy score ${buyR?.score}), +${buyR?.more} outfits with my closet #CLOSETAI`; }
   else { const r = diagnose(), ty = r && TYPES[r.type]; text = J ? `わたしのクローゼットは「${ty?.[0]}」タイプ。手持ちの服で${r?.combos}通りのコーデが組めるらしい #CLOSETAI` : `My closet type is "${ty?.[1]}" — ${r?.combos} outfits from what I already own #CLOSETAI`; }
   if (how === "x") return void window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, "_blank", "noopener");
   if (how === "th") return void window.open(`https://www.threads.net/intent/post?text=${encodeURIComponent(text + " " + url)}`, "_blank", "noopener");
@@ -586,6 +616,169 @@ function renderCredits() {
   $("credits").innerHTML = `${t("photos")}: ` + [...keys].map(k => `<a href="https://unsplash.com/@${PH.C[k][1]}?utm_source=closet_ai&utm_medium=referral" target="_blank" rel="noopener">${esc(PH.C[k][0])}</a>`).join(", ") + ` / <a href="https://unsplash.com/?utm_source=closet_ai&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a>`;
 }
 
+/* ---------- 買う前チェック ---------- */
+let buyC = null, buyR = null;
+function goodOf(list) {
+  const cs = combos(list.filter(i => !i.busy)); let ok = 0; const use = {}, keep = [];
+  for (const c of cs) {
+    const A = c.map(info), accs = A.filter(a => !a.c.n);
+    if (accs.length > 1) { let bad = false; for (let x = 0; x < accs.length; x++) for (let y = x + 1; y < accs.length; y++) { const d = Math.abs(accs[x].h.h - accs[y].h.h); if (Math.min(d, 360 - d) > 40) bad = true; } if (bad) continue; }
+    const fs = A.map(a => a.k.f); if (Math.max(...fs) - Math.min(...fs) > 3) continue;
+    ok++; keep.push(c); c.forEach(i => { if (i.cat !== "acc") use[i.id] = (use[i.id] || 0) + 1; });
+  }
+  return { ok, use, list: keep };
+}
+function buyEval(c) {
+  const J = ja(), all = st.items.filter(i => !i.busy && i.id !== c.id), base = goodOf(all), withC = goodOf([...all, c]);
+  const more = Math.max(0, withC.ok - base.ok), pc = {};
+  withC.list.forEach(cmb => { if (cmb.includes(c)) cmb.forEach(i => { if (i !== c && i.cat !== "acc") pc[i.id] = (pc[i.id] || 0) + 1; }); });
+  const partners = Object.keys(pc).sort((a, b) => pc[b] - pc[a]).map(byId).filter(Boolean);
+  const similar = all.filter(i => i.kind === c.kind && dE(col(i.color), col(c.color)) < 22);
+  const n = Math.max(1, all.filter(i => i.cat !== "acc").length), expected = base.ok > 0 ? base.ok * 4 / n : 1;
+  let score = 35 + 40 * Math.min(more / expected, 1.5) / 1.5 + Math.min(20, partners.length * 2);
+  if (similar.length) score = Math.min(score - 25, 48);
+  if (!more) score = Math.min(score, 28);
+  score = clamp(Math.round(score), 5, 99);
+  const verdict = similar.length ? "dup" : score >= 75 ? "go" : score >= 50 ? "think" : "wait";
+  const tp = +$("temp").value, looks = [];
+  const L1 = buildLook({ occ: 0, tp, mood: "", must: c.id, extra: [c] });
+  if (L1) looks.push({ occ: 0, c: L1.c, rate: rateLook(L1.c, L1.ctx) });
+  const L2 = buildLook({ occ: kindOf(c).f >= 3 ? 4 : 1, tp, mood: "", must: c.id, extra: [c] });
+  if (L2 && (!L1 || L2.c.map(i => i.id).sort().join() !== L1.c.map(i => i.id).sort().join())) looks.push({ occ: kindOf(c).f >= 3 ? 4 : 1, c: L2.c, rate: rateLook(L2.c, L2.ctx) });
+  const has = cat => all.some(i => i.cat === cat);
+  const need = c.cat === "top" && !has("bottom") ? t("bottom") : c.cat === "bottom" && !has("top") ? t("top") : (c.cat === "shoes" || c.cat === "outer" || c.cat === "acc") && !(has("top") || has("onepiece")) ? t("top") : "";
+  const fav = all.reduce((x, i) => x + kindOf(i).f, 0) / n, gap = kindOf(c).f - fav;
+  const cname = nm(c);
+  let why;
+  if (verdict === "dup") why = J ? `よく似た「${nm(similar[0])}」をもう持っています。買うなら、色か形がちがうものを選ぶと、着回しがもっと広がります。` : `You already own a very similar ${nm(similar[0]).toLowerCase()}. A different color or shape would widen your options more.`;
+  else if (verdict === "go") why = J ? `手持ちの${partners.length}点と合わせられて、コーデが${more}通り増えます。着回し力の高い服です。` : `It pairs with ${partners.length} pieces you own and adds ${more} outfits. A hard-working buy.`;
+  else if (need) why = J ? `合わせる${need}がまだクローゼットにないので、今は活躍しにくい服です。` : `You don't have ${need.toLowerCase()} to pair it with yet, so it won't get much use right now.`;
+  else if (verdict === "think") why = J ? `合わせられる服は${partners.length}点。悪くはありませんが、${Math.abs(gap) > 1.2 ? (gap > 0 ? "手持ちの服より、きちんとしすぎる" : "手持ちの服より、カジュアルすぎる") : "似た役割の服が手持ちにある"}ので、よく考えてからがおすすめです。` : `It pairs with ${partners.length} pieces. Not bad, but ${Math.abs(gap) > 1.2 ? (gap > 0 ? "it's dressier than the rest of your closet" : "it's more casual than the rest of your closet") : "something in your closet already does a similar job"}, so think it over.`;
+  else why = J ? `今のクローゼットとは合わせにくい服です。${Math.abs(gap) > 1.2 ? (gap > 0 ? "手持ちの服とくらべて、きちんとしすぎています。" : "手持ちの服とくらべて、カジュアルすぎます。") : !near(col(c.color)).n ? "色が強いので、合わせられる服が少なめです。" : ""}` : `It's hard to pair with your current closet. ${Math.abs(gap) > 1.2 ? (gap > 0 ? "It's much dressier than your other clothes." : "It's much more casual than your other clothes.") : !near(col(c.color)).n ? "The strong color limits what it goes with." : ""}`;
+  return { score, verdict, more, partners, similar, looks, why, name: cname };
+}
+function buyRun(anim) { if (!buyC || buyC.busy) return renderBuy(); buyC.name = autoName(buyC.kind, buyC.color); buyR = buyEval(buyC); renderBuy(anim); }
+async function buyUpload(file) {
+  let sm; try { sm = await shrink(file); } catch (e) { status(t("aiFail")); return; }
+  buyC = { id: "cand", kind: "tshirt", cat: "top", color: sm.color, img: sm.data, busy: true }; buyR = null; renderBuy();
+  try {
+    const c = await loadAI(), keys = Object.keys(KINDS), labels = [...keys.map(k => KINDS[k][5]), ...NOT];
+    const out = await c(sm.data, labels, { hypothesis_template: "a product photo of {}" });
+    const k = keys.find(k => KINDS[k][5] === out[0].label);
+    if (k) Object.assign(buyC, { kind: k, cat: KINDS[k][0] }); else status(t("byNot"));
+  } catch (e) { status(t("byFix")); }
+  buyC.busy = false; buyRun(true);
+}
+function buyManual() { buyC = { id: "cand", kind: $("bykind").value, cat: KINDS[$("bykind").value][0], color: $("bycol").value, img: null }; buyRun(true); }
+const VERD = { go: ["#7dffb0", "byGo"], think: ["#ffd36b", "byThink"], wait: ["#ff8a8a", "byWait"], dup: ["#ff8a8a", "byDup"] };
+const candPh = c => `<div class="ph${c.img ? " photo" : ""}">${c.img ? `<img src="${esc(c.img)}" alt="">` : svgArt(c)}</div>`;
+function miniCards(list, cand) { return list.map(i => i === cand ? `<div class="it cand">${candPh(i)}<span>${t("byThis")}</span></div>` : `<div class="it"><div class="ph${phc(i)}">${art(i)}</div><span>${esc(nm(i))}</span></div>`).join(""); }
+function renderBuy(anim) {
+  const box = $("byout"), J = ja();
+  $("bykind").innerHTML = Object.keys(KINDS).map(k => `<option value="${k}"${buyC && buyC.kind === k ? " selected" : ""}>${J ? KINDS[k][1] : KINDS[k][2]}</option>`).join("");
+  if (buyC) $("bycol").value = col(buyC.color);
+  if (!buyC) { box.hidden = true; renderWish(); return; }
+  box.hidden = false; box.classList.toggle("pop", !!anim);
+  if (buyC.busy) { box.innerHTML = `<div class="byhead"><div class="byph photo"><img src="${esc(buyC.img)}" alt=""><i class="scanl"></i></div><div><span class="pill ai">${t("byReading")}</span><h3>${t("tagging")}</h3></div></div>`; return; }
+  const r = buyR, v = VERD[r.verdict];
+  box.innerHTML = `<div class="byhead"><div class="byph${buyC.img ? " photo" : ""}">${buyC.img ? `<img src="${esc(buyC.img)}" alt="">` : svgArt(buyC)}</div>
+    <div class="bymeta"><span class="pill ai">${t("byChecked")}</span><h3>${esc(r.name)}</h3><p class="byfix">${t("byFixHint")}</p></div>
+    <div class="byscore" style="--vc:${v[0]}"><small>${t("byScore")}</small><b>${r.score}</b><em>${t(v[1])}</em></div></div>
+  <div class="bystats"><div><small>${t("byMore")}</small><b>+${r.more}<em>${t("dxWays")}</em></b></div><div><small>${t("byPartners")}</small><b>${r.partners.length}<em>${t("byPcs")}</em></b></div><div class="${r.similar.length ? "warn" : ""}"><small>${t("bySimilar")}</small><b>${r.similar.length}<em>${t("byPcs")}</em></b></div></div>
+  <p class="why">${esc(r.why)}</p>
+  ${r.similar.length ? `<div class="bysec"><b class="lbl">${t("bySimHave")}</b><div class="chlook">${miniCards(r.similar.slice(0, 4))}</div></div>` : ""}
+  ${r.looks.length ? `<div class="bysec"><b class="lbl">${t("byLooks")}</b>${r.looks.map(L => `<div class="bylook"><div class="bylh"><span class="pill">${esc(t("occs")[L.occ])}</span><span class="pill">${t("rTotal")} ${L.rate.total}${t("rPts")}</span></div><div class="chlook">${miniCards(L.c.slice().sort((a, b) => ORDER[a.cat] - ORDER[b.cat]), buyC)}</div></div>`).join("")}</div>` : ""}
+  ${r.partners.length ? `<div class="bysec"><b class="lbl">${t("byGoesWith")}</b><div class="chlook">${miniCards(r.partners.slice(0, 8))}</div></div>` : ""}
+  <div class="row sharerow"><button class="btn go" type="button" data-share="buy" data-k="img">${t("saveImg")}</button><button class="btn" type="button" data-share="buy" data-k="x">${t("shareX")}</button><button class="btn" type="button" id="bywish">${t("byWish")}</button><button class="btn" type="button" id="bybought">${t("byBought")}</button></div>`;
+  renderWish();
+}
+function renderWish() {
+  const w = st.wish || [], box = $("wish");
+  box.hidden = !w.length;
+  box.innerHTML = w.length ? `<h3>${t("byWishT")}<small>${w.length}</small></h3><div class="wishl">${w.map((x, n) => `<div class="wi"><button type="button" class="wopen" data-wopen="${n}"><span class="ph${x.img ? " photo" : ""}">${x.img ? `<img src="${esc(x.img)}" alt="">` : svgArt(x)}</span><span class="wn">${esc(autoName(x.kind, x.color))}</span><span class="ws" style="--vc:${VERD[x.verdict][0]}">${x.score}${t("rPts")}・${t(VERD[x.verdict][1])}</span></button><button type="button" class="x" data-wdel="${n}" aria-label="${t("del")}">×</button></div>`).join("")}</div>` : "";
+}
+
+/* ---------- 着た記録 ---------- */
+const pad2 = n => String(n).padStart(2, "0");
+const dayStr = (d = new Date()) => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
+const daysAgo = iso => Math.round((new Date(dayStr() + "T12:00:00") - new Date(iso + "T12:00:00")) / 864e5);
+const setKey = ids => ids.map(byId).filter(i => i && i.cat !== "acc").map(i => i.id).sort().join();
+function markWorn(ids) {
+  const d = dayStr(); st.log = (st.log || []).filter(x => x.d !== d).concat({ d, ids: ids.filter(byId) }).slice(-180);
+  save(); status(t("wornDone")); renderLog(); renderLook(false);
+}
+function recentFromLog() {
+  const r = {}; (st.log || []).forEach(x => { const a = daysAgo(x.d); if (a >= 1 && a <= 3) x.ids.forEach(id => { r[id] = (r[id] || 0) + 2.4 / a; }); });
+  return r;
+}
+function repeatNote(ids) {
+  const k = setKey(ids); if (!k) return "";
+  const hit = (st.log || []).filter(x => setKey(x.ids) === k && daysAgo(x.d) >= 1 && daysAgo(x.d) <= 14).map(x => daysAgo(x.d)).sort((a, b) => a - b)[0];
+  return hit ? (ja() ? `この組み合わせは${hit}日前にも着ています。会う人が同じなら、1点だけ変えるのがおすすめです。` : `You wore this exact combo ${hit} day${hit > 1 ? "s" : ""} ago. Swap one piece if you're seeing the same people.`) : "";
+}
+function renderLog() {
+  const box = $("logout"), J = ja(), log = st.log || [], items = st.items.filter(i => !i.busy);
+  const cnt = {}, last = {};
+  log.forEach(x => x.ids.forEach(id => { cnt[id] = (cnt[id] || 0) + 1; if (!last[id] || x.d > last[id]) last[id] = x.d; }));
+  const strip = Array.from({ length: 14 }, (_, n) => { const d = new Date(); d.setDate(d.getDate() - 13 + n); const s = dayStr(d), e = log.find(x => x.d === s), it = e && e.ids.map(byId).filter(Boolean).sort((a, b) => ORDER[a.cat] - ORDER[b.cat])[0]; return `<div class="lday${e ? " on" : ""}${n === 13 ? " today" : ""}"><small>${d.getDate()}</small><span class="ph${it ? phc(it) : ""}">${it ? art(it) : ""}</span></div>`; }).join("");
+  if (!log.length) { box.innerHTML = `<h2>${t("logT")}</h2><p class="why">${t("logEmpty")}</p><div class="lstrip">${strip}</div>`; return; }
+  const top = items.filter(i => cnt[i.id]).sort((a, b) => cnt[b.id] - cnt[a.id]).slice(0, 3);
+  const since = daysAgo(log.reduce((m, x) => x.d < m ? x.d : m, log[0].d)), sleep = items.filter(i => i.cat !== "acc" && (last[i.id] ? daysAgo(last[i.id]) >= 21 : since >= 21)).slice(0, 6);
+  const used = items.filter(i => cnt[i.id]).length, pct = Math.round(used / Math.max(1, items.length) * 100);
+  box.innerHTML = `<h2>${t("logT")}</h2>
+  <div class="lstats"><div><small>${t("logDays")}</small><b>${log.length}<em>${J ? "日" : " days"}</em></b></div><div><small>${t("logUse")}</small><b>${pct}<em>%</em></b><span class="usebar"><i style="width:${pct}%"></i></span><small>${used} / ${items.length}${t("byPcs")}</small></div></div>
+  <div class="lstrip">${strip}</div>
+  ${top.length ? `<div class="bysec"><b class="lbl">${t("logTop")}</b><div class="chlook">${top.map(i => `<div class="it"><div class="ph${phc(i)}">${art(i)}</div><span>${esc(nm(i))}<br><b>${cnt[i.id]}${J ? "回" : "×"}</b></span></div>`).join("")}</div></div>` : ""}
+  ${sleep.length ? `<div class="bysec"><b class="lbl">${t("logSleep")}</b><p class="why sm">${t("logSleepP")}</p><div class="chlook">${sleep.map(i => `<button type="button" class="it wake" data-wake="${esc(i.id)}"><div class="ph${phc(i)}">${art(i)}</div><span>${esc(nm(i))}<br><b>${last[i.id] ? (J ? `${daysAgo(last[i.id])}日前` : `${daysAgo(last[i.id])}d ago`) : (J ? "まだ0回" : "never")}</b></span></button>`).join("")}</div></div>` : ""}`;
+}
+
+/* ---------- 旅行の荷物リスト ---------- */
+async function forecastRange(loc, from, to) {
+  const u = `https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=auto&start_date=${from}&end_date=${to}`;
+  const r = await fetch(u); if (!r.ok) throw new Error("wx"); const d = (await r.json()).daily;
+  return d.time.map((date, i) => ({ date, code: d.weather_code[i], max: Math.round(d.temperature_2m_max[i]), min: Math.round(d.temperature_2m_min[i]), pop: d.precipitation_probability_max?.[i] ?? 0 }));
+}
+async function planPack() {
+  const J = ja(), city = $("pkcity").value.trim(), n = +$("pkdays").value, from = $("pkdate").value;
+  if (!from) return;
+  const a = daysAgo(from); if (a > 0) { $("pkst").textContent = t("pkPast"); return; }
+  if (-a + n - 1 > 15) { $("pkst").textContent = t("pkFar"); return; }
+  $("pkgo").disabled = true; $("pkst").textContent = t("thinking");
+  try {
+    const loc = city ? await geocode(city) : st.loc;
+    if (!loc) { $("pkst").textContent = city ? t("noCity") : t("pkNeed"); return; }
+    const end = new Date(from + "T12:00:00"); end.setDate(end.getDate() + n - 1);
+    const days = await forecastRange(loc, from, dayStr(end)), packed = {}, plan = [];
+    let prevTop = null;
+    for (const d of days) {
+      const bias = {}; for (const id in packed) { const it = byId(id); bias[id] = it && (it.cat === "top" || it.cat === "onepiece") ? 0.6 : 1.6; }
+      if (prevTop) bias[prevTop] = (bias[prevTop] || 0) - 2.5;
+      const r = buildLook({ occ: +$("pkocc").value, tp: dayTemp(d.max, d.min), rain: isRain(d), mood: "歩く", bias });
+      if (!r) break;
+      r.c.forEach(i => { packed[i.id] = (packed[i.id] || 0) + 1; });
+      prevTop = (r.c.find(i => i.cat === "top" || i.cat === "onepiece") || {}).id || null;
+      plan.push({ ...d, ids: r.c.map(i => i.id) });
+    }
+    if (!plan.length) { $("pkst").textContent = t("need"); return; }
+    const rain = days.some(d => d.pop >= 50 || isRain(d)), hot = days.some(d => d.max >= 25), cold = days.some(d => d.min <= 5);
+    const extras = [J ? `下着・くつ下 ${n}日分` : `Underwear & socks × ${n}`, J ? "パジャマ" : "Pajamas", J ? "スマホの充電器" : "Phone charger", ...(rain ? [J ? "折りたたみ傘" : "Folding umbrella"] : []), ...(hot ? [J ? "日焼け止め・帽子" : "Sunscreen & hat"] : []), ...(cold ? [J ? "手袋・マフラー" : "Gloves & scarf"] : []), J ? "たためるエコバッグ" : "Foldable tote"];
+    st.pack = { name: loc.name, from, n, occ: +$("pkocc").value, plan, items: Object.keys(packed), extras, done: {} };
+    save(); renderPack(true); $("pkst").textContent = "";
+  } catch (e) { $("pkst").textContent = t("wxFail"); }
+  finally { $("pkgo").disabled = false; }
+}
+function renderPack(anim) {
+  const box = $("pkout"), P = st.pack, J = ja();
+  if (!P) { box.innerHTML = ""; return; }
+  const its = P.items.map(byId).filter(Boolean).sort((a, b) => ORDER[a.cat] - ORDER[b.cat]);
+  const total = its.length + P.extras.length, done = Object.values(P.done).filter(Boolean).length;
+  box.classList.toggle("pop", !!anim);
+  box.innerHTML = `<div class="pkhead"><div><span class="pill ai">${esc(P.name)}</span><h3>${J ? `${P.plan.length}日間で、服は${its.length}点だけ` : `${P.plan.length} days, just ${its.length} pieces`}</h3><p class="why sm">${t("pkSub2")}</p></div><div class="pkprog"><b>${done}</b>/${total}<small>${t("pkReady")}</small></div></div>
+  <div class="pkdays">${P.plan.map(d => { const L = d.ids.map(byId).filter(Boolean).sort((a, b) => ORDER[a.cat] - ORDER[b.cat]); return `<div class="pkd"><span class="dh"><b>${esc(fmtDay(d.date))}</b>${wxIcon(wxType(d.code))}</span><span class="dt">${d.max}° / ${d.min}°${d.pop >= 30 ? ` ・ ${d.pop}%` : ""}</span><span class="dthumbs">${L.slice(0, 5).map(i => `<span class="ph${phc(i)}">${art(i)}</span>`).join("")}</span></div>`; }).join("")}</div>
+  <div class="pklists"><div><b class="lbl">${t("pkClothes")}</b>${its.map(i => `<label class="pki"><input type="checkbox" data-pk="${esc(i.id)}"${P.done[i.id] ? " checked" : ""}><span class="ph${phc(i)}">${art(i)}</span><span>${esc(nm(i))}</span></label>`).join("")}</div>
+  <div><b class="lbl">${t("pkOther")}</b>${P.extras.map((x, k) => `<label class="pki"><input type="checkbox" data-pk="x${k}"${P.done["x" + k] ? " checked" : ""}><span>${esc(x)}</span></label>`).join("")}</div></div>`;
+}
+
 /* ---------- 相談（AIスタイリストと話す） ---------- */
 const KW = { jeans: /デニム|ジーンズ|ジーパン|\bjeans\b|\bdenim\b/i, trousers: /スラックス|\btrousers\b|\bslacks\b/i, chinos: /チノ|\bchinos?\b/i, skirt: /スカート|\bskirts?\b/i, shorts: /ショートパンツ|短パン|半ズボン|\bshorts\b/i, shirt: /(?<![TＴ]|ティー)シャツ|(?<!t-?)\bshirts?\b/i, tshirt: /Tシャツ|ティーシャツ|\bt-?shirts?\b|\btees?\b/i, sweater: /ニット|セーター|\bsweaters?\b|\bknits?\b/i, hoodie: /パーカー|フーディ|\bhoodies?\b/i, blouse: /ブラウス|\bblouses?\b/i, jacket: /ジャケット|ジャケ|\bjackets?\b/i, blazer: /ブレザー|テーラード|\bblazers?\b/i, coat: /コート|\bcoats?\b/i, down: /ダウン|\bpuffer\b|\bdown jacket\b/i, cardigan: /カーディガン|カーデ|\bcardigans?\b/i, dress: /ワンピ|ドレス|\bdress(es)?\b(?! for| up)/i, sneakers: /スニーカー|\bsneakers?\b|\btrainers?\b/i, leather: /革靴|ローファー|\bleather shoes?\b|\bloafers?\b/i, boots: /ブーツ|\bboots?\b/i, sandals: /サンダル|\bsandals?\b/i, bag: /バッグ|かばん|カバン|鞄|\bbags?\b|\btotes?\b/i, cap: /キャップ|帽子|\bcaps?\b|\bhats?\b/i, scarf: /マフラー|ストール|\bscarf\b|\bscarves\b/i };
 const CATKW = { top: /トップス|上の服|\btops?\b/i, outer: /アウター|上着|羽織|\bouter(wear)?\b/i, bottom: /ボトムス|ズボン|パンツ(?!ー)|\bbottoms?\b|\bpants\b/i, shoes: /靴|くつ|\bshoes\b/i };
@@ -650,7 +843,7 @@ function lookReq(q) {
   if (!num && !d) { if (/寒|冷え|cold|freezing/i.test(q)) tp = Math.min(tp, 8); else if (/暑|hot/i.test(q)) tp = Math.max(tp, 28); else if (/涼し|cool/i.test(q)) tp = 18; }
   if (!num && /スキー|スノボ|雪山|ski|snowboard/i.test(q)) tp = Math.min(tp, 2);
   const an = anchorOf(q), tags = tagsOf(q + " " + (ev ? ev.mood : ""));
-  return { q, occ: ev ? ev.occ : st.occ, ev, tp, rain: /雨|rain/i.test(q) || isRain(d), day: di, d, tags, mood: tags.map(k => TAGW[k]).join(" "), must: an?.item?.id || null, missing: an?.missing || null, missQ: an?.q || "", exclude: [] };
+  return { q, occ: ev ? ev.occ : st.occ, ev, tp, rain: /雨|rain/i.test(q) || isRain(d), day: di, d, tags, mood: tags.map(k => TAGW[k]).join(" "), must: an?.item?.id || null, missing: an?.missing || null, missQ: an?.q || "", exclude: [], recent: di ? null : recentFromLog() };
 }
 // 言い直し（もっと明るく、ジャケットなしで など）
 const REFINE = /もっと|もう少し|もうちょっと|なしで|無しで|以外|じゃなくて|ではなく|抜きで|やめて|いらない|は嫌|はいや|\bmore |\bless |without|instead of/i;
@@ -740,6 +933,8 @@ function invAnswer() {
     : `You have ${its.length} pieces.\n${per.map(([c, k]) => `${t(c)} ${k}`).join(" · ")}\nMostly ${famN[top]}. That makes ${n} outfits.`;
 }
 function intentOf(q) {
+  if (/荷造り|荷物|パッキング|\d+泊|packing|pack for/i.test(q)) return "pack";
+  if (/買うべき|買おうか|買っていい|買ってもいい|迷って.*買|should i buy|worth buying/i.test(q)) return "bcheck";
   if (/好きな|嫌いな|きらいな|どう思う|知ってる|教えて.*(話|こと)|favou?rite|do you (like|know|think)/i.test(q) && !/着|服|コーデ|色|wear|outfit|colou?r/i.test(q)) return "other";
   if (lastQ && REFINE.test(q) && occOf(q) == null && !/天気|タイプ|weather/i.test(q)) return "refine";
   if (lastQ && /別の|べつの|ほか|他の|違う|ちがう|もう一|もういっこ|もう1|another|other|different|else/i.test(q) && !/タイプ|天気/.test(q)) return "again";
@@ -795,6 +990,8 @@ function ruleAnswer(q, intent) {
   if (intent === "tip") return { ...tipOf(q), acts: [] };
   if (intent === "color") return { ...colorAnswer(q), acts: [] };
   if (intent === "inv") { out.text = invAnswer(); return out; }
+  if (intent === "pack") { out.text = J ? "旅行の荷物は「1週間」のページで作れます。行き先と日数を入れると、現地の天気に合わせて、少ない服で毎日のコーデを組み、持ち物リストにします。" : "Make a packing list on the Week page. Enter where and how long, and I'll plan each day for the forecast with as few clothes as possible."; out.acts = ["pack"]; return out; }
+  if (intent === "bcheck") { out.text = J ? "迷っている服は「買う前チェック」で調べられます。写真を撮るだけで、手持ちの服と何通り組めるか、似た服をもう持っていないかが分かります。" : "Try the before-you-buy check. Snap the item and you'll see how many outfits it adds and whether you already own something similar."; out.acts = ["bcheck"]; return out; }
   if (intent === "buy" || intent === "star" || intent === "type") {
     const d = diagnose();
     if (!d) { out.text = t("need"); return out; }
@@ -866,7 +1063,7 @@ function bubble(m, n) {
   const add = m.add ? `<div class="it"><div class="ph">${svgArt(m.add)}</div></div>` : "";
   const q = m.buyQ ? encodeURIComponent(m.buyQ) : "";
   const shops = q ? `<div class="shops"><a href="https://www.amazon.${ja() ? "co.jp" : "com"}/s?k=${q}" target="_blank" rel="noopener">Amazon${t("findAt")}</a>${ja() ? `<a href="https://search.rakuten.co.jp/search/mall/${q}/" target="_blank" rel="noopener">楽天${t("findAt")}</a>` : ""}</div>` : "";
-  const act = { share: `<button class="btn go" type="button" data-ch="share" data-n="${n}">${t("saveImg")}</button>`, open: `<button class="btn" type="button" data-ch="open" data-n="${n}">${t("chOpen")}</button>`, again: `<button class="btn" type="button" data-ch="again">${t("again")}</button>`, dx: `<button class="btn" type="button" data-ch="dx">${t("chDx")}</button>`, here: `<button class="btn" type="button" data-ch="here">${t("here")}</button>` };
+  const act = { share: `<button class="btn go" type="button" data-ch="share" data-n="${n}">${t("saveImg")}</button>`, open: `<button class="btn" type="button" data-ch="open" data-n="${n}">${t("chOpen")}</button>`, again: `<button class="btn" type="button" data-ch="again">${t("again")}</button>`, dx: `<button class="btn" type="button" data-ch="dx">${t("chDx")}</button>`, here: `<button class="btn" type="button" data-ch="here">${t("here")}</button>`, pack: `<button class="btn go" type="button" data-ch="pack">${t("pkTitle")}</button>`, bcheck: `<button class="btn go" type="button" data-ch="bcheck">${t("byTitle")}</button>` };
   return `<div class="msg ai${m.llm ? " llm" : ""}"><div class="who"><i class="chdot"></i>${m.llm ? t("chLLMName") : t("chName")}</div><div class="tx">${esc(m.text) || '<span class="typing"><i></i><i></i><i></i></span>'}</div>${m.look && m.look.rate ? rateHtml(m.look.rate) : ""}${its.length || add ? `<div class="chlook">${its.map(i => `<div class="it"><div class="ph${phc(i)}">${art(i)}</div><span>${esc(nm(i))}</span></div>`).join("")}${add}</div>` : ""}${shops}${m.acts && m.acts.length ? `<div class="acts">${m.acts.map(a => act[a] || "").join("")}</div>` : ""}</div>`;
 }
 function renderChat(scroll) {
@@ -928,12 +1125,19 @@ function renderText() {
 function setTab(tab) {
   st.tab = tab;
   document.querySelectorAll("[role=tab]").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === tab));
-  ["today", "chat", "week", "remix", "dx"].forEach(k => { $("tab-" + k).hidden = k !== tab; });
+  ["today", "chat", "buy", "week", "remix", "dx"].forEach(k => { $("tab-" + k).hidden = k !== tab; });
+  if (tab === "dx") renderLog(); if (tab === "buy") renderBuy(); if (tab === "week") renderPack();
   if (tab === "chat") { renderChat(); if (st.llmOn && llmState === "off") llmLoad(); }
   if (tab === "dx") renderDx(true);
   if (tab === "remix") renderLooks();
 }
-function all(anim) { renderText(); renderLook(anim); renderWeek(false); renderCloset(); renderWx(); renderCredits(); if (st.tab === "dx") renderDx(false); if (st.tab === "remix") renderLooks(); renderChat(false); renderLLM(); document.dispatchEvent(new Event("ca:lang")); }
+function fillPk() {
+  const J = ja(), o = $("pkocc"), d = $("pkdays"), ov = o.value || "3", dv = d.value || "3";
+  o.innerHTML = [3, 1, 0].map(k => `<option value="${k}">${t("occs")[k]}</option>`).join(""); o.value = ov;
+  d.innerHTML = [2, 3, 4, 5, 6, 7].map(k => `<option value="${k}">${J ? `${k}日間（${k - 1}泊）` : `${k} days`}</option>`).join(""); d.value = dv;
+  if (!$("pkdate").value) { const x = new Date(); x.setDate(x.getDate() + 1); $("pkdate").value = dayStr(x); }
+}
+function all(anim) { renderText(); renderLook(anim); renderWeek(false); renderCloset(); renderWx(); renderCredits(); if (st.tab === "dx") renderDx(false); if (st.tab === "remix") renderLooks(); renderChat(false); renderLLM(); fillPk(); if (buyC && !buyC.busy) buyRun(false); else renderBuy(); renderLog(); renderPack(); document.dispatchEvent(new Event("ca:lang")); }
 function relang(l) {
   st.lang = l;
   const re = L => { if (!L || L.sample) return; Object.assign(L, explain(lookItems(L), { tp: L.tp, occ: L.occ, rain: L.rain })); };
@@ -972,6 +1176,19 @@ document.querySelectorAll(".cityform").forEach(f => { const go = () => locCity(f
 $("wkgo").addEventListener("click", planWeek);
 $("weekgrid").addEventListener("click", e => { const b = e.target.closest("[data-day]"); if (!b) return; const d = st.week[+b.dataset.day]; st.look = { ...d, wx: { code: d.code } }; save(); setTab("today"); renderLook(true); $("stage").scrollIntoView({ behavior: "smooth", block: "start" }); });
 $("dxgo").addEventListener("click", () => renderDx(true));
+$("bycam").addEventListener("change", e => { const f = e.target.files[0]; e.target.value = ""; if (f) buyUpload(f); });
+$("byfile").addEventListener("change", e => { const f = e.target.files[0]; e.target.value = ""; if (f) buyUpload(f); });
+$("bygo").addEventListener("click", () => { if (buyC && !buyC.busy) { buyC.kind = $("bykind").value; buyC.cat = KINDS[buyC.kind][0]; buyC.color = $("bycol").value; buyRun(true); } else buyManual(); });
+$("tab-buy").addEventListener("click", e => {
+  if (e.target.closest("#bywish") && buyC && buyR) { st.wish = [{ kind: buyC.kind, color: buyC.color, img: buyC.img, score: buyR.score, verdict: buyR.verdict }, ...(st.wish || [])].slice(0, 12); save(); renderWish(); status(t("byWished")); }
+  if (e.target.closest("#bybought") && buyC && buyR) { st.items.unshift({ id: "u" + Date.now().toString(36), kind: buyC.kind, cat: KINDS[buyC.kind][0], color: buyC.color, img: buyC.img || undefined, name: autoName(buyC.kind, buyC.color) }); st.wish = (st.wish || []).filter(w => !(w.img === buyC.img && w.kind === buyC.kind && w.color === buyC.color)); buyC = buyR = null; save(); renderCloset(); renderBuy(); status(t("byAdded")); }
+  const wo = e.target.closest("[data-wopen]"); if (wo) { const w = st.wish[+wo.dataset.wopen]; buyC = { id: "cand", kind: w.kind, cat: KINDS[w.kind][0], color: w.color, img: w.img }; buyRun(true); $("tab-buy").scrollIntoView({ behavior: "smooth", block: "start" }); }
+  const wd = e.target.closest("[data-wdel]"); if (wd) { st.wish.splice(+wd.dataset.wdel, 1); save(); renderWish(); }
+});
+$("worn").addEventListener("click", () => { if (st.look && !st.look.sample) markWorn(st.look.ids); });
+$("logout").addEventListener("click", e => { const b = e.target.closest("[data-wake]"); if (!b) return; const i = byId(b.dataset.wake); if (!i) return; setTab("chat"); save(); ask(ja() ? `${nm(i)}に合うコーデは？` : `What goes with my ${nm(i).toLowerCase()}?`); $("tab-chat").scrollIntoView({ behavior: "smooth", block: "start" }); });
+$("pkgo").addEventListener("click", planPack);
+$("pkout").addEventListener("change", e => { const c = e.target.closest("[data-pk]"); if (!c || !st.pack) return; st.pack.done[c.dataset.pk] = c.checked; save(); const P = st.pack, total = P.items.length + P.extras.length, done = Object.values(P.done).filter(Boolean).length; $("pkout").querySelector(".pkprog b").textContent = done; });
 $("chform").addEventListener("submit", e => { e.preventDefault(); ask($("chin").value); });
 $("sugg").addEventListener("click", e => { const b = e.target.closest(".chip"); if (b) ask(b.textContent); });
 $("chload").addEventListener("click", llmLoad);
@@ -983,6 +1200,8 @@ $("chlog").addEventListener("click", e => {
   const k = b.dataset.ch;
   if (k === "again") ask(ja() ? "別の案" : "Another idea");
   else if (k === "dx") { setTab("dx"); save(); }
+  else if (k === "pack") { setTab("week"); save(); document.querySelector(".pack").scrollIntoView({ behavior: "smooth", block: "start" }); }
+  else if (k === "bcheck") { setTab("buy"); save(); $("tab-buy").scrollIntoView({ behavior: "smooth", block: "start" }); }
   else if (k === "share") { const m = (st.chat || [])[+b.dataset.n]; if (!m || !m.look) return; st.look = { ...m.look }; save(); renderLook(false); share("look", "img"); }
   else if (k === "here") locHere().then(() => { if (st.days) ask(ja() ? "今週の天気は？" : "Weather this week?"); });
   else if (k === "open") { const m = (st.chat || [])[+b.dataset.n]; if (!m || !m.look) return; st.look = { ...m.look }; save(); setTab("today"); renderLook(true); $("stage").scrollIntoView({ behavior: "smooth", block: "start" }); }
