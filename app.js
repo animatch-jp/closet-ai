@@ -704,8 +704,8 @@ function closetText() {
 function sysPrompt(rule) {
   const J = ja(), d = st.days && st.days[0];
   const wx = d && st.loc ? (J ? `今日の天気（${st.loc.name}）：${t("wx")[wxType(d.code)]}、最高${d.max}°C、最低${d.min}°C` : `Today's weather (${st.loc.name}): ${t("wx")[wxType(d.code)]}, high ${d.max}°C, low ${d.min}°C`) : "";
-  const base = J ? `あなたは「CLOSET.AI」のAIスタイリストです。明るく、やさしい日本語で、短く（3文くらい）答えます。むずかしい言葉は使いません。\nユーザーの手持ちの服：\n${closetText()}\n${wx}\n手持ちにない服を、持っているように言ってはいけません。`
-    : `You are the AI stylist inside CLOSET.AI. Reply in friendly, simple English in about 3 sentences.\nThe user's closet:\n${closetText()}\n${wx}\nNever pretend the user owns clothes that aren't listed.`;
+  const base = J ? `あなたは「CLOSET.AI」のAIスタイリストです。明るく、やさしい日本語で、短く（3文くらい）答えます。むずかしい言葉や、たとえ話・詩のような言い方は使いません。服の話では、色の相性・きちんと感・気温など、具体的な理由を言います。\nユーザーの手持ちの服：\n${closetText()}\n${wx}\n手持ちにない服を、持っているように言ってはいけません。`
+    : `You are the AI stylist inside CLOSET.AI. Reply in friendly, simple English in about 3 sentences. No metaphors or poetic language; give concrete reasons (color match, dressiness, temperature).\nThe user's closet:\n${closetText()}\n${wx}\nNever pretend the user owns clothes that aren't listed.`;
   if (!rule || !rule.look || rule.look.only) return base + (rule && rule.text ? (J ? `\n参考情報：${rule.text}` : `\nFacts to use: ${rule.text}`) : "");
   const names = rule.look.ids.map(byId).filter(Boolean).map(nm).join(J ? "、" : ", ");
   return base + (J ? `\nコーデ係がこの組み合わせを選びました：${names}。\n選んだ理由：${rule.look.why}\nこのコーデをすすめる返事を書いてください。服の名前を使って、なぜ合うのかを伝えます。`
@@ -744,7 +744,7 @@ async function ask(q) {
   const fashion = intent !== "other" && intent !== "hi" && intent !== "thx";
   const msg = { role: "ai", llm: true, text: "", look: fashion ? rule.look : null, acts: fashion ? rule.acts : [], buyQ: fashion ? rule.buyQ : undefined, add: fashion ? rule.add : undefined };
   st.chat = (st.chat || []).concat(msg).slice(-30); renderChat();
-  const hist = st.chat.slice(-8, -1).filter(m => m.text).map(m => ({ role: m.role === "me" ? "user" : "assistant", content: m.text }));
+  const hist = st.chat.slice(-5, -1).filter(m => m.text).map(m => ({ role: m.role === "me" ? "user" : "assistant", content: m.text }));
   const id = ++chatSeq, tx = () => $("chlog").querySelector(".msg.ai:last-child .tx");
   $("chstop").hidden = false;
   await new Promise(res => {
