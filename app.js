@@ -636,7 +636,7 @@ const EVENTS = [
   [/仕事|通勤|会社|オフィス|職場|商談|work|office|job/i, 1, "", "", "", "", ""],
   [/デート|\bdate\b/i, 2, "", "", "", "", ""],
   [/旅行|旅|遠出|trip|travel/i, 3, "歩く", "", "", "", ""],
-  [/休日|休み|遊び|遊ぶ|買い物|カフェ|映画|公園|weekend|shopping|cafe|movie/i, 0, "", "", "", "", ""]
+  [/休日|休み|遊び|遊ぶ|買い物|カフェ|映画(に|を見|見に)|公園|weekend|shopping|cafe|movies? (with|tonight)/i, 0, "", "", "", "", ""]
 ];
 function eventOf(q) { const e = EVENTS.find(x => x[0].test(q)); return e ? { occ: e[1], mood: e[2], ja: e[3], en: e[4], tipJ: e[5], tipE: e[6] } : null; }
 const occOf = q => { const e = eventOf(q); return e ? e.occ : null; };
@@ -740,6 +740,7 @@ function invAnswer() {
     : `You have ${its.length} pieces.\n${per.map(([c, k]) => `${t(c)} ${k}`).join(" · ")}\nMostly ${famN[top]}. That makes ${n} outfits.`;
 }
 function intentOf(q) {
+  if (/好きな|嫌いな|きらいな|どう思う|知ってる|教えて.*(話|こと)|favou?rite|do you (like|know|think)/i.test(q) && !/着|服|コーデ|色|wear|outfit|colou?r/i.test(q)) return "other";
   if (lastQ && REFINE.test(q) && occOf(q) == null && !/天気|タイプ|weather/i.test(q)) return "refine";
   if (lastQ && /別の|べつの|ほか|他の|違う|ちがう|もう一|もういっこ|もう1|another|other|different|else/i.test(q) && !/タイプ|天気/.test(q)) return "again";
   if (tipOf(q)) return "tip";
