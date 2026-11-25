@@ -411,6 +411,43 @@ input[type=date]{color-scheme:dark;-webkit-appearance:none;appearance:none}
 .pki .ph.photo{background:#eceae6}.pki .ph img{width:100%;height:100%;object-fit:cover}.pki .ph svg{width:84%;height:84%}
 .pki:has(input:checked){opacity:.55}.pki:has(input:checked) span:last-child{text-decoration:line-through}
 @media(max-width:760px){.pkform{grid-template-columns:1fr 1fr;align-items:start}.pkform>div:first-child,.pkform .btn{grid-column:1/-1}.pklists{grid-template-columns:1fr}.byhead{grid-template-columns:auto 1fr}.byscore{grid-column:1/-1;display:flex;justify-content:center;align-items:baseline;gap:10px}.bystats{gap:6px}.bystats>div{padding:10px}.bystats b{font-size:22px}.lstrip{grid-template-columns:repeat(7,1fr)}}
+#tour{position:relative;height:540vh;z-index:1;background:#05060a}
+.tpin{position:sticky;top:0;height:100svh;overflow:hidden;background:radial-gradient(ellipse at 62% 42%,#10132a,#05060a 68%)}
+.tbeams{position:absolute;inset:0;width:100%;height:100%}
+.tdust{position:absolute;inset:0;opacity:.5;background-image:radial-gradient(1px 1px at 12% 22%,#fff8,transparent),radial-gradient(1px 1px at 78% 12%,#fff6,transparent),radial-gradient(1.5px 1.5px at 33% 81%,#fff5,transparent),radial-gradient(1px 1px at 91% 64%,#fff7,transparent),radial-gradient(1px 1px at 55% 35%,#fff4,transparent),radial-gradient(1px 1px at 22% 58%,#fff5,transparent),radial-gradient(1.5px 1.5px at 68% 88%,#fff4,transparent);pointer-events:none}
+.tstage{position:absolute;aspect-ratio:1;width:min(58vw,86svh);left:63%;top:52%;transform:translate(-50%,-50%)}
+.thanger{position:absolute;left:50%;top:50%;width:36%;overflow:visible;filter:drop-shadow(0 0 4px #fff) drop-shadow(0 0 14px #a99bff) drop-shadow(0 0 36px #7cf7ffaa);z-index:150;will-change:transform}
+.ttile{--gl:0;position:absolute;left:50%;top:50%;width:20%;aspect-ratio:1;border-radius:22%;overflow:hidden;background:linear-gradient(145deg,#ffffff26,#ffffff08);border:1px solid #ffffff45;box-shadow:0 0 calc(var(--gl) * 34px) hsl(var(--hue) 95% 72% / calc(var(--gl) * .75)),inset 0 1px 0 #ffffff66,0 18px 40px #0009;will-change:transform,opacity}
+.ttile img{width:100%;height:100%;object-fit:cover;display:block}
+.ttile::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(155deg,#ffffff55,#ffffff00 38%,#ffffff00 70%,#ffffff1a);pointer-events:none}
+.ttile.cand{border:2px solid #e4ff6b;box-shadow:0 0 calc(var(--gl) * 40px) #e4ff6bcc,0 0 calc(var(--gl) * 90px) #a99bff88,0 18px 40px #0009}
+.ttag{position:absolute;top:7%;right:7%;z-index:2;font:800 clamp(9px,1.1vw,12px)/1 Inter,sans-serif;font-style:normal;padding:4px 7px;border-radius:99px;background:#e4ff6b;color:#06070b}
+.tchip{position:absolute;transform:translate(-50%,-50%);padding:8px 15px;border-radius:999px;background:#0b0d16d0;border:1px solid #ffffff38;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font:600 14px Inter,"Zen Kaku Gothic New",sans-serif;white-space:nowrap;opacity:0;z-index:400;box-shadow:0 10px 30px #0008}
+.tchip b{font:700 22px/1 Unbounded,sans-serif;background:var(--holo);-webkit-background-clip:text;background-clip:text;color:transparent;margin:0 2px}
+.tbub{position:absolute;padding:10px 15px;border-radius:18px;font-size:clamp(13px,1.4vw,15px);opacity:0;z-index:400;white-space:nowrap;box-shadow:0 10px 30px #0008}
+.tbub.me{right:3%;background:#fff;color:#06070b;border-bottom-right-radius:5px}
+.tbub.ai{left:3%;background:#0b0d16e0;border:1px solid #a99bff77;border-bottom-left-radius:5px}
+.ttext{position:absolute;left:6vw;top:50%;transform:translateY(-50%);width:min(33vw,460px);height:56svh;z-index:5}
+.tlabel{position:absolute;top:0;left:0;margin:0;font:600 12px Inter,"Zen Kaku Gothic New",sans-serif;letter-spacing:.2em;color:#9aa1bb}
+.tstep{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:14px;opacity:0;will-change:opacity,transform}
+.tnum{font:200 clamp(80px,12vw,180px)/.8 Unbounded,sans-serif;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1px #ffffff66;text-shadow:0 0 40px #a99bff33}
+.tstep h3{font:700 clamp(30px,3.8vw,56px)/1.05 Unbounded,"Zen Kaku Gothic New",sans-serif;letter-spacing:-.02em;margin:0}
+.tstep p{color:#c3c8dc;font-size:clamp(15px,1.25vw,18px);line-height:1.75;margin:0;max-width:30ch}
+.tnav{position:absolute;left:6vw;bottom:7svh;display:flex;gap:8px;z-index:5}
+.tnav i{width:26px;height:3px;border-radius:3px;background:#ffffff30;transition:width .3s,background .3s}
+.tnav i.on{width:52px;background:var(--holo)}
+@media(max-width:800px),(max-aspect-ratio:9/10){
+  #tour{height:560vh}
+  .tstage{width:min(96vw,56svh);left:50%;top:auto;bottom:4svh;transform:translateX(-50%)}
+  .ttext{left:6vw;right:6vw;width:auto;top:max(72px,9svh);transform:none;height:34svh}
+  .tstep{justify-content:flex-start;padding-top:28px;gap:8px}
+  .tnum{font-size:clamp(56px,16vw,88px)}
+  .tstep h3{font-size:clamp(26px,7.4vw,36px)}
+  .tstep p{font-size:15px;max-width:none}
+  .tnav{left:auto;right:6vw;bottom:auto;top:max(78px,10svh)}
+  .tchip{font-size:12px;padding:6px 11px}.tchip b{font-size:17px}
+}
+@media(prefers-reduced-motion:reduce){#tour{height:500vh}}
 </style>
 </head>
 <body>
@@ -439,6 +476,33 @@ input[type=date]{color-scheme:dark;-webkit-appearance:none;appearance:none}
     <div class="cap" data-a="0.6" data-b="0.8"><p data-t="cap3b" data-html></p></div>
     <div class="cap" data-a="0.84" data-b="2"><p data-t="cap4" data-html></p><a class="btn go" href="#studio" data-go="today" data-t="start">はじめる</a></div>
     <div class="hint"><i></i><span data-t="hint">スクロール</span></div>
+  </div>
+</section>
+
+<section id="tour" aria-label="できること">
+  <div class="tpin">
+    <canvas class="tbeams" aria-hidden="true"></canvas>
+    <div class="tdust" aria-hidden="true"></div>
+    <div class="tstage" aria-hidden="true">
+      <svg class="thanger" viewBox="0 0 120 70"><defs><linearGradient id="hgT" x1="0" x2="1"><stop offset="0" stop-color="#7cf7ff"/><stop offset=".5" stop-color="#a99bff"/><stop offset="1" stop-color="#ff7ad9"/></linearGradient></defs><path d="M60 27C60 21 66 19 66 12C66 6 61 3 57 4C53 5 51 8 52 11" fill="none" stroke="url(#hgT)" stroke-width="3" stroke-linecap="round"/><path d="M60 27L10 56Q4 60 10 62H110Q116 60 110 56Z" fill="none" stroke="url(#hgT)" stroke-width="3" stroke-linejoin="round"/></svg>
+      <div class="ttiles"></div>
+      <div class="tchip" style="left:79%;top:33%"></div>
+      <div class="tchip" style="left:30%;top:95%"></div>
+      <div class="tchip" style="left:70%;top:95%"></div>
+      <div class="tchip" style="left:50%;top:86%"></div>
+      <div class="tbub me" style="top:27%"></div>
+      <div class="tbub ai" style="top:39%"></div>
+      <div class="tbub me" style="top:80%"></div>
+    </div>
+    <div class="ttext">
+      <p class="tlabel" data-t="tourLabel">できること</p>
+      <div class="tstep"><span class="tnum">01</span><h3></h3><p></p></div>
+      <div class="tstep"><span class="tnum">02</span><h3></h3><p></p></div>
+      <div class="tstep"><span class="tnum">03</span><h3></h3><p></p></div>
+      <div class="tstep"><span class="tnum">04</span><h3></h3><p></p></div>
+      <div class="tstep"><span class="tnum">05</span><h3></h3><p></p></div>
+    </div>
+    <div class="tnav" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   </div>
 </section>
 
@@ -551,5 +615,6 @@ input[type=date]{color-scheme:dark;-webkit-appearance:none;appearance:none}
 <script src="photos.js"></script>
 <script src="app.js"></script>
 <script src="hero.js"></script>
+<script src="tour.js"></script>
 </body>
 </html>
