@@ -292,6 +292,44 @@ nav.top .links a:hover{background:#ffffff12}
 .card .ph.photo,.tile .ph.photo,.mini .ph.photo,.dthumbs .ph.photo{background:#eceae6}
 .credits{font-size:12px;color:var(--mute);line-height:1.7}
 .credits a{color:#c9cee6}
+.chat{padding:18px;display:grid;gap:14px}
+.chhead{display:flex;gap:12px;justify-content:space-between;align-items:flex-start}
+.chhead h2{font:700 clamp(22px,3vw,30px)/1.15 Unbounded,"Zen Kaku Gothic New",sans-serif;letter-spacing:-.02em;margin:0}
+.chhead p{margin:6px 0 0;color:var(--mute);max-width:60ch}
+.chhead .btn{flex:none}
+.chllm{display:flex;gap:12px;align-items:center;justify-content:space-between;border:1px dashed var(--line);border-radius:16px;padding:12px 14px;font-size:13px;color:var(--mute)}
+.chllm[data-s=ready]{border-style:solid;border-color:#a99bff66;background:#a99bff0d}
+.chllmt{display:grid;gap:4px;flex:1;min-width:0}
+.chllmt b{display:flex;align-items:center;gap:7px;color:var(--ink);font-size:14px}
+.chllm .bar{position:static;height:4px}
+.chllm .btn{flex:none}
+.chdot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--holo);flex:none}
+.chlog{display:flex;flex-direction:column;gap:10px;min-height:260px;max-height:min(58svh,620px);overflow-y:auto;padding:2px;overscroll-behavior:contain}
+.msg{max-width:min(90%,580px);padding:11px 14px;border-radius:18px;line-height:1.65;font-size:15px;white-space:pre-wrap;word-break:break-word;animation:rise2 .35s ease both}
+.msg.me{align-self:flex-end;background:#fff;color:#06070b;border-bottom-right-radius:6px}
+.msg.ai{align-self:flex-start;background:#ffffff0c;border:1px solid var(--line);border-bottom-left-radius:6px}
+.msg.llm{border-color:#a99bff55}
+.msg .who{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--mute);margin-bottom:4px;white-space:nowrap}
+.chlook{display:flex;gap:8px;overflow-x:auto;margin-top:10px;white-space:normal}
+.chlook .it{flex:0 0 82px;display:grid;gap:4px;font-size:11px;line-height:1.3;color:var(--mute);text-align:center}
+.chlook .ph{width:82px;height:82px;border-radius:12px;overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,#2a2e44,#11131d)}
+.chlook .ph.photo{background:#eceae6}
+.chlook .ph img{width:100%;height:100%;object-fit:cover}
+.chlook .ph svg{width:84%;height:84%}
+.msg .shops{margin-top:8px;white-space:normal}
+.msg .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;white-space:normal}
+.msg .acts .btn{min-height:40px;padding:0 13px;font-size:13px}
+.typing{display:inline-flex;gap:4px;padding:6px 0}
+.typing i{width:7px;height:7px;border-radius:50%;background:var(--mute);animation:blink 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes blink{50%{opacity:.25}}
+.sugg{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.sugg .chip{white-space:nowrap;min-height:40px;font-size:14px;flex:none}
+.chin{display:flex;gap:8px}
+.chin input{flex:1;min-width:0}
+.chin .btn{flex:none;min-height:46px}
+@media(max-width:600px){.chat{padding:14px}.chllm{flex-wrap:wrap}.chhead{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){.msg{animation:none}.typing i{animation:none}}
 </style>
 </head>
 <body>
@@ -326,6 +364,7 @@ nav.top .links a:hover{background:#ffffff12}
 <main class="wrap" id="studio">
   <div class="tabs" role="tablist">
     <button role="tab" data-tab="today" aria-selected="true" data-t="nav1">今日</button>
+    <button role="tab" data-tab="chat" aria-selected="false" data-t="nav5">相談</button>
     <button role="tab" data-tab="week" aria-selected="false" data-t="nav2">1週間</button>
     <button role="tab" data-tab="remix" aria-selected="false" data-t="nav4">再現</button>
     <button role="tab" data-tab="dx" aria-selected="false" data-t="nav3">診断</button>
@@ -350,6 +389,16 @@ nav.top .links a:hover{background:#ffffff12}
       <div><label class="lbl" for="mood" data-t="mood">気分・リクエスト（任意）</label><input type="text" id="mood" data-ph="moodph" placeholder="例：明るめの色、たくさん歩く日"></div>
       <div class="row"><button class="btn go" id="gen" type="submit" data-t="gen">コーデを生成</button><button class="btn" id="again" type="button" data-t="again">別の案</button></div>
     </form>
+  </div>
+
+  <div id="tab-chat" hidden>
+    <div class="chat glass">
+      <div class="chhead"><div><h2 data-t="chTitle">AIスタイリストに相談</h2><p data-t="chSub"></p></div><button class="btn sm" type="button" id="chclr" data-t="chClear" hidden>会話を消す</button></div>
+      <div class="chllm" id="chllm"><div class="chllmt"><b><i class="chdot"></i><span data-t="chLLMTitle">なんでも話せるAI</span></b><span id="chllmst"></span><div class="bar" id="chprog" hidden><i></i></div></div><button class="btn sm go" type="button" id="chload" data-t="chLoad">読みこむ</button><button class="btn sm" type="button" id="choff" data-t="chOff" hidden>オフにする</button></div>
+      <div class="chlog" id="chlog" aria-live="polite"></div>
+      <div class="sugg" id="sugg"></div>
+      <form class="chin" id="chform"><input type="text" id="chin" data-ph="chPh" placeholder="メッセージを入力" aria-label="Message" enterkeyhint="send" autocomplete="off"><button class="btn" type="button" id="chstop" data-t="chStop" hidden>止める</button><button class="btn go" type="submit" id="chsend" data-t="chSend">送る</button></form>
+    </div>
   </div>
 
   <div id="tab-week" hidden>

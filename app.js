@@ -6,6 +6,11 @@ const T = {
 ja: {
   cap1: "あなたのクローゼットが、<br><span>AIになる。</span>", cap2: "写真1枚で、<br>服を読み取る。", cap3: "色・種類・きちんと感まで、<br>一瞬でスキャン。", cap3b: "あこがれのコーデも、<br><span>手持ちの服で再現。</span>", hRe: "手持ちの服で再現", hWx: "晴れ 16°C ・ 通勤", nav4: "再現", photos: "写真", rxTitle: "憧れコーデ再現", rxSub: "SNSや雑誌で見たコーデを、あなたの手持ちの服で再現します。見本を選ぶか、写真をアップしてください。", rxUp: "写真から再現", rxCam: "カメラで撮る", rxTap: "写真の服のところをタップしてください（上着・トップス・ボトムス・靴など）。種類は下で直せます。", rxScore: "再現度", rxNone: "合う服がまだありません", rxLow: "似た服をさがす", rxLook: "見本", rxWear: "今日これを着る", rxMine: "あなたの写真のコーデ", camTile: "カメラで撮る", camHint: "その場で撮って登録", err: "うまくいきませんでした。もう一度お試しください。", cap4: "今日の天気に合わせて、<br><span>コーデ完成。</span>", start: "はじめる", hint: "スクロール",
   nav1: "今日", nav2: "1週間", nav3: "診断",
+  nav5: "相談", chTitle: "AIスタイリストに相談", chSub: "「明日のデート何着る？」のように話しかけると、手持ちの服から選んで答えます。", chPh: "メッセージを入力", chSend: "送る", chStop: "止める", chClear: "会話を消す",
+  chName: "AIスタイリスト", chLLMName: "AIスタイリスト（なんでもAI）", chOpen: "大きく見る", chDx: "診断を見る",
+  chHello: "こんにちは！あなたのクローゼット専属のAIスタイリストです。行き先や天気、気分を教えてくれれば、手持ちの服からコーデを選びます。",
+  chSugg: ["明日のデート、何着る？", "雨の日の通勤コーデ", "白いスニーカーに合うコーデは？", "いちばん活躍する服は？", "何を買い足せばいい？", "私の服のタイプは？", "今週の天気は？"],
+  chLLMTitle: "なんでも話せるAI", chLLMNote: "服以外のことも自由に話せるAIを、この端末の中に読みこめます（約300MB・はじめの1回だけ。Wi-Fiがおすすめ）。", chLoad: "読みこむ", chOff: "オフにする", chLoading: "AIを読みこみ中…", chReady: "オン：服以外のことも話せます。答えはこの端末の中で作られ、どこにも送られません。小さなAIなので、ときどきまちがえます。", chFail: "この端末では読みこめませんでした。服の相談はこのまま使えます。",
   occ: "どこに着ていく？", temp: "気温", mood: "気分・リクエスト（任意）", moodph: "例：明るめの色、たくさん歩く日", gen: "コーデを生成", again: "別の案",
   here: "現在地の天気", cityph: "都市名（例：大阪、Paris）", find: "天気を読む", wxFail: "天気を読みこめませんでした。気温は手で選んでください。", geoFail: "現在地を使えませんでした。都市名で探してください。", noCity: "その都市が見つかりませんでした。",
   closet: "クローゼット", name: "名前", nameph: "例：グレーのパーカー", kind: "種類", color: "色", save: "追加する", cancel: "やめる",
@@ -19,7 +24,7 @@ ja: {
   wkTitle: "1週間コーデ", wkSub: "天気予報に合わせて、7日分を同じ服が続かないように組みます。", wkDay: "平日の予定", wkEnd: "休日の予定", wkGo: "1週間ぶん作る", wkNeed: "先に場所を決めてください（現在地か都市名）。", wkTap: "日にちを押すと、くわしく見られます。",
   dxTitle: "クローゼット診断", dxSub: "あなたの服から、スタイルのタイプと、着回しの力を読み取ります。", dxGo: "診断する", dxCombos: "相性のいいコーデ", dxWays: "通り", dxStar: "いちばん活躍する服", dxAdd: "これを足すと", dxMore: "通り増える", dxColors: "色のバランス",
   h_1: "撮る", p_1: "服を1枚ずつ撮ると、AIが種類と色を読み取ってクローゼットに入れます。", h_2: "選ぶ", p_2: "行き先と天気から、色の相性ときちんと感で、いちばん合う組み合わせを探します。", h_3: "外に出ない", p_3: "AIはこのスマホやパソコンの中で動きます。写真はどこにも送られず、このブラウザにだけ保存されます。",
-  foot: "最初から入っている服はサンプルです。はじめて写真を読みこむときだけ、AIのデータを読みこみます（Wi-Fiがおすすめ）。", clearSample: "サンプルを消す", credit: "天気データ：Open-Meteo.com（CC BY 4.0）／写真の読み取り：CLIP（Transformers.js）",
+  foot: "最初から入っている服はサンプルです。はじめて写真を読みこむときだけ、AIのデータを読みこみます（Wi-Fiがおすすめ）。", clearSample: "サンプルを消す", credit: "天気データ：Open-Meteo.com（CC BY 4.0）／写真の読み取り：CLIP（Transformers.js）／なんでも話せるAI：LFM2.5-350M（Liquid AI）",
   emptyT: "服を追加しよう", emptyP: "下のクローゼットに服を入れて「コーデを生成」を押すと、ここに今日のコーデが出ます。",
   occs: ["休日", "仕事", "デート", "旅行", "きちんと（式・会食）"], occW: ["休日", "通勤", "デート", "旅コーデ", "お呼ばれ"],
   dows: ["日", "月", "火", "水", "木", "金", "土"], wx: { sun: "晴れ", cloud: "くもり", rain: "雨", snow: "雪", storm: "雷雨", fog: "きり" }
@@ -27,6 +32,11 @@ ja: {
 en: {
   cap1: "Your closet, <br><span>now with AI.</span>", cap2: "One photo. <br>Every piece, read.", cap3: "Color, type and dressiness, <br>scanned in a blink.", cap3b: "Love a look? <br><span>Rebuild it from your closet.</span>", hRe: "Rebuilt from your closet", hWx: "Sunny 16°C · Commute", nav4: "Recreate", photos: "Photos", rxTitle: "Recreate a look", rxSub: "Saw an outfit you love? Rebuild it from what you already own. Pick an example or upload a photo.", rxUp: "Recreate from photo", rxCam: "Take a photo", rxTap: "Tap each piece in the photo (jacket, top, bottoms, shoes). You can fix the type below.", rxScore: "Match", rxNone: "Nothing similar yet", rxLow: "Find similar", rxLook: "Look", rxWear: "Wear this today", rxMine: "Outfit from your photo", camTile: "Take a photo", camHint: "Snap and add it now", err: "Something went wrong. Please try again.", cap4: "Matched to today's weather. <br><span>Outfit done.</span>", start: "Get started", hint: "Scroll",
   nav1: "Today", nav2: "Week", nav3: "Style type",
+  nav5: "Ask", chTitle: "Ask your AI stylist", chSub: "Ask things like \"what should I wear on my date tomorrow?\" and it picks from your own clothes.", chPh: "Type a message", chSend: "Send", chStop: "Stop", chClear: "Clear chat",
+  chName: "AI stylist", chLLMName: "AI stylist (chat-anything AI)", chOpen: "View larger", chDx: "See my type",
+  chHello: "Hi! I'm your closet's own AI stylist. Tell me where you're going, the weather or your mood, and I'll build a look from what you own.",
+  chSugg: ["What should I wear on my date tomorrow?", "Rainy commute outfit", "What goes with my white sneakers?", "My most useful piece?", "What should I buy next?", "What's my style type?", "Weather this week?"],
+  chLLMTitle: "Chat-anything AI", chLLMNote: "Load a small AI onto this device so you can talk about anything, not just clothes (about 300 MB, first time only; Wi-Fi recommended).", chLoad: "Load", chOff: "Turn off", chLoading: "Loading the AI…", chReady: "On: you can talk about anything. Replies are made on this device and never sent anywhere. It's a small AI, so it sometimes gets things wrong.", chFail: "This device couldn't load it. Clothing questions still work.",
   occ: "Where are you going?", temp: "Temperature", mood: "Mood or request (optional)", moodph: "e.g. bright colors, lots of walking", gen: "Generate look", again: "Another idea",
   here: "Weather here", cityph: "City (e.g. Osaka, Paris)", find: "Get weather", wxFail: "Couldn't load the weather. Set the temperature by hand.", geoFail: "Couldn't use your location. Search a city instead.", noCity: "City not found.",
   closet: "Closet", name: "Name", nameph: "e.g. grey hoodie", kind: "Type", color: "Color", save: "Add", cancel: "Cancel",
@@ -40,7 +50,7 @@ en: {
   wkTitle: "Week planner", wkSub: "Seven outfits from the forecast, without repeating yesterday's clothes.", wkDay: "Weekdays", wkEnd: "Weekend", wkGo: "Plan my week", wkNeed: "Set a location first (here, or a city).", wkTap: "Tap a day for details.",
   dxTitle: "Closet type", dxSub: "Reads your style type and how far your clothes stretch.", dxGo: "Analyze", dxCombos: "Good outfits", dxWays: "ways", dxStar: "Your hardest-working piece", dxAdd: "Add this for", dxMore: "more outfits", dxColors: "Color balance",
   h_1: "Snap", p_1: "Photograph each item and the AI reads its type and color into your closet.", h_2: "Pick", p_2: "From where you're going and the weather, it finds the best match by color and dressiness.", h_3: "Stays with you", p_3: "The AI runs on this phone or computer. Photos are never uploaded; they stay in this browser.",
-  foot: "The starting items are samples. The AI data downloads once, the first time you add a photo (Wi-Fi recommended).", clearSample: "Remove samples", credit: "Weather data: Open-Meteo.com (CC BY 4.0) / Photo reading: CLIP (Transformers.js)",
+  foot: "The starting items are samples. The AI data downloads once, the first time you add a photo (Wi-Fi recommended).", clearSample: "Remove samples", credit: "Weather data: Open-Meteo.com (CC BY 4.0) / Photo reading: CLIP (Transformers.js) / Chat-anything AI: LFM2.5-350M (Liquid AI)",
   emptyT: "Add your clothes", emptyP: "Put clothes in your closet below, then tap Generate look to see your outfit here.",
   occs: ["Weekend", "Work", "Date", "Travel", "Formal event"], occW: ["weekend", "commute", "date", "travel look", "guest look"],
   dows: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], wx: { sun: "Sunny", cloud: "Cloudy", rain: "Rain", snow: "Snow", storm: "Storm", fog: "Fog" }
@@ -170,7 +180,7 @@ function buildLook(o) {
   const items = st.items.filter(i => !i.busy), ctx = makeCtx(o);
   const prev = o.again && o.prevIds ? o.prevIds.slice().sort().join() : "";
   const res = [];
-  for (const c of combos(items)) { if (prev && c.map(i => i.id).sort().join() === prev) continue; res.push([scoreCombo(c, ctx), c]); }
+  for (const c of combos(items)) { if (prev && c.map(i => i.id).sort().join() === prev) continue; if (o.must && !c.some(i => i.id === o.must)) continue; res.push([scoreCombo(c, ctx), c]); }
   res.sort((a, b) => b[0] - a[0]);
   const pick = o.again ? res[Math.floor(Math.random() * Math.min(3, res.length))] : res[0];
   return pick ? { c: pick[1], ctx } : null;
@@ -571,6 +581,192 @@ function renderCredits() {
   $("credits").innerHTML = `${t("photos")}: ` + [...keys].map(k => `<a href="https://unsplash.com/@${PH.C[k][1]}?utm_source=closet_ai&utm_medium=referral" target="_blank" rel="noopener">${esc(PH.C[k][0])}</a>`).join(", ") + ` / <a href="https://unsplash.com/?utm_source=closet_ai&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a>`;
 }
 
+/* ---------- 相談（AIスタイリストと話す） ---------- */
+const KW = { jeans: /デニム|ジーンズ|ジーパン|\bjeans\b|\bdenim\b/i, trousers: /スラックス|\btrousers\b|\bslacks\b/i, chinos: /チノ|\bchinos?\b/i, skirt: /スカート|\bskirts?\b/i, shorts: /ショートパンツ|短パン|半ズボン|\bshorts\b/i, shirt: /(?<![TＴ]|ティー)シャツ|(?<!t-?)\bshirts?\b/i, tshirt: /Tシャツ|ティーシャツ|\bt-?shirts?\b|\btees?\b/i, sweater: /ニット|セーター|\bsweaters?\b|\bknits?\b/i, hoodie: /パーカー|フーディ|\bhoodies?\b/i, blouse: /ブラウス|\bblouses?\b/i, jacket: /ジャケット|ジャケ|\bjackets?\b/i, blazer: /ブレザー|テーラード|\bblazers?\b/i, coat: /コート|\bcoats?\b/i, down: /ダウン|\bpuffer\b|\bdown jacket\b/i, cardigan: /カーディガン|カーデ|\bcardigans?\b/i, dress: /ワンピ|ドレス|\bdress(es)?\b(?! for| up)/i, sneakers: /スニーカー|\bsneakers?\b|\btrainers?\b/i, leather: /革靴|ローファー|\bleather shoes?\b|\bloafers?\b/i, boots: /ブーツ|\bboots?\b/i, sandals: /サンダル|\bsandals?\b/i, bag: /バッグ|かばん|カバン|鞄|\bbags?\b|\btotes?\b/i, cap: /キャップ|帽子|\bcaps?\b|\bhats?\b/i, scarf: /マフラー|ストール|\bscarf\b|\bscarves\b/i };
+const CATKW = { top: /トップス|上の服|\btops?\b/i, outer: /アウター|上着|羽織|\bouter(wear)?\b/i, bottom: /ボトムス|ズボン|パンツ(?!ー)|\bbottoms?\b|\bpants\b/i, shoes: /靴|くつ|\bshoes\b/i };
+const COLKW = PAL.map(p => [p, new RegExp(p[0] + "|\\b" + p[1] + (p[0] === "白" ? "|ホワイト" : p[0] === "黒" ? "|ブラック" : ""), "i")]);
+let chatW = null, chatBusy = false, llmState = "off", chatSeq = 0, lastQ = null;
+
+function anchorOf(q) {
+  const kinds = Object.keys(KW).filter(k => KW[k].test(q));
+  const cats = Object.keys(CATKW).filter(c => CATKW[c].test(q));
+  const colr = COLKW.filter(([, re]) => re.test(q)).map(([p]) => p[0]);
+  if (!kinds.length && !cats.length) return null;
+  const pool = st.items.filter(i => !i.busy && (kinds.length ? kinds.some(k => i.kind === k || KW[k].test(nm(i))) : cats.includes(i.cat)));
+  const label = kinds.length ? (ja() ? KINDS[kinds[0]][1] : KINDS[kinds[0]][2]) : t(cats[0]);
+  if (!pool.length) return { missing: (colr.length ? (ja() ? colr[0] + "の" : near(PAL.find(p => p[0] === colr[0])[2]).en + " ") : "") + label, q: (colr[0] ? colr[0] + " " : "") + label };
+  const sc = i => (colr.includes(near(col(i.color)).ja) ? 2 : 0) + (nm(i).includes(label) ? 0.5 : 0);
+  return { item: pool.slice().sort((a, b) => sc(b) - sc(a))[0] };
+}
+function dayOf(q) {
+  if (/明後日|あさって|day after tomorrow/i.test(q)) return 2;
+  if (/明日|あした|tomorrow/i.test(q)) return 1;
+  const dw = ["日曜", "月曜", "火曜", "水曜", "木曜", "金曜", "土曜"], en = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+  for (let n = 0; n < 7; n++) if (q.includes(dw[n]) || q.toLowerCase().includes(en[n])) { const d = (st.days || []).findIndex(x => new Date(x.date + "T12:00:00").getDay() === n); return d >= 0 ? d : null; }
+  return 0;
+}
+function occOf(q) {
+  if (/結婚式|式典|面接|会食|フォーマル|お呼ばれ|パーティ|発表会|formal|wedding|interview|party/i.test(q)) return 4;
+  if (/仕事|通勤|会社|オフィス|バイト|職場|商談|work|office|job/i.test(q)) return 1;
+  if (/デート|date/i.test(q)) return 2;
+  if (/旅行|旅|遠出|trip|travel/i.test(q)) return 3;
+  if (/休日|休み|遊び|遊ぶ|学校|買い物|カフェ|映画|公園|weekend|school|shopping|cafe|movie/i.test(q)) return 0;
+  return null;
+}
+function lookReq(q, again) {
+  const di = dayOf(q), d = di != null && st.days ? st.days[di] : null;
+  const num = q.match(/(-?\d{1,2})\s*(度|℃|°|c\b)/i);
+  let tp = num ? +num[1] : d ? dayTemp(d.max, d.min) : +$("temp").value;
+  if (!num && !d) { if (/寒|冷え|cold|freezing/i.test(q)) tp = Math.min(tp, 8); else if (/暑|hot/i.test(q)) tp = Math.max(tp, 28); else if (/涼し|cool/i.test(q)) tp = 18; }
+  const occ = occOf(q), an = anchorOf(q);
+  return { q, occ: occ ?? st.occ, tp, rain: /雨|rain/i.test(q) || isRain(d), day: di, d, mood: q, must: an?.item?.id || null, missing: an?.missing || null, missQ: an?.q || "" };
+}
+function intentOf(q) {
+  if (lastQ && /別の|べつの|ほか|他の|違う|ちがう|もう一|もういっこ|もう1|another|other|different|else/i.test(q) && !/タイプ|天気/.test(q)) return "again";
+  if (/買(?!い物)|足す|足し|欲しい|ほしい|足りない|buy|shop|missing|should i get/i.test(q)) return "buy";
+  if (/(いちばん|一番|最も).*(使|活躍)|活躍|着回し.*(服|アイテム)|most useful|hardest-working|best piece/i.test(q)) return "star";
+  if (/タイプ|診断|系統|似合う系|style type|my style/i.test(q)) return "type";
+  if (/天気|気温|weather|forecast/i.test(q) && !/着|コーデ|服|wear|outfit/i.test(q)) return "wx";
+  if (occOf(q) != null || anchorOf(q) || /着る|着て|着よう|着れ|コーデ|服|合う|合わせ|何着|なに着|格好|かっこう|恰好|outfit|wear|match|look|dress for|寒|暑|雨|明日|今日/i.test(q)) return "look";
+  if (/こんにち|こんばん|おはよ|はじめまして|やあ|よろしく|hello|^hi\b|^hey/i.test(q)) return "hi";
+  if (/ありがと|サンキュー|助か|thank/i.test(q)) return "thx";
+  return "other";
+}
+const dayWord = r => r.day == null || r.day === 0 ? (ja() ? "今日" : "today") : r.day === 1 ? (ja() ? "明日" : "tomorrow") : r.d ? fmtDay(r.d.date) : "";
+function ruleAnswer(q, intent) {
+  const J = ja(), out = { text: "", look: null, acts: [] };
+  const has = c => st.items.some(i => i.cat === c && !i.busy);
+  if (intent === "look" || intent === "again") {
+    if (!(has("onepiece") || (has("top") && has("bottom")))) { out.text = t("need"); return out; }
+    const r = intent === "again" ? { ...lastQ.r, again: true } : lookReq(q);
+    const res = buildLook({ ...r, prevIds: intent === "again" ? lastQ.ids : null }) || buildLook({ ...r, must: null });
+    if (!res) { out.text = t("need"); return out; }
+    const ex = explain(res.c, res.ctx), ids = res.c.slice().sort((a, b) => ORDER[a.cat] - ORDER[b.cat]).map(i => i.id);
+    lastQ = { r, ids };
+    const wx = r.d ? `${t("wx")[wxType(r.d.code)]}・${r.tp}°C` : `${r.tp}°C`;
+    const lead = intent === "again" ? (J ? "では、こちらはどうでしょう。" : "How about this one instead?")
+      : J ? `${dayWord(r)}の${t("occW")[r.occ]}（${wx}）なら、これがおすすめです。` : `${cap(dayWord(r))}'s ${t("occW")[r.occ]} (${wx}): here's my pick.`;
+    const miss = r.missing ? (J ? `クローゼットに${r.missing}がなかったので、手持ちの服で選びました。` : `There's no ${r.missing} in your closet, so I used what you have.`) + "\n" : "";
+    out.text = `${miss}${lead}\n${J ? "「" + ex.title + "」" : "“" + ex.title + "”"}\n${ex.why}${ex.tip ? "\n" + ex.tip : ""}`;
+    out.look = { ids, occ: r.occ, tp: r.tp, wx: r.d ? { code: r.d.code } : null, date: r.d && r.day ? r.d.date : undefined, rain: !!res.ctx.rain, ...ex };
+    out.acts = ["open", "again"];
+    if (r.missing) out.buyQ = r.missQ; else if (ex.buyQ) out.buyQ = ex.buyQ;
+    return out;
+  }
+  if (intent === "buy" || intent === "star" || intent === "type") {
+    const d = diagnose();
+    if (!d) { out.text = t("need"); return out; }
+    if (intent === "buy") { out.text = d.add ? (J ? `いちばんのおすすめは「${d.add.name}」です。足すだけで、組み合わせが${d.add.more}通り増えます。` : `My top pick is ${d.add.name.toLowerCase()}. It adds ${d.add.more} new outfits.`) : (J ? "今の服でじゅうぶん着回せています。" : "Your closet already works well."); out.buyQ = d.add?.q; out.add = d.add?.item; }
+    if (intent === "star") { out.text = d.star ? (J ? `いちばん活躍するのは「${nm(d.star)}」です。今の服で${d.combos}通りのコーデが組めて、その多くに入っています。` : `Your hardest-working piece is the ${nm(d.star).toLowerCase()}. It's in many of your ${d.combos} outfits.`) : "—"; if (d.star) out.look = { ids: [d.star.id], only: true }; }
+    if (intent === "type") { const ty = TYPES[d.type]; out.text = J ? `あなたは「${ty[0]}」タイプです。${ty[2]}\n${ty[4]}` : `You're a ${ty[1]}. ${ty[3]}\n${ty[5]}`; out.acts = ["dx"]; }
+    return out;
+  }
+  if (intent === "wx") {
+    if (!st.days || !st.loc) { out.text = J ? "場所がまだわかりません。下のボタンで現在地を使うか、「今日」のページで都市名を入れてください。" : "I don't know where you are yet. Use your location below, or type a city on the Today page."; out.acts = ["here"]; return out; }
+    out.text = st.days.slice(0, 3).map((d, n) => `${n === 0 ? (J ? "今日" : "Today") : n === 1 ? (J ? "明日" : "Tomorrow") : fmtDay(d.date)}：${t("wx")[wxType(d.code)]} ${d.max}° / ${d.min}°${d.pop >= 30 ? (J ? `（雨 ${d.pop}%）` : ` (rain ${d.pop}%)`) : ""}`).join("\n") + "\n" + (J ? `（${st.loc.name}）「明日の服は？」と聞いてくれれば、天気に合わせて選びます。` : `(${st.loc.name}) Ask "what should I wear tomorrow?" and I'll match the forecast.`);
+    return out;
+  }
+  if (intent === "hi") { out.text = J ? (/おはよ/.test(q) ? "おはようございます！" : /こんばん/.test(q) ? "こんばんは！" : "こんにちは！") + t("chHello").replace(/^こんにちは！/, "") : t("chHello"); return out; }
+  if (intent === "thx") { out.text = J ? "どういたしまして！また迷ったら、いつでも聞いてください。" : "Anytime! Ask whenever you're stuck."; return out; }
+  out.text = J ? "ごめんなさい、それはまだわかりません。服のことなら答えられます。たとえば「明日のデートに何を着る？」「白いスニーカーに合うコーデは？」と聞いてみてください。" + (llmState === "ready" ? "" : "\n服以外の話もしたいときは、上の「なんでも話せるAI」を使ってください。")
+    : "Sorry, I can't answer that yet. I'm good with clothes: try \"what should I wear on a date tomorrow?\" or \"what goes with my white sneakers?\"" + (llmState === "ready" ? "" : "\nFor anything else, turn on the Chat-anything AI above.");
+  return out;
+}
+
+/* なんでも話せるAI */
+function llmLoad() {
+  if (llmState === "loading" || llmState === "ready") return;
+  llmState = "loading"; st.llmOn = true; save(); renderLLM();
+  if (!chatW) {
+    try { chatW = new Worker("llm.js", { type: "module" }); } catch (e) { llmState = "fail"; renderLLM(); return; }
+    chatW.onmessage = ({ data }) => {
+      if (data.type === "prog") { $("chprog").hidden = false; $("chprog").firstElementChild.style.width = Math.max(2, data.p) + "%"; $("chllmst").textContent = `${t("chLoading")} ${Math.round(data.loaded / 1e6)} / ${Math.round(data.total / 1e6)} MB`; }
+      else if (data.type === "ready") { llmState = "ready"; renderLLM(); }
+      else if (data.type === "error" && data.id == null) { llmState = "fail"; st.llmOn = false; save(); renderLLM(); }
+      else if (chatW.onTok) chatW.onTok(data);
+    };
+    chatW.onerror = () => { llmState = "fail"; st.llmOn = false; save(); renderLLM(); };
+  }
+  chatW.postMessage({ type: "load" });
+}
+function renderLLM() {
+  const s = llmState, box = $("chllm");
+  box.dataset.s = s;
+  $("chllmst").textContent = s === "ready" ? t("chReady") : s === "loading" ? t("chLoading") : s === "fail" ? t("chFail") : t("chLLMNote");
+  $("chload").hidden = s === "ready" || s === "loading";
+  $("choff").hidden = s !== "ready";
+  if (s !== "loading") $("chprog").hidden = true;
+}
+function closetText() {
+  const its = st.items.filter(i => !i.busy).slice(0, 36);
+  return its.map(i => `- ${nm(i)}（${t(i.cat)}）`).join("\n");
+}
+function sysPrompt(rule) {
+  const J = ja(), d = st.days && st.days[0];
+  const wx = d && st.loc ? (J ? `今日の天気（${st.loc.name}）：${t("wx")[wxType(d.code)]}、最高${d.max}°C、最低${d.min}°C` : `Today's weather (${st.loc.name}): ${t("wx")[wxType(d.code)]}, high ${d.max}°C, low ${d.min}°C`) : "";
+  const base = J ? `あなたは「CLOSET.AI」のAIスタイリストです。明るく、やさしい日本語で、短く（3文くらい）答えます。むずかしい言葉は使いません。\nユーザーの手持ちの服：\n${closetText()}\n${wx}\n手持ちにない服を、持っているように言ってはいけません。`
+    : `You are the AI stylist inside CLOSET.AI. Reply in friendly, simple English in about 3 sentences.\nThe user's closet:\n${closetText()}\n${wx}\nNever pretend the user owns clothes that aren't listed.`;
+  if (!rule || !rule.look || rule.look.only) return base + (rule && rule.text ? (J ? `\n参考情報：${rule.text}` : `\nFacts to use: ${rule.text}`) : "");
+  const names = rule.look.ids.map(byId).filter(Boolean).map(nm).join(J ? "、" : ", ");
+  return base + (J ? `\nコーデ係がこの組み合わせを選びました：${names}。\n選んだ理由：${rule.look.why}\nこのコーデをすすめる返事を書いてください。服の名前を使って、なぜ合うのかを伝えます。`
+    : `\nThe outfit engine picked: ${names}.\nWhy: ${rule.look.why}\nWrite a reply recommending this outfit, naming the pieces and why they work.`);
+}
+
+/* 画面 */
+function chatPush(m) { st.chat = (st.chat || []).concat(m).slice(-30); save(); }
+function bubble(m, n) {
+  if (m.role === "me") return `<div class="msg me">${esc(m.text)}</div>`;
+  const its = m.look ? m.look.ids.map(byId).filter(Boolean) : [];
+  const add = m.add ? `<div class="it"><div class="ph">${svgArt(m.add)}</div></div>` : "";
+  const q = m.buyQ ? encodeURIComponent(m.buyQ) : "";
+  const shops = q ? `<div class="shops"><a href="https://www.amazon.${ja() ? "co.jp" : "com"}/s?k=${q}" target="_blank" rel="noopener">Amazon${t("findAt")}</a>${ja() ? `<a href="https://search.rakuten.co.jp/search/mall/${q}/" target="_blank" rel="noopener">楽天${t("findAt")}</a>` : ""}</div>` : "";
+  const act = { open: `<button class="btn" type="button" data-ch="open" data-n="${n}">${t("chOpen")}</button>`, again: `<button class="btn" type="button" data-ch="again">${t("again")}</button>`, dx: `<button class="btn" type="button" data-ch="dx">${t("chDx")}</button>`, here: `<button class="btn" type="button" data-ch="here">${t("here")}</button>` };
+  return `<div class="msg ai${m.llm ? " llm" : ""}"><div class="who"><i class="chdot"></i>${m.llm ? t("chLLMName") : t("chName")}</div><div class="tx">${esc(m.text) || '<span class="typing"><i></i><i></i><i></i></span>'}</div>${its.length || add ? `<div class="chlook">${its.map(i => `<div class="it"><div class="ph${phc(i)}">${art(i)}</div><span>${esc(nm(i))}</span></div>`).join("")}${add}</div>` : ""}${shops}${m.acts && m.acts.length ? `<div class="acts">${m.acts.map(a => act[a] || "").join("")}</div>` : ""}</div>`;
+}
+function renderChat(scroll) {
+  const log = $("chlog"), msgs = st.chat && st.chat.length ? st.chat : [{ role: "ai", text: t("chHello") }];
+  log.innerHTML = msgs.map(bubble).join("");
+  $("sugg").innerHTML = t("chSugg").map(s => `<button type="button" class="chip">${esc(s)}</button>`).join("");
+  $("chclr").hidden = !(st.chat && st.chat.length);
+  if (scroll !== false) log.scrollTop = log.scrollHeight;
+}
+async function ask(q) {
+  q = q.trim(); if (!q || chatBusy) return;
+  chatBusy = true; $("chsend").disabled = true; $("chin").value = "";
+  chatPush({ role: "me", text: q });
+  const intent = intentOf(q), rule = ruleAnswer(q, intent);
+  const useLLM = llmState === "ready" && chatW;
+  if (!useLLM) {
+    renderChat(); await new Promise(r => setTimeout(r, still ? 30 : 450));
+    chatPush({ role: "ai", ...rule }); renderChat();
+    chatBusy = false; $("chsend").disabled = false; return;
+  }
+  const fashion = intent !== "other" && intent !== "hi" && intent !== "thx";
+  const msg = { role: "ai", llm: true, text: "", look: fashion ? rule.look : null, acts: fashion ? rule.acts : [], buyQ: fashion ? rule.buyQ : undefined, add: fashion ? rule.add : undefined };
+  st.chat = (st.chat || []).concat(msg).slice(-30); renderChat();
+  const hist = st.chat.slice(-8, -1).filter(m => m.text).map(m => ({ role: m.role === "me" ? "user" : "assistant", content: m.text }));
+  const id = ++chatSeq, tx = () => $("chlog").querySelector(".msg.ai:last-child .tx");
+  $("chstop").hidden = false;
+  await new Promise(res => {
+    chatW.onTok = data => {
+      if (data.id !== id) return;
+      if (data.type === "tok") { msg.text += data.t; const el = tx(); if (el) el.textContent = msg.text; $("chlog").scrollTop = $("chlog").scrollHeight; }
+      if (data.type === "done") {
+        msg.text = (data.text || msg.text).trim();
+        const its = msg.look && !msg.look.only ? msg.look.ids.map(byId).filter(Boolean) : [];
+        const said = its.some(i => msg.text.includes(kindOf(i).ja) || msg.text.toLowerCase().includes(kindOf(i).en.toLowerCase()) || msg.text.includes(nm(i)));
+        if (!msg.text || (its.length && !said)) { msg.text = rule.text; msg.llm = false; }
+        res();
+      }
+      if (data.type === "error") { msg.text = msg.text.trim() || rule.text; msg.llm = false; res(); }
+    };
+    chatW.postMessage({ type: "gen", id, messages: [{ role: "system", content: sysPrompt(fashion ? rule : null) }, ...hist], max: 220 });
+  });
+  chatW.onTok = null; $("chstop").hidden = true;
+  save(); renderChat();
+  chatBusy = false; $("chsend").disabled = false;
+}
+
 /* ---------- 言葉・タブ ---------- */
 function renderText() {
   document.documentElement.lang = st.lang;
@@ -585,11 +781,12 @@ function renderText() {
 function setTab(tab) {
   st.tab = tab;
   document.querySelectorAll("[role=tab]").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === tab));
-  ["today", "week", "remix", "dx"].forEach(k => { $("tab-" + k).hidden = k !== tab; });
+  ["today", "chat", "week", "remix", "dx"].forEach(k => { $("tab-" + k).hidden = k !== tab; });
+  if (tab === "chat") { renderChat(); if (st.llmOn && llmState === "off") llmLoad(); }
   if (tab === "dx") renderDx(true);
   if (tab === "remix") renderLooks();
 }
-function all(anim) { renderText(); renderLook(anim); renderWeek(false); renderCloset(); renderWx(); renderCredits(); if (st.tab === "dx") renderDx(false); if (st.tab === "remix") renderLooks(); document.dispatchEvent(new Event("ca:lang")); }
+function all(anim) { renderText(); renderLook(anim); renderWeek(false); renderCloset(); renderWx(); renderCredits(); if (st.tab === "dx") renderDx(false); if (st.tab === "remix") renderLooks(); renderChat(false); renderLLM(); document.dispatchEvent(new Event("ca:lang")); }
 function relang(l) {
   st.lang = l;
   const re = L => { if (!L || L.sample) return; Object.assign(L, explain(lookItems(L), { tp: L.tp, occ: L.occ, rain: L.rain })); };
@@ -628,6 +825,20 @@ document.querySelectorAll(".cityform").forEach(f => { const go = () => locCity(f
 $("wkgo").addEventListener("click", planWeek);
 $("weekgrid").addEventListener("click", e => { const b = e.target.closest("[data-day]"); if (!b) return; const d = st.week[+b.dataset.day]; st.look = { ...d, wx: { code: d.code } }; save(); setTab("today"); renderLook(true); $("stage").scrollIntoView({ behavior: "smooth", block: "start" }); });
 $("dxgo").addEventListener("click", () => renderDx(true));
+$("chform").addEventListener("submit", e => { e.preventDefault(); ask($("chin").value); });
+$("sugg").addEventListener("click", e => { const b = e.target.closest(".chip"); if (b) ask(b.textContent); });
+$("chload").addEventListener("click", llmLoad);
+$("choff").addEventListener("click", () => { llmState = "off"; st.llmOn = false; save(); renderLLM(); });
+$("chstop").addEventListener("click", () => { if (chatW) chatW.postMessage({ type: "stop" }); });
+$("chclr").addEventListener("click", () => { st.chat = []; lastQ = null; save(); renderChat(); });
+$("chlog").addEventListener("click", e => {
+  const b = e.target.closest("[data-ch]"); if (!b || chatBusy) return;
+  const k = b.dataset.ch;
+  if (k === "again") ask(ja() ? "別の案" : "Another idea");
+  else if (k === "dx") { setTab("dx"); save(); }
+  else if (k === "here") locHere().then(() => { if (st.days) ask(ja() ? "今週の天気は？" : "Weather this week?"); });
+  else if (k === "open") { const m = (st.chat || [])[+b.dataset.n]; if (!m || !m.look) return; st.look = { ...m.look }; save(); setTab("today"); renderLook(true); $("stage").scrollIntoView({ behavior: "smooth", block: "start" }); }
+});
 document.addEventListener("click", e => { const b = e.target.closest("[data-share]"); if (b) share(b.dataset.share, b.dataset.k); });
 document.querySelectorAll("[data-go]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); const tab = a.dataset.go; if (tab) setTab(tab); $("studio").scrollIntoView({ behavior: "smooth" }); }));
 const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
