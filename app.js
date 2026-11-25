@@ -15,6 +15,7 @@ ja: {
   pkTitle: "旅行の荷物リスト", pkSub: "行き先の天気予報に合わせて、少ない服で毎日のコーデを組み、持ち物リストにします。", pkCity: "行き先", pkDate: "出発日", pkDays: "日数", pkOcc: "旅の目的", pkGo: "荷物リストを作る", pkNeed: "行き先を入れてください", pkFar: "天気予報は16日先までなので、近くなったらもう一度作ってください", pkPast: "出発日が過ぎています", pkSub2: "同じボトムスや靴を何度も使って、荷物を少なくしました。", pkReady: "準備OK", pkClothes: "服", pkOther: "そのほか",
   rTotal: "相性", rPts: "点", rColor: "色", rScene: "場面", rTemp: "気温",
   chFollow: ["もっと明るく", "もっときれいめに", "もっとカジュアルに", "ジャケットなしで", "もっと暖かく", "別の案"],
+  outQ: "明日、なに着る？", outSub: "答えは、もうクローゼットの中にあります。", outGo: "AIに聞いてみる", outPc: "パーソナルカラー診断",
   nav5: "相談", chTitle: "AIスタイリストに相談", chSub: "「明日のデート何着る？」のように話しかけると、手持ちの服から選んで答えます。", chPh: "メッセージを入力", chSend: "送る", chStop: "止める", chClear: "会話を消す",
   chName: "AIスタイリスト", chLLMName: "AIスタイリスト（なんでもAI）", chOpen: "大きく見る", chDx: "診断を見る",
   chHello: "こんにちは！あなたのクローゼット専属のAIスタイリストです。行き先や天気、気分を教えてくれれば、手持ちの服からコーデを選びます。",
@@ -50,6 +51,7 @@ en: {
   pkTitle: "Trip packing list", pkSub: "Uses your destination's forecast to plan each day with as few clothes as possible, then turns it into a checklist.", pkCity: "Destination", pkDate: "Leaving", pkDays: "Days", pkOcc: "Trip type", pkGo: "Make my list", pkNeed: "Enter a destination", pkFar: "Forecasts only go 16 days ahead. Try again closer to the trip.", pkPast: "That date has passed", pkSub2: "Bottoms and shoes repeat so your bag stays light.", pkReady: "packed", pkClothes: "Clothes", pkOther: "Everything else",
   rTotal: "Match", rPts: "/100", rColor: "Color", rScene: "Occasion", rTemp: "Weather",
   chFollow: ["Brighter", "Make it smarter", "More casual", "Without the jacket", "Warmer", "Another idea"],
+  outQ: "What are you wearing tomorrow?", outSub: "The answer is already in your closet.", outGo: "Ask the AI", outPc: "Personal color test",
   nav5: "Ask", chTitle: "Ask your AI stylist", chSub: "Ask things like \"what should I wear on my date tomorrow?\" and it picks from your own clothes.", chPh: "Type a message", chSend: "Send", chStop: "Stop", chClear: "Clear chat",
   chName: "AI stylist", chLLMName: "AI stylist (chat-anything AI)", chOpen: "View larger", chDx: "See my type",
   chHello: "Hi! I'm your closet's own AI stylist. Tell me where you're going, the weather or your mood, and I'll build a look from what you own.",
@@ -169,6 +171,7 @@ function scoreCombo(c, ctx) {
     if (ctx.rain && a.k.cat === "shoes") s += k === "boots" ? 1.4 : (k === "sneakers" && a.h.l > 0.75) ? -1.2 : k === "sandals" ? -2 : 0;
     if (ctx.recent && ctx.recent[a.i.id]) s -= ctx.recent[a.i.id] * (a.k.cat === "shoes" || a.k.cat === "acc" ? 0.3 : 1);
   }
+  if (st.pc && SEASONS[st.pc]) for (const a of A) if (["top", "outer", "onepiece"].includes(a.k.cat)) { if (SEASONS[st.pc].good.includes(a.c.ja)) s += 0.5; else if (SEASONS[st.pc].hard.includes(a.c.ja)) s -= 0.6; }
   const accs = A.filter(a => !a.c.n), hues = accs.map(a => a.h.h);
   if (accs.length === 0) s += ctx.m.calm ? 1.4 : 0.6;
   else if (accs.length === 1) s += ctx.m.bright ? 2 : 0.5;
@@ -394,6 +397,100 @@ function renderDx(anim) {
   st.dx = { type: r.type, combos: r.combos };
 }
 
+/* ---------- パーソナルカラー診断（ドレープ式：顔の下に色の布を当てて見比べる） ---------- */
+const SEASONS = {
+  spring: { ja: "イエベ春", en: "Warm Spring", subJ: "明るく、あたたかい色が得意", subE: "Light, warm colors light you up",
+    dJ: "ピーチやコーラル、明るいベージュのような、黄みのある明るい色で顔がぱっと明るく見えます。アイボリーやキャメルも得意です。", dE: "Peach, coral and light beige, warm and bright, make your face glow. Ivory and camel suit you too.",
+    pal: ["#FF8C69", "#FFB38A", "#F6D6A8", "#F3E6CC", "#F5C04A", "#8CCB5E", "#4FC3C8", "#C69A6B"],
+    good: ["ベージュ", "キャメル", "オレンジ", "黄色", "ミント", "水色", "緑"], hard: ["黒", "チャコール", "えんじ"],
+    hardJ: "真っ黒や暗くくすんだ色は、顔が暗く見えやすいです。黒を着るなら、顔から遠いボトムスや靴に。", hardE: "Pure black and dark muted shades can dull your face. Keep black to bottoms and shoes.",
+    tipJ: "白を着るなら、真っ白よりアイボリー。アクセはゴールドが合います。", tipE: "Choose ivory over stark white, and gold over silver." },
+  autumn: { ja: "イエベ秋", en: "Warm Autumn", subJ: "深く、落ち着いたあたたかい色が得意", subE: "Deep, earthy warm colors are yours",
+    dJ: "キャメル、テラコッタ、カーキ、深いグリーンのようなアースカラーで、大人っぽく落ち着いた印象になります。", dE: "Camel, terracotta, khaki and deep green give you a rich, grown-up look.",
+    pal: ["#B5553A", "#C08A4E", "#7A6E3A", "#5B3A29", "#D9A441", "#2F5D50", "#8C3B2E", "#E8D3B0"],
+    good: ["キャメル", "茶色", "カーキ", "ベージュ", "オレンジ", "緑", "えんじ"], hard: ["水色", "ピンク", "ライトグレー"],
+    hardJ: "青みの強いパステルや、ひんやりしたグレーは顔色が悪く見えやすいです。", hardE: "Icy pastels and cool greys can wash you out.",
+    tipJ: "アースカラーの重ね着がいちばん似合います。アクセはゴールドかブロンズ。", tipE: "Layered earth tones are your best look. Gold or bronze accessories." },
+  summer: { ja: "ブルベ夏", en: "Cool Summer", subJ: "やわらかく、青みのある色が得意", subE: "Soft, cool colors suit you best",
+    dJ: "ラベンダー、水色、ローズピンク、やさしいグレーのような、青みがあってやわらかい色で、肌がすっきり明るく見えます。", dE: "Lavender, powder blue, rose pink and soft grey make your skin look clear and fresh.",
+    pal: ["#A9C4E2", "#B7A6D9", "#E8A6C0", "#D9667F", "#8C9FB8", "#5C6F9E", "#C9C9CB", "#F7F7F5"],
+    good: ["水色", "ピンク", "ライトグレー", "グレー", "ネイビー", "紫", "白"], hard: ["オレンジ", "キャメル", "カーキ", "黄色"],
+    hardJ: "オレンジや黄みの強いベージュは、顔がくすんで見えやすいです。", hardE: "Orange and yellowish beige can make you look tired.",
+    tipJ: "白・グレー・水色の組み合わせが得意。アクセはシルバーが合います。", tipE: "White, grey and light blue together are your sweet spot. Silver accessories." },
+  winter: { ja: "ブルベ冬", en: "Cool Winter", subJ: "はっきりした、あざやかな色が得意", subE: "Clear, vivid contrast is your power",
+    dJ: "黒と白のはっきりした組み合わせや、ロイヤルブルー、真っ赤のようなあざやかな色で、顔立ちがくっきり見えます。", dE: "Crisp black and white, royal blue and true red make your features stand out.",
+    pal: ["#111111", "#F7F7F7", "#1F2F8C", "#C8102E", "#7D2E8C", "#008C7A", "#E6007E", "#4A4A52"],
+    good: ["黒", "白", "ネイビー", "青", "赤", "紫", "チャコール"], hard: ["ベージュ", "キャメル", "カーキ", "オレンジ"],
+    hardJ: "ベージュやくすんだアースカラーは、顔がぼやけて見えやすいです。", hardE: "Beige and muted earth tones can blur your features.",
+    tipJ: "白と黒のような、はっきりした組み合わせが似合います。アクセはシルバー。", tipE: "High contrast like black and white suits you. Silver accessories." }
+};
+const DRAPES = [
+  { ax: "t", a: ["#D4A94A", "ゴールド", "Gold"], b: ["#B9C1CD", "シルバー", "Silver"] },
+  { ax: "t", a: ["#F2836B", "コーラル", "Coral"], b: ["#D9668F", "ローズ", "Rose"] },
+  { ax: "t", a: ["#F1E3C6", "アイボリー", "Ivory"], b: ["#FFFFFF", "真っ白", "Pure white"] },
+  { ax: "d", w: { a: ["#FFB38A", "ピーチ", "Peach"], b: ["#B5553A", "テラコッタ", "Terracotta"] }, c: { a: ["#B7A6D9", "ラベンダー", "Lavender"], b: ["#1F2F8C", "ロイヤルブルー", "Royal blue"] } },
+  { ax: "d", w: { a: ["#9BD06A", "若草色", "Leaf green"], b: ["#6B6A33", "オリーブ", "Olive"] }, c: { a: ["#A9C4E2", "水色", "Powder blue"], b: ["#111111", "黒", "Black"] } }
+];
+const PCQ = [
+  { ax: "t", qJ: "手首の内側の血管は、何色っぽく見えますか？", qE: "What color do the veins on your inner wrist look?", o: [["緑っぽい", "Greenish", 0.7], ["青や紫っぽい", "Blue or purple", -0.7], ["わからない", "Not sure", 0]] },
+  { ax: "t", qJ: "日焼けすると、どうなりやすいですか？", qE: "When you're in the sun, you usually…", o: [["すぐ黒くなる", "Tan quickly", 0.5], ["赤くなって、もどる", "Go red, then fade", -0.5], ["わからない", "Not sure", 0]] },
+  { ax: "d", qJ: "よく似合うと言われるのは？", qE: "People say you look best in…", o: [["明るく、やわらかい色", "Light, soft colors", 0.7], ["濃く、はっきりした色", "Deep, strong colors", -0.7], ["わからない", "Not sure", 0]] }
+];
+let pc = null; // { img, step, t, d }
+const pcSeason = r => r.t >= 0 ? (r.d >= 0 ? "spring" : "autumn") : (r.d >= 0 ? "summer" : "winter");
+function pcStart(img) { pc = { img: img || null, step: img ? 0 : DRAPES.length, t: 0, d: 0 }; renderPC(true); $("pcout").scrollIntoView({ behavior: still ? "auto" : "smooth", block: "start" }); }
+async function pcUpload(file) { if (!file) return; try { const img = await shrink(file); pcStart(img.data); } catch (e) { status(t("err")); } }
+function pcChoose(v) {
+  const n = DRAPES.length;
+  if (pc.step < n) { if (DRAPES[pc.step].ax === "t") pc.t += v; else pc.d += v; }
+  else { const q = PCQ[pc.step - n]; if (q.ax === "t") pc.t += v; else pc.d += v; }
+  pc.step++;
+  if (pc.step >= n + PCQ.length) { const s = pcSeason(pc); st.pc = s; st.pcConf = Math.min(1, (Math.abs(pc.t) + Math.abs(pc.d)) / (pc.img ? 5 : 2)); save(); pc = null; }
+  renderPC(true);
+}
+function pcClothes(s) {
+  const S = SEASONS[s], its = st.items.filter(i => !i.busy);
+  const face = its.filter(i => ["top", "outer", "onepiece", "acc"].includes(i.cat));
+  return { good: face.filter(i => S.good.includes(near(col(i.color)).ja)).slice(0, 6), hard: face.filter(i => S.hard.includes(near(col(i.color)).ja) && i.cat !== "acc").slice(0, 4) };
+}
+function renderPC(anim) {
+  const box = $("pcout"); if (!box) return;
+  const J = ja(), n = DRAPES.length;
+  box.className = "pccard glass" + (anim ? " pop" : "");
+  if (pc) {
+    const off = pc.img ? 0 : n, idx = pc.step - off;
+    const dots = `<div class="pcdots">${Array.from({ length: n - off + PCQ.length }, (_, k) => `<i class="${k < idx ? "on" : k === idx ? "now" : ""}"></i>`).join("")}</div>`;
+    if (pc.step < n) {
+      const D = DRAPES[pc.step], pair = D.ax === "t" ? D : (pc.t >= 0 ? D.w : D.c);
+      const side = (c, v, tag) => `<button type="button" class="drape" data-pc="${v}" style="--dc:${c[0]}"><span class="face"><img src="${pc.img}" alt=""></span><span class="cape"></span><b>${tag}　${J ? c[1] : c[2]}</b></button>`;
+      box.innerHTML = `${dots}<span class="pill ai">${J ? `布 ${pc.step + 1} / ${n}` : `Drape ${pc.step + 1} / ${n}`}</span><h3>${J ? "顔が明るく、肌がなめらかに見えるのはどっち？" : "Which makes your face look brighter and smoother?"}</h3>
+      <div class="drapes">${side(pair.a, 1, "A")}${side(pair.b, -1, "B")}</div><div class="row"><button class="btn sm" type="button" data-pc="0">${J ? "わからない" : "Can't tell"}</button><button class="btn sm" type="button" data-pcx="quit">${J ? "やめる" : "Quit"}</button></div><p class="pcnote">${J ? "明るい部屋で、正面から撮った写真がいちばん正確です。写真はこのスマホの中だけで使い、どこにも送りません。" : "A front-facing photo in good light works best. Your photo stays on this device and is never uploaded."}</p>`;
+    } else {
+      const q = PCQ[pc.step - n];
+      box.innerHTML = `${dots}<span class="pill ai">${J ? `質問 ${pc.step - n + 1} / ${PCQ.length}` : `Question ${pc.step - n + 1} / ${PCQ.length}`}</span><h3>${J ? q.qJ : q.qE}</h3><div class="pcopts">${q.o.map(o => `<button type="button" class="btn" data-pc="${o[2]}">${J ? o[0] : o[1]}</button>`).join("")}</div><div class="row"><button class="btn sm" type="button" data-pcx="quit">${J ? "やめる" : "Quit"}</button></div>`;
+    }
+    return;
+  }
+  if (!st.pc) {
+    box.innerHTML = `<span class="pill ai">NEW</span><h3>${J ? "パーソナルカラー診断" : "Personal color analysis"}</h3><p class="why">${J ? "顔の下に色の布を当てて、どちらで顔色がよく見えるかを比べる「ドレープ診断」です。自撮りを1枚使って、5回見比べるだけ。結果は、あなたのコーデ選びにも使われます。" : "The drape method: hold colors under your face and compare which one flatters you. One selfie, five comparisons. The result also shapes your outfit picks."}</p>
+    <div class="pcswatch">${Object.values(SEASONS).map(S => `<span><i style="background:linear-gradient(135deg,${S.pal.slice(0, 4).join(",")})"></i>${J ? S.ja : S.en}</span>`).join("")}</div>
+    <div class="row"><button class="btn go" type="button" data-pcx="selfie">${J ? "自撮りで始める" : "Start with a selfie"}</button><button class="btn" type="button" data-pcx="photo">${J ? "写真を選ぶ" : "Choose a photo"}</button><button class="btn" type="button" data-pcx="quiz">${J ? "質問だけでやる" : "Questions only"}</button></div>
+    <p class="pcnote">${J ? "写真はこのスマホの中だけで使い、どこにも送りません。保存もしません。" : "Your photo stays on this device. It isn't uploaded or saved."}</p>`;
+    return;
+  }
+  const S = SEASONS[st.pc], cl = pcClothes(st.pc), low = (st.pcConf ?? 1) < 0.35;
+  const cards = l => `<div class="chlook">${l.map(i => `<div class="it"><div class="ph${phc(i)}">${art(i)}</div><span>${esc(nm(i))}</span></div>`).join("")}</div>`;
+  box.innerHTML = `<span class="pill ai">${J ? "あなたのパーソナルカラー" : "Your personal color"}</span><h2 class="pcname">${J ? S.ja : S.en}</h2><p class="pcsub">${J ? S.subJ : S.subE}</p>
+  <div class="pcpal">${S.pal.map(c => `<i style="background:${c}"></i>`).join("")}</div>
+  <p class="why">${J ? S.dJ : S.dE}</p>
+  ${cl.good.length ? `<small class="lbl">${J ? "あなたの服で、似合う色のもの" : "Pieces in your colors"}</small>${cards(cl.good)}` : ""}
+  ${cl.hard.length ? `<small class="lbl">${J ? "顔から少し離して着たいもの" : "Wear these away from your face"}</small>${cards(cl.hard)}` : ""}
+  <p class="note"><b>${J ? "苦手な色" : "Go easy on"}</b>${J ? S.hardJ : S.hardE}</p><p class="note"><b>${J ? "コツ" : "Tip"}</b>${J ? S.tipJ : S.tipE}</p>
+  ${low ? `<p class="pcnote">${J ? "結果がはっきりしませんでした。明るい場所で、自撮りでもう一度試すと正確になります。" : "The result was borderline. Try again with a selfie in daylight for a clearer answer."}</p>` : ""}
+  <p class="pcnote">${J ? "これからのコーデ選びでは、顔に近い服に似合う色を少し優先します。" : "From now on, outfit picks slightly favor your colors near your face."}</p>
+  <div class="row sharerow"><button class="btn go" type="button" data-share="pc" data-k="img">${t("saveImg")}</button><button class="btn" type="button" data-share="pc" data-k="x">${t("shareX")}</button><button class="btn" type="button" data-share="pc" data-k="line">LINE</button><button class="btn" type="button" data-pcx="redo">${J ? "もう一度" : "Retake"}</button></div>`;
+}
+
 /* ---------- シェア画像（1080×1920） ---------- */
 const loadImg = src => new Promise((res, rej) => { const im = new Image(); if (/^https?:/.test(src)) im.crossOrigin = "anonymous"; im.onload = () => res(im); im.onerror = rej; im.src = src; });
 const svgSrc = i => "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svgArt(i));
@@ -429,6 +526,17 @@ async function makeCard(kind) {
     }
     y += Math.ceil(n / cols) * (cw + 90) + 10;
     x.fillStyle = "#d5d9ee"; x.font = B(34); y = wrap(x, show.why, 80, y + 20, W - 160, 50);
+  } else if (kind === "pc") {
+    const S = SEASONS[st.pc]; if (!S) throw new Error("none");
+    x.fillStyle = "#9aa1bb"; x.font = B(40); x.fillText(ja() ? "わたしのパーソナルカラー" : "My personal color", 80, 300);
+    const g = x.createLinearGradient(80, 0, W - 80, 0); S.pal.slice(0, 4).forEach((cc, k) => g.addColorStop(k / 3, cc));
+    x.fillStyle = S.pal[0] === "#111111" ? holo : g; x.font = F(700, 132); let y = wrap(x, ja() ? S.ja : S.en, 80, 470, W - 160, 150);
+    x.fillStyle = "#fff"; x.font = B(44); y = wrap(x, ja() ? S.subJ : S.subE, 80, y + 30, W - 160, 60);
+    const cs = (W - 160 - 3 * 36) / 4; y += 70;
+    S.pal.forEach((cc, k) => { const cx0 = 80 + (k % 4) * (cs + 36), cy0 = y + Math.floor(k / 4) * (cs + 36); x.fillStyle = cc; x.beginPath(); x.arc(cx0 + cs / 2, cy0 + cs / 2, cs / 2, 0, Math.PI * 2); x.fill(); x.strokeStyle = "#ffffff40"; x.lineWidth = 3; x.stroke(); });
+    y += cs * 2 + 36 + 60;
+    x.fillStyle = "#d5d9ee"; x.font = B(36); y = wrap(x, ja() ? S.dJ : S.dE, 80, y + 20, W - 160, 54);
+    x.fillStyle = "#9aa1bb"; x.font = B(32); y = wrap(x, ja() ? S.tipJ : S.tipE, 80, y + 40, W - 160, 48);
   } else if (kind === "remix") {
     const r = rx && rx.result; if (!r) throw new Error("none");
     x.fillStyle = "#9aa1bb"; x.font = B(38); x.fillText(ja() ? "憧れコーデを、手持ちの服で再現" : "Rebuilt from my own closet", 80, 270);
@@ -482,6 +590,7 @@ async function share(what, how) {
   const J = ja(), url = location.href.split("#")[0];
   let text;
   if (what === "look") { const L = st.look, show = L && !L.sample ? L : sampleTx[st.lang]; text = J ? `今日のコーデは「${show?.title}」。手持ちの服からAIが組んでくれた #CLOSETAI` : `Today's look: "${show?.title}", built by AI from my own closet #CLOSETAI`; }
+  else if (what === "pc") { const S = SEASONS[st.pc]; text = J ? `わたしのパーソナルカラーは「${S?.ja}」でした。手持ちの服で似合うものもわかる #CLOSETAI #パーソナルカラー診断` : `My personal color is ${S?.en}. It even shows which of my clothes suit me #CLOSETAI`; }
   else if (what === "remix") { const r = rx?.result; text = J ? `憧れコーデ「${rx?.title}」を手持ちの服で再現したら、再現度${r?.score}%でした #CLOSETAI` : `Rebuilt "${rx?.title}" from my own closet: ${r?.score}% match #CLOSETAI`; }
   else if (what === "buy") { text = J ? `買う前にAIに聞いてみたら「${buyR ? t(VERD[buyR.verdict][1]) : ""}」（買い度${buyR?.score}）。手持ちの服とのコーデが${buyR?.more}通り増えるらしい #CLOSETAI` : `Asked AI before buying: "${buyR ? t(VERD[buyR.verdict][1]) : ""}" (buy score ${buyR?.score}), +${buyR?.more} outfits with my closet #CLOSETAI`; }
   else { const r = diagnose(), ty = r && TYPES[r.type]; text = J ? `わたしのクローゼットは「${ty?.[0]}」タイプ。手持ちの服で${r?.combos}通りのコーデが組めるらしい #CLOSETAI` : `My closet type is "${ty?.[1]}" — ${r?.combos} outfits from what I already own #CLOSETAI`; }
@@ -938,9 +1047,12 @@ function intentOf(q) {
   if (/好きな|嫌いな|きらいな|どう思う|知ってる|教えて.*(話|こと)|favou?rite|do you (like|know|think)/i.test(q) && !/着|服|コーデ|色|wear|outfit|colou?r/i.test(q)) return "other";
   if (lastQ && REFINE.test(q) && occOf(q) == null && !/天気|タイプ|weather/i.test(q)) return "refine";
   if (lastQ && /別の|べつの|ほか|他の|違う|ちがう|もう一|もういっこ|もう1|another|other|different|else/i.test(q) && !/タイプ|天気/.test(q)) return "again";
+  if (/似合う色|パーソナルカラー|イエベ|ブルベ|personal colou?r|colou?rs suit me/i.test(q)) return "pc";
+  if (/着てない|着ていない|眠って|出番がない|最近着て|しばらく着|haven't worn|not worn|unworn/i.test(q)) return "sleep";
+  if (lastQ && /(これ|それ|今日).*(着た|着ました|着ていく|着て行く)|wore (it|this)|wearing (it|this)/i.test(q)) return "worn";
   if (tipOf(q)) return "tip";
   if (/何色|色.*合う|合う色|colou?r.*(go|match)|goes with.*colou?r/i.test(q) && COLKW.some(([, re]) => re.test(q)) && !Object.keys(KW).some(k => KW[k].test(q))) return "color";
-  if (/何がある|何枚|何着|何点|持ってる服|持っている服|クローゼットの中|一覧|what do i (have|own)|how many/i.test(q)) return "inv";
+  if (/何がある|何枚|何着(?!る|て|よう|れ|たら|ていく|ていこう)|何点|持ってる服|持っている服|クローゼットの中|一覧|what do i (have|own)|how many/i.test(q)) return "inv";
   if (/買(?!い物)|足す|足し|欲しい|ほしい|足りない|buy|shop|missing|should i get/i.test(q)) return "buy";
   if (/(いちばん|一番|最も).*(使|活躍)|活躍|着回し.*(服|アイテム)|most useful|hardest-working|best piece/i.test(q)) return "star";
   if (/タイプ|診断|系統|似合う系|style type|my style/i.test(q)) return "type";
@@ -988,6 +1100,22 @@ function ruleAnswer(q, intent) {
   if (intent === "again") return lookAnswer({ ...lastQ.r, again: true }, "again");
   if (intent === "refine") { const { r, did } = refineReq(q); return lookAnswer(r, "refine", did); }
   if (intent === "tip") return { ...tipOf(q), acts: [] };
+  if (intent === "worn") { markWorn(lastQ.ids); return { text: J ? "記録しました！「診断」のページで、よく着る服と、しばらく着ていない服が見られます。" : "Logged! The Style type page shows your most-worn and sleeping pieces.", acts: ["dx"] }; }
+  if (intent === "sleep") {
+    const log = st.log || [], last = {}; log.forEach(x => x.ids.forEach(id => { if (!last[id] || x.d > last[id]) last[id] = x.d; }));
+    const items = st.items.filter(i => !i.busy && i.cat !== "acc" && i.cat !== "shoes");
+    if (!log.length) return { text: J ? "まだ着た記録がありません。コーデを着た日に「今日これを着た」を押すか、ここで「これ着た」と送ってくれれば、しばらく着ていない服が分かるようになります。" : "No wear log yet. Tap \"I wore this today\" on days you wear a look, or tell me \"I wore this\", and I'll spot the sleeping pieces.", acts: [] };
+    const sl = items.map(i => [i, last[i.id] ? daysAgo(last[i.id]) : 999]).sort((x, y) => y[1] - x[1]).filter(x => x[1] >= 14);
+    if (!sl.length) return { text: J ? "ここ2週間で、ほとんどの服を着ています。すばらしい着回しです！" : "You've worn almost everything in the last two weeks. Great rotation!", acts: [] };
+    const w = sl[0][0], res = lookAnswer({ ...lookReq(""), must: w.id }, "look");
+    res.text = (J ? `しばらく着ていないのは「${nm(w)}」${sl[0][1] < 999 ? `（${sl[0][1]}日前）` : "（記録なし）"}です。これを使ったコーデを作りました。\n` : `Your sleepiest piece is the ${nm(w).toLowerCase()}${sl[0][1] < 999 ? ` (${sl[0][1]} days)` : " (never logged)"}. Here's a look built around it.\n`) + res.text.split("\n").slice(1).join("\n");
+    return res;
+  }
+  if (intent === "pc") {
+    if (!st.pc) return { ...(tipOf(q) || { text: "" }), text: (tipOf(q)?.text || "") + (J ? "\n「診断」のページで、自撮りを使ったパーソナルカラー診断もできます。" : "\nYou can also take the selfie-based personal color test on the Style type page."), acts: ["pc"] };
+    const S = SEASONS[st.pc], cl = pcClothes(st.pc);
+    return { text: J ? `あなたは「${S.ja}」です。${S.subJ}。\n${S.dJ}\n${S.tipJ}` : `You're a ${S.en}. ${S.subE}.\n${S.dE}\n${S.tipE}`, look: cl.good.length ? { ids: cl.good.map(i => i.id), only: true } : null, acts: ["pc"] };
+  }
   if (intent === "color") return { ...colorAnswer(q), acts: [] };
   if (intent === "inv") { out.text = invAnswer(); return out; }
   if (intent === "pack") { out.text = J ? "旅行の荷物は「1週間」のページで作れます。行き先と日数を入れると、現地の天気に合わせて、少ない服で毎日のコーデを組み、持ち物リストにします。" : "Make a packing list on the Week page. Enter where and how long, and I'll plan each day for the forecast with as few clothes as possible."; out.acts = ["pack"]; return out; }
@@ -1063,7 +1191,7 @@ function bubble(m, n) {
   const add = m.add ? `<div class="it"><div class="ph">${svgArt(m.add)}</div></div>` : "";
   const q = m.buyQ ? encodeURIComponent(m.buyQ) : "";
   const shops = q ? `<div class="shops"><a href="https://www.amazon.${ja() ? "co.jp" : "com"}/s?k=${q}" target="_blank" rel="noopener">Amazon${t("findAt")}</a>${ja() ? `<a href="https://search.rakuten.co.jp/search/mall/${q}/" target="_blank" rel="noopener">楽天${t("findAt")}</a>` : ""}</div>` : "";
-  const act = { share: `<button class="btn go" type="button" data-ch="share" data-n="${n}">${t("saveImg")}</button>`, open: `<button class="btn" type="button" data-ch="open" data-n="${n}">${t("chOpen")}</button>`, again: `<button class="btn" type="button" data-ch="again">${t("again")}</button>`, dx: `<button class="btn" type="button" data-ch="dx">${t("chDx")}</button>`, here: `<button class="btn" type="button" data-ch="here">${t("here")}</button>`, pack: `<button class="btn go" type="button" data-ch="pack">${t("pkTitle")}</button>`, bcheck: `<button class="btn go" type="button" data-ch="bcheck">${t("byTitle")}</button>` };
+  const act = { share: `<button class="btn go" type="button" data-ch="share" data-n="${n}">${t("saveImg")}</button>`, open: `<button class="btn" type="button" data-ch="open" data-n="${n}">${t("chOpen")}</button>`, again: `<button class="btn" type="button" data-ch="again">${t("again")}</button>`, dx: `<button class="btn" type="button" data-ch="dx">${t("chDx")}</button>`, here: `<button class="btn" type="button" data-ch="here">${t("here")}</button>`, pc: `<button class="btn" type="button" data-ch="pc">${ja() ? (st.pc ? "診断を見る" : "診断してみる") : (st.pc ? "See result" : "Take the test")}</button>`, pack: `<button class="btn go" type="button" data-ch="pack">${t("pkTitle")}</button>`, bcheck: `<button class="btn go" type="button" data-ch="bcheck">${t("byTitle")}</button>` };
   return `<div class="msg ai${m.llm ? " llm" : ""}"><div class="who"><i class="chdot"></i>${m.llm ? t("chLLMName") : t("chName")}</div><div class="tx">${esc(m.text) || '<span class="typing"><i></i><i></i><i></i></span>'}</div>${m.look && m.look.rate ? rateHtml(m.look.rate) : ""}${its.length || add ? `<div class="chlook">${its.map(i => `<div class="it"><div class="ph${phc(i)}">${art(i)}</div><span>${esc(nm(i))}</span></div>`).join("")}${add}</div>` : ""}${shops}${m.acts && m.acts.length ? `<div class="acts">${m.acts.map(a => act[a] || "").join("")}</div>` : ""}</div>`;
 }
 function renderChat(scroll) {
@@ -1137,7 +1265,7 @@ function fillPk() {
   d.innerHTML = [2, 3, 4, 5, 6, 7].map(k => `<option value="${k}">${J ? `${k}日間（${k - 1}泊）` : `${k} days`}</option>`).join(""); d.value = dv;
   if (!$("pkdate").value) { const x = new Date(); x.setDate(x.getDate() + 1); $("pkdate").value = dayStr(x); }
 }
-function all(anim) { renderText(); renderLook(anim); renderWeek(false); renderCloset(); renderWx(); renderCredits(); if (st.tab === "dx") renderDx(false); if (st.tab === "remix") renderLooks(); renderChat(false); renderLLM(); fillPk(); if (buyC && !buyC.busy) buyRun(false); else renderBuy(); renderLog(); renderPack(); document.dispatchEvent(new Event("ca:lang")); }
+function all(anim) { renderPC(); renderText(); renderLook(anim); renderWeek(false); renderCloset(); renderWx(); renderCredits(); if (st.tab === "dx") renderDx(false); if (st.tab === "remix") renderLooks(); renderChat(false); renderLLM(); fillPk(); if (buyC && !buyC.busy) buyRun(false); else renderBuy(); renderLog(); renderPack(); document.dispatchEvent(new Event("ca:lang")); }
 function relang(l) {
   st.lang = l;
   const re = L => { if (!L || L.sample) return; Object.assign(L, explain(lookItems(L), { tp: L.tp, occ: L.occ, rain: L.rain })); };
@@ -1176,6 +1304,14 @@ document.querySelectorAll(".cityform").forEach(f => { const go = () => locCity(f
 $("wkgo").addEventListener("click", planWeek);
 $("weekgrid").addEventListener("click", e => { const b = e.target.closest("[data-day]"); if (!b) return; const d = st.week[+b.dataset.day]; st.look = { ...d, wx: { code: d.code } }; save(); setTab("today"); renderLook(true); $("stage").scrollIntoView({ behavior: "smooth", block: "start" }); });
 $("dxgo").addEventListener("click", () => renderDx(true));
+$("pcout").addEventListener("click", e => {
+  const b = e.target.closest("[data-pc],[data-pcx]"); if (!b) return;
+  if (b.dataset.pc != null) { if (pc) pcChoose(+b.dataset.pc); return; }
+  const k = b.dataset.pcx;
+  if (k === "selfie") $("pcself").click(); else if (k === "photo") $("pcfile").click(); else if (k === "quiz") pcStart(null);
+  else if (k === "quit") { pc = null; renderPC(); } else if (k === "redo") { st.pc = null; save(); renderPC(true); }
+});
+["pcself", "pcfile"].forEach(id => $(id).addEventListener("change", e => { pcUpload(e.target.files[0]); e.target.value = ""; }));
 $("bycam").addEventListener("change", e => { const f = e.target.files[0]; e.target.value = ""; if (f) buyUpload(f); });
 $("byfile").addEventListener("change", e => { const f = e.target.files[0]; e.target.value = ""; if (f) buyUpload(f); });
 $("bygo").addEventListener("click", () => { if (buyC && !buyC.busy) { buyC.kind = $("bykind").value; buyC.cat = KINDS[buyC.kind][0]; buyC.color = $("bycol").value; buyRun(true); } else buyManual(); });
@@ -1200,6 +1336,7 @@ $("chlog").addEventListener("click", e => {
   const k = b.dataset.ch;
   if (k === "again") ask(ja() ? "別の案" : "Another idea");
   else if (k === "dx") { setTab("dx"); save(); }
+  else if (k === "pc") { setTab("dx"); save(); setTimeout(() => $("pcout").scrollIntoView({ behavior: still ? "auto" : "smooth", block: "start" }), 50); }
   else if (k === "pack") { setTab("week"); save(); document.querySelector(".pack").scrollIntoView({ behavior: "smooth", block: "start" }); }
   else if (k === "bcheck") { setTab("buy"); save(); $("tab-buy").scrollIntoView({ behavior: "smooth", block: "start" }); }
   else if (k === "share") { const m = (st.chat || [])[+b.dataset.n]; if (!m || !m.look) return; st.look = { ...m.look }; save(); renderLook(false); share("look", "img"); }

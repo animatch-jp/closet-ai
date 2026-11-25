@@ -101,3 +101,12 @@ addEventListener("resize", () => { size(); read(); draw(cur, (performance.now() 
 document.addEventListener("ca:lang", () => { lastLang = ""; draw(cur, (performance.now() - t0) / 1000); });
 size(); read(); draw(0, 0);
 }
+// さいごの章：スクロールで光の向きと大きなロゴの色が動く
+{
+  const o = document.getElementById("outro");
+  if (o && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    let raf = 0;
+    const upd = () => { raf = 0; const r = o.getBoundingClientRect(), vh = innerHeight; const v = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height * 0.4))); o.style.setProperty("--o", v.toFixed(3)); };
+    addEventListener("scroll", () => { if (!raf) raf = requestAnimationFrame(upd); }, { passive: true }); addEventListener("resize", upd); upd();
+  } else if (o) o.style.setProperty("--o", "1");
+}

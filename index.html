@@ -448,6 +448,38 @@ input[type=date]{color-scheme:dark;-webkit-appearance:none;appearance:none}
   .tchip{font-size:12px;padding:6px 11px}.tchip b{font-size:17px}
 }
 @media(prefers-reduced-motion:reduce){#tour{height:500vh}}
+.pccard{padding:20px;display:grid;gap:12px;margin-top:16px}
+.pccard h3{margin:0;font-size:clamp(18px,2.4vw,22px);line-height:1.4}
+.pccard .row{display:flex;gap:8px;flex-wrap:wrap}
+.pcnote{margin:0;font-size:12px;color:var(--mute);line-height:1.6}
+.pcswatch{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--mute)}
+.pcswatch span{display:flex;align-items:center;gap:7px}
+.pcswatch i{width:26px;height:26px;border-radius:50%;border:1px solid #ffffff30}
+.pcdots{display:flex;gap:6px}.pcdots i{flex:1;height:4px;border-radius:4px;background:#ffffff18}.pcdots i.on{background:var(--holo)}.pcdots i.now{background:#ffffff70}
+.drapes{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.drape{all:unset;cursor:pointer;display:grid;justify-items:center;gap:0;padding:14px 10px 12px;border-radius:22px;background:radial-gradient(120% 90% at 50% 110%,var(--dc) 0 55%,#0b0d16 56%);border:2px solid #ffffff1f;transition:transform .2s,border-color .2s;position:relative;overflow:hidden}
+.drape:hover,.drape:focus-visible{border-color:#fff;transform:translateY(-2px)}
+.drape .face{width:min(34vw,170px);aspect-ratio:1;border-radius:50%;overflow:hidden;position:relative;z-index:1;box-shadow:0 0 0 6px var(--dc)}
+.drape .face img{width:100%;height:100%;object-fit:cover;object-position:50% 35%}
+.drape .cape{width:112%;height:80px;margin-top:-40px;position:relative;z-index:2;background:var(--dc);border-radius:50% 50% 14px 14px/56px 56px 14px 14px;box-shadow:0 -6px 18px #0004}
+.drape b{margin-top:-34px;font-size:13px;color:#fff;background:#0b0d16cc;padding:4px 10px;border-radius:99px;z-index:3;position:relative}
+.pcopts{display:grid;gap:8px}.pcopts .btn{justify-content:flex-start;min-height:48px}
+.pcname{font:700 clamp(40px,7vw,64px)/1.05 Unbounded,"Zen Kaku Gothic New",sans-serif;margin:2px 0 0;background:var(--holo);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pcsub{margin:0;font-weight:600}
+.pcpal{display:grid;grid-template-columns:repeat(8,1fr);gap:8px}
+.pcpal i{aspect-ratio:1;border-radius:50%;border:1px solid #ffffff30}
+.pccard .chlook .it{flex:0 0 78px}.pccard .chlook .ph{width:78px;height:78px}
+@media(max-width:600px){.pcpal{grid-template-columns:repeat(4,1fr)}}
+#outro{position:relative;z-index:1;overflow:hidden;padding:clamp(80px,14vw,160px) 0 0;margin-top:40px;--o:0}
+#outro::before{content:"";position:absolute;inset:-20% -10% 0;background:conic-gradient(from 200deg at 50% 100%,transparent 0 30deg,#7cf7ff22 40deg,transparent 52deg,#a99bff26 64deg,transparent 78deg,#ff7ad922 90deg,transparent 104deg,#e4ff6b1a 116deg,transparent 128deg);filter:blur(8px);transform:rotate(calc((var(--o) - .5) * 14deg));transform-origin:50% 100%;pointer-events:none}
+.owrap{position:relative;max-width:1100px;margin:0 auto;padding:0 20px;display:grid;gap:14px;justify-items:start}
+.oq{margin:0;font:700 clamp(40px,8vw,96px)/1.05 Unbounded,"Zen Kaku Gothic New",sans-serif;letter-spacing:-.03em}
+.osub{margin:0;color:var(--mute);font-size:clamp(15px,2vw,19px)}
+.orow{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.orow .btn{text-decoration:none}
+.omark{position:relative;display:flex;justify-content:center;margin-top:clamp(40px,8vw,90px);font:800 clamp(64px,19.5vw,300px)/.82 Unbounded,sans-serif;letter-spacing:-.06em;white-space:nowrap;user-select:none;transform:translateY(calc((1 - var(--o)) * 18%))}
+.omark span{background:linear-gradient(100deg,#ffffff 0%,#d9dcff 22%,#7cf7ff 38%,#a99bff 52%,#ff7ad9 66%,#e4ff6b 80%,#ffffff 100%);background-size:220% 100%;background-position:calc(var(--o) * 100%) 0;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-mask:linear-gradient(#000 45%,transparent 98%);mask:linear-gradient(#000 45%,transparent 98%)}
+.omark span+span{opacity:.55}
 </style>
 </head>
 <body>
@@ -588,6 +620,8 @@ input[type=date]{color-scheme:dark;-webkit-appearance:none;appearance:none}
   <div id="tab-dx" hidden>
     <div class="dxhead glass"><div><h2 data-t="dxTitle">クローゼット診断</h2><p data-t="dxSub">あなたの服から、スタイルのタイプと、着回しの力を読み取ります。</p></div><button class="btn go" type="button" id="dxgo" data-t="dxGo">診断する</button></div>
     <div id="dxout" class="dxcard glass"></div>
+    <div id="pcout" class="pccard glass"></div>
+    <input class="vh" type="file" id="pcself" accept="image/*" capture="user"><input class="vh" type="file" id="pcfile" accept="image/*">
     <div id="logout" class="logcard glass"></div>
   </div>
 
@@ -609,6 +643,15 @@ input[type=date]{color-scheme:dark;-webkit-appearance:none;appearance:none}
     <div class="glass"><b data-t="h_3">外に出ない</b><p data-t="p_3"></p></div>
   </section>
 </main>
+
+<section id="outro" aria-label="さいごに">
+  <div class="owrap">
+    <p class="oq" data-t="outQ">明日、なに着る？</p>
+    <p class="osub" data-t="outSub">答えは、もうクローゼットの中にあります。</p>
+    <div class="orow"><a class="btn go" href="#studio" data-go="chat" data-t="outGo">AIに聞いてみる</a><a class="btn" href="#studio" data-go="dx" data-t="outPc">パーソナルカラー診断</a></div>
+  </div>
+  <div class="omark" aria-hidden="true"><span>CLOSET</span><span>.AI</span></div>
+</section>
 
 <footer><div class="wrap"><span><span data-t="foot"></span><br><span data-t="credit"></span><br><span class="credits" id="credits"></span></span><span><button id="clr" type="button" data-t="clearSample">サンプルを消す</button></span></div></footer>
 
