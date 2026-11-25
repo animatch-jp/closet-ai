@@ -6,10 +6,12 @@ const T = {
 ja: {
   cap1: "あなたのクローゼットが、<br><span>AIになる。</span>", cap2: "写真1枚で、<br>服を読み取る。", cap3: "色・種類・きちんと感まで、<br>一瞬でスキャン。", cap3b: "あこがれのコーデも、<br><span>手持ちの服で再現。</span>", hRe: "手持ちの服で再現", hWx: "晴れ 16°C ・ 通勤", nav4: "再現", photos: "写真", rxTitle: "憧れコーデ再現", rxSub: "SNSや雑誌で見たコーデを、あなたの手持ちの服で再現します。見本を選ぶか、写真をアップしてください。", rxUp: "写真から再現", rxCam: "カメラで撮る", rxTap: "写真の服のところをタップしてください（上着・トップス・ボトムス・靴など）。種類は下で直せます。", rxScore: "再現度", rxNone: "合う服がまだありません", rxLow: "似た服をさがす", rxLook: "見本", rxWear: "今日これを着る", rxMine: "あなたの写真のコーデ", camTile: "カメラで撮る", camHint: "その場で撮って登録", err: "うまくいきませんでした。もう一度お試しください。", cap4: "今日の天気に合わせて、<br><span>コーデ完成。</span>", start: "はじめる", hint: "スクロール",
   nav1: "今日", nav2: "1週間", nav3: "診断",
+  rTotal: "相性", rPts: "点", rColor: "色", rScene: "場面", rTemp: "気温",
+  chFollow: ["もっと明るく", "もっときれいめに", "もっとカジュアルに", "ジャケットなしで", "もっと暖かく", "別の案"],
   nav5: "相談", chTitle: "AIスタイリストに相談", chSub: "「明日のデート何着る？」のように話しかけると、手持ちの服から選んで答えます。", chPh: "メッセージを入力", chSend: "送る", chStop: "止める", chClear: "会話を消す",
   chName: "AIスタイリスト", chLLMName: "AIスタイリスト（なんでもAI）", chOpen: "大きく見る", chDx: "診断を見る",
   chHello: "こんにちは！あなたのクローゼット専属のAIスタイリストです。行き先や天気、気分を教えてくれれば、手持ちの服からコーデを選びます。",
-  chSugg: ["明日のデート、何着る？", "雨の日の通勤コーデ", "白いスニーカーに合うコーデは？", "いちばん活躍する服は？", "何を買い足せばいい？", "私の服のタイプは？", "今週の天気は？"],
+  chSugg: ["明日のデート、何着る？", "ライブに行く服は？", "雨の日の通勤コーデ", "白いスニーカーに合うコーデは？", "ネイビーに合う色は？", "背を高く見せたい", "清潔感を出すには？", "いちばん活躍する服は？", "私の服のタイプは？", "クローゼットに何がある？"],
   chLLMTitle: "なんでも話せるAI", chLLMNote: "服以外のことも自由に話せるAIを、この端末の中に読みこめます（約300MB・はじめの1回だけ。Wi-Fiがおすすめ）。", chLoad: "読みこむ", chOff: "オフにする", chLoading: "AIを読みこみ中…", chReady: "オン：服以外のことも話せます。答えはこの端末の中で作られ、どこにも送られません。小さなAIなので、ときどきまちがえます。", chFail: "この端末では読みこめませんでした。服の相談はこのまま使えます。",
   occ: "どこに着ていく？", temp: "気温", mood: "気分・リクエスト（任意）", moodph: "例：明るめの色、たくさん歩く日", gen: "コーデを生成", again: "別の案",
   here: "現在地の天気", cityph: "都市名（例：大阪、Paris）", find: "天気を読む", wxFail: "天気を読みこめませんでした。気温は手で選んでください。", geoFail: "現在地を使えませんでした。都市名で探してください。", noCity: "その都市が見つかりませんでした。",
@@ -32,10 +34,12 @@ ja: {
 en: {
   cap1: "Your closet, <br><span>now with AI.</span>", cap2: "One photo. <br>Every piece, read.", cap3: "Color, type and dressiness, <br>scanned in a blink.", cap3b: "Love a look? <br><span>Rebuild it from your closet.</span>", hRe: "Rebuilt from your closet", hWx: "Sunny 16°C · Commute", nav4: "Recreate", photos: "Photos", rxTitle: "Recreate a look", rxSub: "Saw an outfit you love? Rebuild it from what you already own. Pick an example or upload a photo.", rxUp: "Recreate from photo", rxCam: "Take a photo", rxTap: "Tap each piece in the photo (jacket, top, bottoms, shoes). You can fix the type below.", rxScore: "Match", rxNone: "Nothing similar yet", rxLow: "Find similar", rxLook: "Look", rxWear: "Wear this today", rxMine: "Outfit from your photo", camTile: "Take a photo", camHint: "Snap and add it now", err: "Something went wrong. Please try again.", cap4: "Matched to today's weather. <br><span>Outfit done.</span>", start: "Get started", hint: "Scroll",
   nav1: "Today", nav2: "Week", nav3: "Style type",
+  rTotal: "Match", rPts: "/100", rColor: "Color", rScene: "Occasion", rTemp: "Weather",
+  chFollow: ["Brighter", "Make it smarter", "More casual", "Without the jacket", "Warmer", "Another idea"],
   nav5: "Ask", chTitle: "Ask your AI stylist", chSub: "Ask things like \"what should I wear on my date tomorrow?\" and it picks from your own clothes.", chPh: "Type a message", chSend: "Send", chStop: "Stop", chClear: "Clear chat",
   chName: "AI stylist", chLLMName: "AI stylist (chat-anything AI)", chOpen: "View larger", chDx: "See my type",
   chHello: "Hi! I'm your closet's own AI stylist. Tell me where you're going, the weather or your mood, and I'll build a look from what you own.",
-  chSugg: ["What should I wear on my date tomorrow?", "Rainy commute outfit", "What goes with my white sneakers?", "My most useful piece?", "What should I buy next?", "What's my style type?", "Weather this week?"],
+  chSugg: ["What should I wear on my date tomorrow?", "Outfit for a concert?", "Rainy commute outfit", "What goes with my white sneakers?", "What color goes with navy?", "How do I look taller?", "How do I look neater?", "My most useful piece?", "What's my style type?", "What do I have?"],
   chLLMTitle: "Chat-anything AI", chLLMNote: "Load a small AI onto this device so you can talk about anything, not just clothes (about 300 MB, first time only; Wi-Fi recommended).", chLoad: "Load", chOff: "Turn off", chLoading: "Loading the AI…", chReady: "On: you can talk about anything. Replies are made on this device and never sent anywhere. It's a small AI, so it sometimes gets things wrong.", chFail: "This device couldn't load it. Clothing questions still work.",
   occ: "Where are you going?", temp: "Temperature", mood: "Mood or request (optional)", moodph: "e.g. bright colors, lots of walking", gen: "Generate look", again: "Another idea",
   here: "Weather here", cityph: "City (e.g. Osaka, Paris)", find: "Get weather", wxFail: "Couldn't load the weather. Set the temperature by hand.", geoFail: "Couldn't use your location. Search a city instead.", noCity: "City not found.",
@@ -180,7 +184,7 @@ function buildLook(o) {
   const items = st.items.filter(i => !i.busy), ctx = makeCtx(o);
   const prev = o.again && o.prevIds ? o.prevIds.slice().sort().join() : "";
   const res = [];
-  for (const c of combos(items)) { if (prev && c.map(i => i.id).sort().join() === prev) continue; if (o.must && !c.some(i => i.id === o.must)) continue; res.push([scoreCombo(c, ctx), c]); }
+  for (const c of combos(items)) { if (prev && c.map(i => i.id).sort().join() === prev) continue; if (o.must && !c.some(i => i.id === o.must)) continue; if (o.exclude && o.exclude.length && c.some(i => o.exclude.includes(i.id))) continue; res.push([scoreCombo(c, ctx), c]); }
   res.sort((a, b) => b[0] - a[0]);
   const pick = o.again ? res[Math.floor(Math.random() * Math.min(3, res.length))] : res[0];
   return pick ? { c: pick[1], ctx } : null;
@@ -397,6 +401,7 @@ async function makeCard(kind) {
     const L = st.look || { ids: DEF_LOOK, sample: true, occ: 0, tp: 16 }, its = lookItems(L);
     const show = L.sample ? sampleTx[st.lang] : L;
     x.fillStyle = "#9aa1bb"; x.font = B(36); x.fillText(`${t("occs")[L.occ ?? 0]} ・ ${L.tp}°C${L.wx ? " ・ " + t("wx")[wxType(L.wx.code)] : ""}`, 80, 270);
+    if (L.rate) { x.save(); x.textAlign = "right"; let rx0 = W - 80; x.font = B(32); x.fillStyle = "#9aa1bb"; const u = t("rPts"); x.fillText(u, rx0, 285); rx0 -= x.measureText(u).width + 8; x.font = F(700, 64); x.fillStyle = holo; x.fillText(String(L.rate.total), rx0, 285); rx0 -= x.measureText(String(L.rate.total)).width + 14; x.font = B(32); x.fillStyle = "#9aa1bb"; x.fillText(t("rTotal"), rx0, 285); x.restore(); }
     x.fillStyle = "#fff"; x.font = F(700, 76); let y = wrap(x, show.title, 80, 370, W - 160, 92);
     const n = Math.min(its.length, 6), cols = n <= 4 ? 2 : 3, gap = 30, cw = (W - 160 - gap * (cols - 1)) / cols;
     y += 20;
@@ -605,58 +610,194 @@ function dayOf(q) {
   for (let n = 0; n < 7; n++) if (q.includes(dw[n]) || q.toLowerCase().includes(en[n])) { const d = (st.days || []).findIndex(x => new Date(x.date + "T12:00:00").getDay() === n); return d >= 0 ? d : null; }
   return 0;
 }
-function occOf(q) {
-  if (/結婚式|式典|面接|会食|フォーマル|お呼ばれ|パーティ|発表会|formal|wedding|interview|party/i.test(q)) return 4;
-  if (/仕事|通勤|会社|オフィス|バイト|職場|商談|work|office|job/i.test(q)) return 1;
-  if (/デート|date/i.test(q)) return 2;
-  if (/旅行|旅|遠出|trip|travel/i.test(q)) return 3;
-  if (/休日|休み|遊び|遊ぶ|学校|買い物|カフェ|映画|公園|weekend|school|shopping|cafe|movie/i.test(q)) return 0;
-  return null;
-}
-function lookReq(q, again) {
-  const di = dayOf(q), d = di != null && st.days ? st.days[di] : null;
+// 行き先の種類：[ことば, 場面, 気分, 呼び名ja, 呼び名en, コツja, コツen, 気温の上限]
+const EVENTS = [
+  [/葬式|お葬式|通夜|法事|告別式|funeral/i, 4, "落ち着き きちんと", "お葬式", "a funeral", "黒やネイビーなど暗い色だけでまとめます。光る小物や明るい色はさけましょう。", "Keep to black or navy. Skip shiny accessories and bright colors."],
+  [/面接|interview/i, 4, "きちんと 落ち着き", "面接", "an interview", "シワのないシャツと、よごれのない靴がいちばん大事です。", "A crease-free shirt and clean shoes matter most."],
+  [/結婚式|披露宴|二次会|お呼ばれ|wedding/i, 4, "きちんと", "結婚式", "a wedding", "全身白は花嫁の色なのでさけるのがマナーです。", "Avoid head-to-toe white; that's the bride's color."],
+  [/入学式|卒業式|入社式|成人式|式典|表彰|発表会|ceremony|graduation/i, 4, "きちんと", "式", "a ceremony", "式では、ネイビーや黒を中心にすると安心です。", "Navy or black is the safe base for ceremonies."],
+  [/顔合わせ|親に会う|(彼氏|彼女)の(親|家)|meet the parents/i, 4, "きちんと 落ち着き", "顔合わせ", "meeting the parents", "派手すぎない、清潔感のある服がいちばん好かれます。", "Clean and not too loud wins every time."],
+  [/(?<!ド)ライブ|フェス|コンサート|concert|festival|gig/i, 0, "歩く カジュアル", "ライブ", "a concert", "荷物は少なく、両手があくバッグが楽です。人が多いので、よごれてもいい靴で。", "Pack light and keep your hands free. Wear shoes you don't mind getting stepped on."],
+  [/ディズニー|ユニバ|USJ|テーマパーク|遊園地|theme park|disney/i, 0, "歩く 明るい", "テーマパーク", "a theme park", "1日で1万歩以上歩くこともあるので、靴はスニーカーが安心です。写真に映える色を1つ入れると楽しいです。", "You can walk 10,000+ steps, so sneakers are safest. One bright piece looks great in photos."],
+  [/花火|夏祭り|お祭り|祭り|fireworks/i, 0, "歩く カジュアル", "お祭り", "a festival night", "夜は虫が多いので、うすい長そでがあると安心です。", "Bugs come out at night, so a light long sleeve helps."],
+  [/海(?!外)|ビーチ|プール|beach|pool/i, 0, "カジュアル", "海", "the beach", "日やけに注意。帽子があるといいです。", "Watch the sun; a cap helps."],
+  [/キャンプ|ハイキング|登山|山登り|camp|hiking/i, 3, "歩く 暖かい", "アウトドア", "the outdoors", "山は街より寒いので、1枚多めに持っていきましょう。", "It's colder up high, so bring one extra layer."],
+  [/スキー|スノボ|雪山|ski|snowboard/i, 3, "暖かい", "雪山", "the snow", "首と手首を温めると、体全体が楽になります。", "Warm neck and wrists keep your whole body comfortable."],
+  [/初詣|new year shrine/i, 0, "暖かい", "初詣", "a New Year shrine visit", "外で並ぶので、首元を温めるとちがいます。", "You'll queue outside, so keep your neck warm."],
+  [/合コン|初デート|告白|first date/i, 2, "きれいめ 明るい", "初デート", "a first date", "はじめて会う日は清潔感がいちばん。明るい色を顔の近くに持ってくると、表情が明るく見えます。", "On a first meeting, clean beats trendy. A light color near your face brightens it."],
+  [/女子会|ランチ|お茶|brunch|lunch/i, 0, "きれいめ", "ランチ", "lunch", "", ""],
+  [/美術館|博物館|映画館|museum|cinema/i, 0, "きれいめ", "おでかけ", "an outing", "館内は冷えやすいので、羽織りを1枚。", "Inside can be chilly, so bring a layer."],
+  [/撮影|写真を撮|プリ|photo ?shoot/i, 2, "明るい", "写真の日", "a photo day", "写真では、無地で色がはっきりした服が映えます。", "Plain, clear colors photograph best."],
+  [/ドライブ|\bdrive\b|road trip/i, 0, "楽", "ドライブ", "a drive", "長くすわるので、楽なボトムスと、脱ぎ着しやすい羽織りがあると快適です。", "You'll sit a while, so wear easy bottoms and a layer you can take off."],
+  [/飛行機|新幹線|長距離|flight|long drive/i, 3, "楽", "移動の日", "a travel day", "長い時間すわるので、ウエストが楽なものを。", "You'll sit a long time, so pick an easy waist."],
+  [/部活|体育|運動|ジム|gym|workout/i, 0, "楽 歩く", "運動の日", "an active day", "", ""],
+  [/学校|授業|大学|塾|school|\bclass\b/i, 0, "歩く", "学校", "school", "", ""],
+  [/バイト|part-?time/i, 1, "歩く", "バイト", "work", "", ""],
+  [/仕事|通勤|会社|オフィス|職場|商談|work|office|job/i, 1, "", "", "", "", ""],
+  [/デート|\bdate\b/i, 2, "", "", "", "", ""],
+  [/旅行|旅|遠出|trip|travel/i, 3, "歩く", "", "", "", ""],
+  [/休日|休み|遊び|遊ぶ|買い物|カフェ|映画|公園|weekend|shopping|cafe|movie/i, 0, "", "", "", "", ""]
+];
+function eventOf(q) { const e = EVENTS.find(x => x[0].test(q)); return e ? { occ: e[1], mood: e[2], ja: e[3], en: e[4], tipJ: e[5], tipE: e[6] } : null; }
+const occOf = q => { const e = eventOf(q); return e ? e.occ : null; };
+const TAGW = { bright: "明るい", calm: "落ち着き", walk: "歩く", smart: "きれいめ", casual: "カジュアル", warm: "暖かい" };
+const OPP = { bright: "calm", calm: "bright", smart: "casual", casual: "smart" };
+const tagsOf = s => Object.keys(TAGW).filter(k => moodOf(s)[k]);
+function lookReq(q) {
+  const di = dayOf(q), d = di != null && st.days ? st.days[di] : null, ev = eventOf(q);
   const num = q.match(/(-?\d{1,2})\s*(度|℃|°|c\b)/i);
   let tp = num ? +num[1] : d ? dayTemp(d.max, d.min) : +$("temp").value;
   if (!num && !d) { if (/寒|冷え|cold|freezing/i.test(q)) tp = Math.min(tp, 8); else if (/暑|hot/i.test(q)) tp = Math.max(tp, 28); else if (/涼し|cool/i.test(q)) tp = 18; }
-  const occ = occOf(q), an = anchorOf(q);
-  return { q, occ: occ ?? st.occ, tp, rain: /雨|rain/i.test(q) || isRain(d), day: di, d, mood: q, must: an?.item?.id || null, missing: an?.missing || null, missQ: an?.q || "" };
+  if (!num && /スキー|スノボ|雪山|ski|snowboard/i.test(q)) tp = Math.min(tp, 2);
+  const an = anchorOf(q), tags = tagsOf(q + " " + (ev ? ev.mood : ""));
+  return { q, occ: ev ? ev.occ : st.occ, ev, tp, rain: /雨|rain/i.test(q) || isRain(d), day: di, d, tags, mood: tags.map(k => TAGW[k]).join(" "), must: an?.item?.id || null, missing: an?.missing || null, missQ: an?.q || "", exclude: [] };
+}
+// 言い直し（もっと明るく、ジャケットなしで など）
+const REFINE = /もっと|もう少し|もうちょっと|なしで|無しで|以外|じゃなくて|ではなく|抜きで|やめて|いらない|は嫌|はいや|\bmore |\bless |without|instead of/i;
+function refineReq(q) {
+  const r = { ...lastQ.r, again: false, tags: [...(lastQ.r.tags || [])], exclude: [...(lastQ.r.exclude || [])] }, J = ja(), did = [];
+  const add = k => { r.tags = r.tags.filter(x => x !== OPP[k] && x !== k).concat(k); did.push(J ? { bright: "明るめ", calm: "落ち着いた感じ", smart: "きれいめ", casual: "カジュアル", warm: "暖かめ", walk: "歩きやすい感じ" }[k] : { bright: "brighter", calm: "calmer", smart: "smarter", casual: "more casual", warm: "warmer", walk: "easier to walk in" }[k]); };
+  if (/明る|派手|カラフル|元気|華やか|bright|colou?rful/i.test(q)) add("bright");
+  if (/落ち着|地味|シック|大人っぽ|calm|subtle|chic/i.test(q)) add("calm");
+  if (/きれいめ|ちゃんと|上品|きちんと|フォーマル|smart|dressy|formal/i.test(q)) { add("smart"); r.occ = Math.max(r.occ, 1); }
+  if (/カジュアル|ラフ|ゆる|楽な|casual|relaxed/i.test(q)) add("casual");
+  if (/暖か|あったか|寒そう|warm/i.test(q)) { add("warm"); r.tp = Math.min(r.tp, r.tp - 4); }
+  if (/涼し|薄着|暑そう|cool|lighter/i.test(q)) { r.tags = r.tags.filter(x => x !== "warm"); r.tp += 5; did.push(J ? "涼しめ" : "cooler"); }
+  if (/歩きやす|動きやす|walk/i.test(q)) add("walk");
+  if (/なしで|無しで|以外|じゃなくて|ではなく|抜きで|やめて|いらない|は嫌|はいや|without|instead of|\bno /i.test(q)) {
+    const kinds = Object.keys(KW).filter(k => KW[k].test(q)), cats = Object.keys(CATKW).filter(c => CATKW[c].test(q));
+    const out = st.items.filter(i => kinds.some(k => i.kind === k || KW[k].test(nm(i))) || cats.includes(i.cat)).map(i => i.id);
+    if (out.length) { r.exclude = [...new Set([...r.exclude, ...out])]; if (out.includes(r.must)) r.must = null; did.push(J ? `${kinds.length ? KINDS[kinds[0]][1] : t(cats[0])}なし` : `no ${kinds.length ? KINDS[kinds[0]][2] : t(cats[0]).toLowerCase()}`); }
+  }
+  r.mood = r.tags.map(k => TAGW[k]).join(" ");
+  return { r, did };
+}
+// コーデの点数（色・場面・気温）
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+function rateLook(c, ctx) {
+  const A = c.map(info), fs = A.map(a => a.k.f), fav = fs.reduce((x, y) => x + y, 0) / fs.length;
+  const scene = clamp(Math.round(100 - Math.abs(fav - ctx.target) * 20 - (Math.max(...fs) - Math.min(...fs) > 3 ? 12 : 0)), 40, 100);
+  const body = A.filter(a => a.k.cat !== "shoes" && a.k.cat !== "acc"), outer = A.some(a => a.k.cat === "outer");
+  let temp = 100 - Math.abs(body.reduce((x, a) => x + a.k.w, 0) - ctx.need) * 13;
+  if (outer && ctx.tp >= 24) temp -= 18; if (!outer && ctx.tp < 12) temp -= 18;
+  for (const a of A) { const k = a.i.kind; if ((k === "shorts" && ctx.tp < 20) || (k === "sandals" && ctx.tp < 18) || (k === "down" && ctx.tp > 14)) temp -= 20; }
+  temp = clamp(Math.round(temp), 40, 100);
+  const accs = A.filter(a => !a.c.n); let color;
+  if (accs.length === 0) color = ctx.m.bright ? 82 : 92; else if (accs.length === 1) color = ctx.m.calm ? 84 : 97;
+  else { let sp = 0; for (let x = 0; x < accs.length; x++) for (let y = x + 1; y < accs.length; y++) { const d = Math.abs(accs[x].h.h - accs[y].h.h); sp = Math.max(sp, Math.min(d, 360 - d)); } color = sp > 40 ? 64 : 85; }
+  const top = A.find(a => a.k.cat === "top"), bot = A.find(a => a.k.cat === "bottom");
+  if (top && bot && Math.abs(top.h.l - bot.h.l) > 0.25) color += 3;
+  color = clamp(color, 40, 100);
+  return { total: Math.round(color * 0.36 + scene * 0.34 + temp * 0.3), color, scene, temp };
+}
+// 色の相談
+const GOES = { "白": "*", "黒": "*", "グレー": ["白", "黒", "ネイビー", "ピンク", "水色", "えんじ"], "チャコール": ["白", "グレー", "ベージュ", "水色"], "ライトグレー": ["白", "ネイビー", "黒", "ピンク"], "ネイビー": ["白", "ベージュ", "グレー", "キャメル", "水色", "赤", "黄色"], "インディゴ": ["白", "ベージュ", "グレー", "茶色", "黒"], "ベージュ": ["白", "茶色", "ネイビー", "カーキ", "緑", "黒"], "キャメル": ["白", "ネイビー", "黒", "ベージュ", "緑"], "茶色": ["ベージュ", "白", "ネイビー", "緑", "オレンジ"], "カーキ": ["白", "黒", "ベージュ", "ネイビー", "オレンジ"], "青": ["白", "グレー", "ベージュ", "ネイビー"], "水色": ["白", "ネイビー", "グレー", "ベージュ"], "赤": ["黒", "白", "ネイビー", "グレー", "ベージュ"], "えんじ": ["ベージュ", "グレー", "ネイビー", "白"], "ピンク": ["グレー", "白", "ネイビー", "ベージュ"], "紫": ["グレー", "白", "黒"], "緑": ["白", "ベージュ", "茶色", "ネイビー"], "ミント": ["白", "ベージュ", "グレー", "ネイビー"], "黄色": ["ネイビー", "白", "グレー", "黒"], "オレンジ": ["ネイビー", "白", "カーキ", "茶色"] };
+function colorAnswer(q) {
+  const hit = COLKW.filter(([, re]) => re.test(q)).map(([p]) => p).sort((a, b) => b[0].length - a[0].length)[0];
+  if (!hit) return null;
+  const J = ja(), base = hit[0], go = GOES[base] || "*";
+  const nameOf = jn => J ? jn : PAL.find(p => p[0] === jn)[1];
+  const pals = go === "*" ? null : go;
+  const mine = st.items.filter(i => !i.busy && near(col(i.color)).ja !== base && (pals ? pals.includes(near(col(i.color)).ja) : true)).slice(0, 5);
+  const list = pals ? pals.map(nameOf).join(J ? "・" : ", ") : "";
+  const text = pals ? (J ? `${base}には、${list}がよく合います。` : `${cap(hit[1])} goes well with ${list}.`) : (J ? `${base}は、ほとんどどの色とも合う万能色です。迷ったら、紺やベージュと合わせると失敗しません。` : `${cap(hit[1])} goes with almost anything. When in doubt, pair it with navy or beige.`);
+  const extra = !near(hit[2]).n ? (J ? "\n色のある服は、ほかを白・黒・グレーなどにして1点だけにすると、まとまります。" : "\nWith a colorful piece, keep the rest neutral so it's the only one.") : "";
+  return { text: text + extra + (mine.length ? (J ? "\nあなたのクローゼットだと、このあたりが合わせやすいです。" : "\nFrom your closet, these pair easily.") : ""), look: mine.length ? { ids: mine.map(i => i.id), only: true } : null };
+}
+// おしゃれの悩み・お手入れ
+const TIPS = [
+  [/清潔感|せいけつ|clean look|look neat/i, "清潔感は、服の値段より手入れで決まります。\n・シワをのばす\n・白い服と靴のよごれを落とす\n・サイズが合っているものを着る\nこの3つだけで、ぐっと変わります。", "Looking neat comes from care, not price.\n- Smooth out wrinkles\n- Keep whites and shoes clean\n- Wear the right size\nThose three change a lot.", ["shirt", "sneakers"]],
+  [/背.*高く|脚.*長く|足.*長く|スタイル.*よく|taller|longer legs/i, "縦長に見せるコツです。\n・上と下の色を近くする（同じ色や同じ濃さ）\n・トップスは前だけパンツに入れる\n・靴とパンツの色をそろえる\n・羽織りは前を開けて、縦の線をつくる", "To look taller:\n- Keep top and bottom close in color\n- Tuck just the front of your top\n- Match shoes to trousers\n- Wear your layer open for a long vertical line", ["trousers", "jeans", "jacket"]],
+  [/すっきり見|細く見|着やせ|look slimmer|streamline/i, "すっきり見せるコツです。\n・ボトムスを濃い色にする\n・羽織りの前を開けて、縦の線をつくる\n・首元が少しあいた服を選ぶ\n・大きすぎず、小さすぎないサイズを着る", "For a streamlined look:\n- Go darker on the bottom\n- Wear your layer open for a vertical line\n- Pick a slightly open neckline\n- Choose a size that's neither baggy nor tight", ["jacket", "cardigan"]],
+  [/大人っぽ|落ち着いて見|grown-?up|mature/i, "大人っぽく見せるには、色を3色までにして、白・黒・ネイビー・ベージュを中心にします。シャツやジャケットなど、えりのある服を1つ入れると一気に変わります。", "To look more grown-up, stick to three colors, mostly white, black, navy and beige. One collared piece, like a shirt or jacket, changes everything.", ["shirt", "blazer", "jacket"]],
+  [/かわいく|やさしい印象|やわらか|softer|cute/i, "やさしい印象にするには、ベージュ・ピンク・水色などのやわらかい色や、ニットのようなふんわりした素材が効きます。黒は小物だけにすると軽く見えます。", "For a softer look, try beige, pink or light blue, and fluffy textures like knits. Keep black to accessories.", ["sweater", "cardigan", "skirt"]],
+  [/垢抜け|あかぬけ|おしゃれに見|おしゃれになりたい|look stylish|more stylish/i, "おしゃれに見えるいちばんの近道です。\n・全身の色を3色まで\n・1点だけ「主役」を決める（色・柄・形のどれか）\n・すそ・そで・えりを整える（まくる、入れる、立てる）\n「整える」だけで、同じ服でもちがって見えます。", "Fastest route to looking stylish:\n- Three colors max\n- Pick one star piece (color, pattern or shape)\n- Fix the details: roll hems, tuck, set the collar\nSame clothes, different look.", null],
+  [/着回し|服が少な|少ない服|服.*足りな|capsule|mix and match/i, "少ない服で着回すコツは、白・黒・ネイビー・ベージュ・デニムなど、合わせやすい色を中心に持つことです。その上で色のある服を1〜2枚足すと、組み合わせが一気に増えます。「診断」のページで、あと何を足すと何通り増えるかも見られます。", "To stretch a small closet, build around easy colors: white, black, navy, beige, denim. Add one or two colorful pieces and your combos jump. The Style type page shows what to add and how many outfits it unlocks.", null],
+  [/シワ|しわ|wrinkle/i, "シワ対策です。\n・洗ったらすぐ干して、手でパンパンたたいてのばす\n・ハンガーにかけて、お風呂場の湯気に当てる\n・前の日の夜にかけておく\nアイロンがなくても、かなりのびます。", "Fighting wrinkles:\n- Hang right after washing and smooth with your hands\n- Hang it in a steamy bathroom\n- Hang tomorrow's outfit the night before\nWorks well even without an iron.", null],
+  [/毛玉|pilling|pills/i, "毛玉は、裏返して洗濯ネットに入れて洗うと、できにくくなります。できてしまったら、ひっぱらずに毛玉取りやハサミでそっと切りましょう。", "Wash knits inside out in a laundry net to prevent pilling. If they appear, snip or shave them off instead of pulling.", ["sweater"]],
+  [/洗濯|縮|shrink|wash/i, "服の内側のタグに洗い方のマークがあります。ニットやウールは縮みやすいので、ネットに入れて「手洗い」や「おしゃれ着」コースで。乾燥機は使わないのが安心です。", "Check the care tag inside. Knits and wool shrink easily: use a net and a gentle or hand-wash cycle, and skip the dryer.", null],
+  [/黄ばみ|白.*(汚れ|よごれ)|yellow stain/i, "白い服のよごれは、時間がたつほど落ちにくくなります。えりやわきは、洗う前に洗剤を直接つけて少しおいてから洗うと落ちやすいです。", "Stains on whites set over time. Rub detergent straight onto collars and underarms, wait a bit, then wash.", ["tshirt", "shirt"]],
+  [/季節の変わり目|寒暖差|朝晩|temperature swing/i, "朝と昼で気温がちがう日は、さっと脱ぎ着できる羽織りが主役です。カーディガンやジャケットを1枚持っておくと、1日中ちょうどよく過ごせます。", "On days with big temperature swings, an easy layer is key. One cardigan or jacket keeps you comfortable all day.", ["cardigan", "jacket"]],
+  [/重ね着|レイヤード|layer/i, "重ね着のコツは、内側を薄く、外側を厚くすること。すそから中の服が少し見えると、こなれた感じになります。", "Layer thin under thick. A little of the inner layer showing at the hem looks effortless.", ["shirt", "sweater", "cardigan"]],
+  [/配色|色の合わせ方|色の組み合わせ|color combo|match colou?rs/i, "配色の基本です。\n・3色まで\n・色のある服は1点だけ\n・迷ったら白・黒・ネイビー・ベージュ・グレーと合わせる\n・靴とバッグの色をそろえるとまとまる", "Color basics:\n- Three colors max\n- One colorful piece\n- When unsure, pair with white, black, navy, beige or grey\n- Matching shoes and bag pulls it together", null],
+  [/似合う色|パーソナルカラー|personal colou?r|colors suit me/i, "似合う色を知る簡単な方法です。明るい場所で、真っ白な紙と、少しクリーム色の紙を顔の下に当ててみてください。真っ白で顔が明るく見えれば青みのある色（ネイビー・グレー・ピンク）、クリーム色で明るく見えれば黄みのある色（ベージュ・キャメル・カーキ）が得意なことが多いです。", "A quick test: in daylight, hold pure white paper, then cream paper, under your face. If pure white brightens you, cool colors (navy, grey, pink) tend to suit you; if cream does, warm ones (beige, camel, khaki).", null],
+  [/靴.*(選|合わせ)|どの靴|which shoes/i, "靴選びの目安です。\n・きちんとした日は革靴\n・たくさん歩く日はスニーカー\n・雨の日はブーツ\n・迷ったら、パンツかバッグと色をそろえる", "Shoe rules of thumb:\n- Dressy day: leather shoes\n- Lots of walking: sneakers\n- Rain: boots\n- Unsure: match your trousers or bag", ["sneakers", "leather", "boots"]],
+  [/小物|アクセ|accessor/i, "小物は「1点だけ足す」がコツです。シンプルな服に、色のあるバッグやキャップを1つ足すだけで、写真映えがぐっと上がります。", "With accessories, add just one. A colorful bag or cap on a simple outfit makes photos pop.", ["bag", "cap", "scarf"]],
+  [/オーバーサイズ|サイズ感|大きめ|oversized|fit/i, "大きめの服を着るときは、どこか1か所を細くするのがコツです。上が大きいなら下は細め、下が太いなら上はコンパクトに。", "With oversized pieces, keep one part slim: big top, slim bottom, or wide bottom, compact top.", null],
+  [/節約|安く|お金をかけず|budget|cheap/i, "お金をかけずにおしゃれに見せるなら、新しい服を買う前に、今の服の組み合わせを増やすのがいちばんです。「診断」のページで、今の服で何通り組めるかを見てみてください。", "The cheapest way to look good is more combos from what you own. The Style type page shows how many outfits you already have.", null]
+];
+function tipOf(q) { const x = TIPS.find(t => t[0].test(q)); if (!x) return null; const J = ja(); const mine = x[3] ? st.items.filter(i => !i.busy && x[3].includes(i.kind)).slice(0, 4) : []; return { text: J ? x[1] : x[2], look: mine.length ? { ids: mine.map(i => i.id), only: true } : null }; }
+// クローゼットの中身
+function invAnswer() {
+  const J = ja(), its = st.items.filter(i => !i.busy);
+  if (!its.length) return J ? "クローゼットはまだ空です。下のクローゼットに服を入れてください。" : "Your closet is empty. Add clothes below.";
+  const per = CATS.map(c => [c, its.filter(i => i.cat === c).length]).filter(x => x[1]);
+  const fam = { m: 0, n: 0, e: 0, c: 0 }; its.forEach(i => fam[near(col(i.color)).fam]++);
+  const top = Object.keys(fam).sort((a, b) => fam[b] - fam[a])[0];
+  const famN = J ? { m: "白・黒・グレー", n: "ネイビー系", e: "ベージュ・茶色系", c: "色のある服" } : { m: "white, black and grey", n: "navy tones", e: "beige and brown tones", c: "colorful pieces" };
+  const n = diagnose()?.combos || 0;
+  return J ? `今、${its.length}点の服があります。\n${per.map(([c, k]) => `${t(c)} ${k}点`).join("・")}\nいちばん多いのは${famN[top]}です。この服で、${n}通りのコーデが組めます。`
+    : `You have ${its.length} pieces.\n${per.map(([c, k]) => `${t(c)} ${k}`).join(" · ")}\nMostly ${famN[top]}. That makes ${n} outfits.`;
 }
 function intentOf(q) {
+  if (lastQ && REFINE.test(q) && occOf(q) == null && !/天気|タイプ|weather/i.test(q)) return "refine";
   if (lastQ && /別の|べつの|ほか|他の|違う|ちがう|もう一|もういっこ|もう1|another|other|different|else/i.test(q) && !/タイプ|天気/.test(q)) return "again";
+  if (tipOf(q)) return "tip";
+  if (/何色|色.*合う|合う色|colou?r.*(go|match)|goes with.*colou?r/i.test(q) && COLKW.some(([, re]) => re.test(q)) && !Object.keys(KW).some(k => KW[k].test(q))) return "color";
+  if (/何がある|何枚|何着|何点|持ってる服|持っている服|クローゼットの中|一覧|what do i (have|own)|how many/i.test(q)) return "inv";
   if (/買(?!い物)|足す|足し|欲しい|ほしい|足りない|buy|shop|missing|should i get/i.test(q)) return "buy";
   if (/(いちばん|一番|最も).*(使|活躍)|活躍|着回し.*(服|アイテム)|most useful|hardest-working|best piece/i.test(q)) return "star";
   if (/タイプ|診断|系統|似合う系|style type|my style/i.test(q)) return "type";
   if (/天気|気温|weather|forecast/i.test(q) && !/着|コーデ|服|wear|outfit/i.test(q)) return "wx";
-  if (occOf(q) != null || anchorOf(q) || /着る|着て|着よう|着れ|コーデ|服|合う|合わせ|何着|なに着|格好|かっこう|恰好|outfit|wear|match|look|dress for|寒|暑|雨|明日|今日/i.test(q)) return "look";
+  if (occOf(q) != null || anchorOf(q) || /着る|着て|着よう|着れ|着たら|コーデ|服|合う|合わせ|何着|なに着|格好|かっこう|恰好|outfit|wear|match|look|dress for|寒|暑|雨|明日|今日/i.test(q)) return "look";
   if (/こんにち|こんばん|おはよ|はじめまして|やあ|よろしく|hello|^hi\b|^hey/i.test(q)) return "hi";
   if (/ありがと|サンキュー|助か|thank/i.test(q)) return "thx";
   return "other";
 }
+const pick = a => a[Math.floor(Math.random() * a.length)];
 const dayWord = r => r.day == null || r.day === 0 ? (ja() ? "今日" : "today") : r.day === 1 ? (ja() ? "明日" : "tomorrow") : r.d ? fmtDay(r.d.date) : "";
-function ruleAnswer(q, intent) {
+function helloText() {
+  const J = ja(), d = wxToday, loc = st.loc;
+  if (d && loc) return J ? `こんにちは！今日の${loc.name}は${t("wx")[wxType(d.code)]}、最高${d.max}°C・最低${d.min}°Cです。「今日なに着る？」と聞いてくれれば、天気に合わせてすぐ選びます。` : `Hi! ${loc.name} today: ${t("wx")[wxType(d.code)].toLowerCase()}, ${d.max}° / ${d.min}°. Ask "what should I wear today?" and I'll match the weather.`;
+  return t("chHello");
+}
+function lookAnswer(r, mode, did) {
   const J = ja(), out = { text: "", look: null, acts: [] };
   const has = c => st.items.some(i => i.cat === c && !i.busy);
-  if (intent === "look" || intent === "again") {
-    if (!(has("onepiece") || (has("top") && has("bottom")))) { out.text = t("need"); return out; }
-    const r = intent === "again" ? { ...lastQ.r, again: true } : lookReq(q);
-    const res = buildLook({ ...r, prevIds: intent === "again" ? lastQ.ids : null }) || buildLook({ ...r, must: null });
-    if (!res) { out.text = t("need"); return out; }
-    const ex = explain(res.c, res.ctx), ids = res.c.slice().sort((a, b) => ORDER[a.cat] - ORDER[b.cat]).map(i => i.id);
-    lastQ = { r, ids };
-    const wx = r.d ? `${t("wx")[wxType(r.d.code)]}・${r.tp}°C` : `${r.tp}°C`;
-    const lead = intent === "again" ? (J ? "では、こちらはどうでしょう。" : "How about this one instead?")
-      : J ? `${dayWord(r)}の${t("occW")[r.occ]}（${wx}）なら、これがおすすめです。` : `${cap(dayWord(r))}'s ${t("occW")[r.occ]} (${wx}): here's my pick.`;
-    const miss = r.missing ? (J ? `クローゼットに${r.missing}がなかったので、手持ちの服で選びました。` : `There's no ${r.missing} in your closet, so I used what you have.`) + "\n" : "";
-    out.text = `${miss}${lead}\n${J ? "「" + ex.title + "」" : "“" + ex.title + "”"}\n${ex.why}${ex.tip ? "\n" + ex.tip : ""}`;
-    out.look = { ids, occ: r.occ, tp: r.tp, wx: r.d ? { code: r.d.code } : null, date: r.d && r.day ? r.d.date : undefined, rain: !!res.ctx.rain, ...ex };
-    out.acts = ["open", "again"];
-    if (r.missing) out.buyQ = r.missQ; else if (ex.buyQ) out.buyQ = ex.buyQ;
-    return out;
-  }
+  if (!(has("onepiece") || (has("top") && has("bottom")))) { out.text = t("need"); return out; }
+  const res = buildLook({ ...r, prevIds: mode === "again" ? lastQ.ids : null }) || buildLook({ ...r, must: null }) || buildLook({ ...r, must: null, exclude: [] });
+  if (!res) { out.text = t("need"); return out; }
+  const ex = explain(res.c, res.ctx);
+  if (r.ev && r.ev.ja === "お葬式") ex.title = J ? "落ち着いた、お葬式の装い" : "Quiet funeral look";
+  else if (r.ev && r.ev.ja) ex.title = ex.title.replace(t("occW")[r.occ], J ? r.ev.ja : r.ev.en.replace(/^(a|an|the) /, ""));
+  const ids = res.c.slice().sort((a, b) => ORDER[a.cat] - ORDER[b.cat]).map(i => i.id), rate = rateLook(res.c, res.ctx);
+  lastQ = { r, ids };
+  const wx = r.d ? `${t("wx")[wxType(r.d.code)]}・${r.tp}°C` : `${r.tp}°C`;
+  const place = r.ev && r.ev.ja ? (J ? r.ev.ja : r.ev.en) : t("occW")[r.occ];
+  let lead;
+  if (mode === "again") lead = pick(J ? ["では、こちらはどうでしょう。", "ちがう組み合わせも作ってみました。", "こういうのもありです。"] : ["How about this one instead?", "Here's a different take.", "This works too."]);
+  else if (mode === "refine") lead = did.length ? (J ? `了解です。${did.join("・")}にしてみました。` : `Got it, made it ${did.join(", ")}.`) : (J ? "少し変えてみました。" : "I tweaked it a little.");
+  else lead = J ? pick([`${dayWord(r)}の${place}（${wx}）なら、これがおすすめです。`, `${dayWord(r)}の${place}（${wx}）は、これでいきましょう。`, `${dayWord(r)}の${place}（${wx}）に合わせて選びました。`]) : `${cap(dayWord(r))}, ${place} (${wx}): here's my pick.`;
+  const miss = r.missing && mode === "look" ? (J ? `クローゼットに${r.missing}がなかったので、手持ちの服で選びました。` : `There's no ${r.missing} in your closet, so I used what you have.`) + "\n" : "";
+  const evTip = r.ev && mode === "look" ? (J ? r.ev.tipJ : r.ev.tipE) : "";
+  out.text = `${miss}${lead}\n${J ? "「" + ex.title + "」" : "“" + ex.title + "”"}\n${ex.why}${evTip ? "\n" + evTip : ex.tip ? "\n" + ex.tip : ""}`;
+  out.look = { ids, occ: r.occ, tp: r.tp, wx: r.d ? { code: r.d.code } : null, date: r.d && r.day ? r.d.date : undefined, rain: !!res.ctx.rain, rate, ...ex };
+  out.acts = ["share", "open", "again"];
+  if (r.missing && mode === "look") out.buyQ = r.missQ; else if (ex.buyQ) out.buyQ = ex.buyQ;
+  return out;
+}
+function ruleAnswer(q, intent) {
+  const J = ja(), out = { text: "", look: null, acts: [] };
+  if (intent === "look") return lookAnswer(lookReq(q), "look");
+  if (intent === "again") return lookAnswer({ ...lastQ.r, again: true }, "again");
+  if (intent === "refine") { const { r, did } = refineReq(q); return lookAnswer(r, "refine", did); }
+  if (intent === "tip") return { ...tipOf(q), acts: [] };
+  if (intent === "color") return { ...colorAnswer(q), acts: [] };
+  if (intent === "inv") { out.text = invAnswer(); return out; }
   if (intent === "buy" || intent === "star" || intent === "type") {
     const d = diagnose();
     if (!d) { out.text = t("need"); return out; }
-    if (intent === "buy") { out.text = d.add ? (J ? `いちばんのおすすめは「${d.add.name}」です。足すだけで、組み合わせが${d.add.more}通り増えます。` : `My top pick is ${d.add.name.toLowerCase()}. It adds ${d.add.more} new outfits.`) : (J ? "今の服でじゅうぶん着回せています。" : "Your closet already works well."); out.buyQ = d.add?.q; out.add = d.add?.item; }
+    if (intent === "buy") { out.text = d.add ? (J ? `いちばんのおすすめは「${d.add.name}」です。足すだけで、組み合わせが${d.add.more}通り増えます。\nでも、まずは今の服で組める${d.combos}通りを楽しむのもありです。` : `My top pick is ${d.add.name.toLowerCase()}. It adds ${d.add.more} new outfits.\nThough your current ${d.combos} outfits are worth exploring first.`) : (J ? "今の服でじゅうぶん着回せています。" : "Your closet already works well."); out.buyQ = d.add?.q; out.add = d.add?.item; }
     if (intent === "star") { out.text = d.star ? (J ? `いちばん活躍するのは「${nm(d.star)}」です。今の服で${d.combos}通りのコーデが組めて、その多くに入っています。` : `Your hardest-working piece is the ${nm(d.star).toLowerCase()}. It's in many of your ${d.combos} outfits.`) : "—"; if (d.star) out.look = { ids: [d.star.id], only: true }; }
     if (intent === "type") { const ty = TYPES[d.type]; out.text = J ? `あなたは「${ty[0]}」タイプです。${ty[2]}\n${ty[4]}` : `You're a ${ty[1]}. ${ty[3]}\n${ty[5]}`; out.acts = ["dx"]; }
     return out;
@@ -666,10 +807,10 @@ function ruleAnswer(q, intent) {
     out.text = st.days.slice(0, 3).map((d, n) => `${n === 0 ? (J ? "今日" : "Today") : n === 1 ? (J ? "明日" : "Tomorrow") : fmtDay(d.date)}：${t("wx")[wxType(d.code)]} ${d.max}° / ${d.min}°${d.pop >= 30 ? (J ? `（雨 ${d.pop}%）` : ` (rain ${d.pop}%)`) : ""}`).join("\n") + "\n" + (J ? `（${st.loc.name}）「明日の服は？」と聞いてくれれば、天気に合わせて選びます。` : `(${st.loc.name}) Ask "what should I wear tomorrow?" and I'll match the forecast.`);
     return out;
   }
-  if (intent === "hi") { out.text = J ? (/おはよ/.test(q) ? "おはようございます！" : /こんばん/.test(q) ? "こんばんは！" : "こんにちは！") + t("chHello").replace(/^こんにちは！/, "") : t("chHello"); return out; }
-  if (intent === "thx") { out.text = J ? "どういたしまして！また迷ったら、いつでも聞いてください。" : "Anytime! Ask whenever you're stuck."; return out; }
-  out.text = J ? "ごめんなさい、それはまだわかりません。服のことなら答えられます。たとえば「明日のデートに何を着る？」「白いスニーカーに合うコーデは？」と聞いてみてください。" + (llmState === "ready" ? "" : "\n服以外の話もしたいときは、上の「なんでも話せるAI」を使ってください。")
-    : "Sorry, I can't answer that yet. I'm good with clothes: try \"what should I wear on a date tomorrow?\" or \"what goes with my white sneakers?\"" + (llmState === "ready" ? "" : "\nFor anything else, turn on the Chat-anything AI above.");
+  if (intent === "hi") { out.text = J ? (/おはよ/.test(q) ? "おはようございます！" : /こんばん/.test(q) ? "こんばんは！" : "") + helloText().replace(/^こんにちは！/, (/おはよ|こんばん/.test(q) ? "" : "こんにちは！")) : helloText(); return out; }
+  if (intent === "thx") { out.text = pick(J ? ["どういたしまして！また迷ったら、いつでも聞いてください。", "よかったです！いってらっしゃい。", "どういたしまして。コーデを画像で保存しておくと、あとで見返せますよ。"] : ["Anytime! Ask whenever you're stuck.", "Glad it helped. Have a great day!", "You're welcome. Save the look as an image to find it later."]); return out; }
+  out.text = J ? "ごめんなさい、それはまだわかりません。服のことなら答えられます。たとえば「ライブに行く服は？」「ネイビーに合う色は？」「清潔感を出すには？」と聞いてみてください。" + (llmState === "ready" ? "" : "\n服以外の話もしたいときは、上の「なんでも話せるAI」を使ってください。")
+    : "Sorry, I can't answer that yet. I'm good with clothes: try \"what should I wear to a concert?\", \"what goes with navy?\" or \"how do I look neater?\"" + (llmState === "ready" ? "" : "\nFor anything else, turn on the Chat-anything AI above.");
   return out;
 }
 
@@ -714,19 +855,24 @@ function sysPrompt(rule) {
 
 /* 画面 */
 function chatPush(m) { st.chat = (st.chat || []).concat(m).slice(-30); save(); }
+function rateHtml(r) {
+  const row = (k, v) => `<div class="rrow"><span>${t(k)}</span><i><b style="width:${v}%"></b></i><em>${v}</em></div>`;
+  return `<div class="rate"><div class="rtot"><small>${t("rTotal")}</small><b>${r.total}</b><small>${t("rPts")}</small></div><div class="rbars">${row("rColor", r.color)}${row("rScene", r.scene)}${row("rTemp", r.temp)}</div></div>`;
+}
 function bubble(m, n) {
   if (m.role === "me") return `<div class="msg me">${esc(m.text)}</div>`;
   const its = m.look ? m.look.ids.map(byId).filter(Boolean) : [];
   const add = m.add ? `<div class="it"><div class="ph">${svgArt(m.add)}</div></div>` : "";
   const q = m.buyQ ? encodeURIComponent(m.buyQ) : "";
   const shops = q ? `<div class="shops"><a href="https://www.amazon.${ja() ? "co.jp" : "com"}/s?k=${q}" target="_blank" rel="noopener">Amazon${t("findAt")}</a>${ja() ? `<a href="https://search.rakuten.co.jp/search/mall/${q}/" target="_blank" rel="noopener">楽天${t("findAt")}</a>` : ""}</div>` : "";
-  const act = { open: `<button class="btn" type="button" data-ch="open" data-n="${n}">${t("chOpen")}</button>`, again: `<button class="btn" type="button" data-ch="again">${t("again")}</button>`, dx: `<button class="btn" type="button" data-ch="dx">${t("chDx")}</button>`, here: `<button class="btn" type="button" data-ch="here">${t("here")}</button>` };
-  return `<div class="msg ai${m.llm ? " llm" : ""}"><div class="who"><i class="chdot"></i>${m.llm ? t("chLLMName") : t("chName")}</div><div class="tx">${esc(m.text) || '<span class="typing"><i></i><i></i><i></i></span>'}</div>${its.length || add ? `<div class="chlook">${its.map(i => `<div class="it"><div class="ph${phc(i)}">${art(i)}</div><span>${esc(nm(i))}</span></div>`).join("")}${add}</div>` : ""}${shops}${m.acts && m.acts.length ? `<div class="acts">${m.acts.map(a => act[a] || "").join("")}</div>` : ""}</div>`;
+  const act = { share: `<button class="btn go" type="button" data-ch="share" data-n="${n}">${t("saveImg")}</button>`, open: `<button class="btn" type="button" data-ch="open" data-n="${n}">${t("chOpen")}</button>`, again: `<button class="btn" type="button" data-ch="again">${t("again")}</button>`, dx: `<button class="btn" type="button" data-ch="dx">${t("chDx")}</button>`, here: `<button class="btn" type="button" data-ch="here">${t("here")}</button>` };
+  return `<div class="msg ai${m.llm ? " llm" : ""}"><div class="who"><i class="chdot"></i>${m.llm ? t("chLLMName") : t("chName")}</div><div class="tx">${esc(m.text) || '<span class="typing"><i></i><i></i><i></i></span>'}</div>${m.look && m.look.rate ? rateHtml(m.look.rate) : ""}${its.length || add ? `<div class="chlook">${its.map(i => `<div class="it"><div class="ph${phc(i)}">${art(i)}</div><span>${esc(nm(i))}</span></div>`).join("")}${add}</div>` : ""}${shops}${m.acts && m.acts.length ? `<div class="acts">${m.acts.map(a => act[a] || "").join("")}</div>` : ""}</div>`;
 }
 function renderChat(scroll) {
-  const log = $("chlog"), msgs = st.chat && st.chat.length ? st.chat : [{ role: "ai", text: t("chHello") }];
+  const log = $("chlog"), msgs = st.chat && st.chat.length ? st.chat : [{ role: "ai", text: helloText() }];
   log.innerHTML = msgs.map(bubble).join("");
-  $("sugg").innerHTML = t("chSugg").map(s => `<button type="button" class="chip">${esc(s)}</button>`).join("");
+  const lastM = msgs[msgs.length - 1], follow = lastM && lastM.role === "ai" && lastM.look && !lastM.look.only && lastQ;
+  $("sugg").innerHTML = (follow ? t("chFollow") : t("chSugg")).map(s => `<button type="button" class="chip">${esc(s)}</button>`).join("");
   $("chclr").hidden = !(st.chat && st.chat.length);
   if (scroll !== false) log.scrollTop = log.scrollHeight;
 }
@@ -836,6 +982,7 @@ $("chlog").addEventListener("click", e => {
   const k = b.dataset.ch;
   if (k === "again") ask(ja() ? "別の案" : "Another idea");
   else if (k === "dx") { setTab("dx"); save(); }
+  else if (k === "share") { const m = (st.chat || [])[+b.dataset.n]; if (!m || !m.look) return; st.look = { ...m.look }; save(); renderLook(false); share("look", "img"); }
   else if (k === "here") locHere().then(() => { if (st.days) ask(ja() ? "今週の天気は？" : "Weather this week?"); });
   else if (k === "open") { const m = (st.chat || [])[+b.dataset.n]; if (!m || !m.look) return; st.look = { ...m.look }; save(); setTab("today"); renderLook(true); $("stage").scrollIntoView({ behavior: "smooth", block: "start" }); }
 });
